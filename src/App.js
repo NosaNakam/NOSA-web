@@ -95,8 +95,8 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import LoginPage from "./pages/Login.js";
 import SignupPage from "./pages/Signup.js";
 // import PricingPage from "pages/Pricing.js";
-// import AboutUsPage from "pages/AboutUs.js";
-// import ContactUsPage from "pages/ContactUs.js";
+import AboutUsPage from "./pages/AboutUs.js";
+import ContactUsPage from "./pages/ContactUs.js";
 // import BlogIndexPage from "pages/BlogIndex.js";
 // import TermsOfServicePage from "pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
@@ -123,6 +123,8 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/" element={<MainLandingPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/contact" element={<ContactUsPage />} />
         </Routes>
       </Router>
     </>
