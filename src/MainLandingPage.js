@@ -27,6 +27,7 @@ import EventAndNews from "./components/blogs/PopularAndRecentBlogPosts.js";
 import Blog from "./components/blogs/ThreeColSimpleWithImageAndDashedBorder.js";
 import SchoolAchievement from "./components/cards/TwoTrendingPreviewCardsWithImage.js";
 import FeatureStats from "./components/features/ThreeColCenteredStatsPrimaryBackground.js";
+import Newsletter from "./components/forms/TwoColContactUsWithIllustration.js";
 import Footer from "./components/footers/MiniCenteredFooter.js";
 /* Hero */
 const Row = tw.div`flex`;
@@ -158,7 +159,8 @@ export default ({
           <FeatureStats />
           <EventAndNews />
           <SchoolAchievement />
-          <Footer />
+          <Newsletter />
+          {/* <Footer /> */}
           {/* <NavRow>
             <LogoLink href="/">
               <img src={logo} alt="" />
