@@ -99,7 +99,7 @@ export default () => {
           },
         ]}
       />
-      <Footer />
+      {/* <Footer /> */}
     </AnimationRevealPage>
   );
 };

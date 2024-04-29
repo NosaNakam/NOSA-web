@@ -83,7 +83,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 // import Footer from "components/footers/MiniCenteredFooter.js";
 
 /* Ready Made Pages (from demos folder) */
-// import EventLandingPage from "demos/EventLandingPage.js";
+import EventLandingPage from "./demos/EventLandingPage.js";
 // import HotelTravelLandingPage from "demos/HotelTravelLandingPage.js";
 // import AgencyLandingPage from "demos/AgencyLandingPage.js";
 // import SaaSProductLandingPage from "demos/SaaSProductLandingPage.js";
@@ -97,7 +97,7 @@ import SignupPage from "./pages/Signup.js";
 // import PricingPage from "pages/Pricing.js";
 import AboutUsPage from "./pages/AboutUs.js";
 import ContactUsPage from "./pages/ContactUs.js";
-// import BlogIndexPage from "pages/BlogIndex.js";
+import BlogIndexPage from "./pages/BlogIndex.js";
 // import TermsOfServicePage from "pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
@@ -118,14 +118,17 @@ export default function App() {
       <GlobalStyles />
       <Router>
         <Routes>
-          {/* <Route path="/components/:type/:subtype/:name" element={<ComponentRenderer />} />
-          <Route path="/components/:type/:name" element={<ComponentRenderer />} /> */}
+          <Route path="/components/:type/:subtype/:name" element={<ComponentRenderer />} />
+          <Route path="/components/:type/:name" element={<ComponentRenderer />} />
           <Route path="/sign-up" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<SharedRoute />}>
             <Route index element={<MainLandingPage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
+            <Route path="/blog" element={<BlogIndexPage />} />
+            <Route path="/events" element={<EventLandingPage />} />
+
             <Route path="/thank-you" element={<ThankYouPage />} />
           </Route>
         </Routes>

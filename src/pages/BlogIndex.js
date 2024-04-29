@@ -8,7 +8,7 @@ import Header from "../components/headers/light.js";
 import Footer from "../components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "../components/misc/Headings";
 import { PrimaryButton } from "../components/misc/Buttons";
-
+import News from "../components/blogs/PopularAndRecentBlogPosts.js";
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
 const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;
@@ -119,7 +119,8 @@ export default ({
           )}
         </ContentWithPaddingXl>
       </Container>
-      <Footer />
+      <News />
+      {/* <Footer /> */}
     </AnimationRevealPage>
   );
 };

@@ -72,7 +72,7 @@ export default () => {
       <NavLink href="/contact">Contact Us</NavLink>
     </NavLinks>,
     <NavLinks key={2}>
-      <PrimaryLink href="/#">Be a Member</PrimaryLink>
+      <PrimaryLink href="/sign-up">Be a Member</PrimaryLink>
     </NavLinks>,
   ];
 
