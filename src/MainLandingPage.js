@@ -25,6 +25,9 @@ import Hero from "./components/hero/BackgroundAsImage.js";
 import Welcome from "./components/features/TwoColSingleFeatureWithStats2.js";
 import EventAndNews from "./components/blogs/PopularAndRecentBlogPosts.js";
 import Blog from "./components/blogs/ThreeColSimpleWithImageAndDashedBorder.js";
+import SchoolAchievement from "./components/cards/TwoTrendingPreviewCardsWithImage.js";
+import FeatureStats from "./components/features/ThreeColCenteredStatsPrimaryBackground.js";
+import Footer from "./components/footers/MiniCenteredFooter.js";
 /* Hero */
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
@@ -152,7 +155,10 @@ export default ({
           <Hero />
           <Welcome />
           <Blog />
+          <FeatureStats />
           <EventAndNews />
+          <SchoolAchievement />
+          <Footer />
           {/* <NavRow>
             <LogoLink href="/">
               <img src={logo} alt="" />
@@ -208,7 +214,7 @@ export default ({
               </ImageContainer>
             </ImageColumn>
           </HeroRow> */}
-          <SectionContainer id="landingPageDemos">
+          {/* <SectionContainer id="landingPageDemos">
             <SectionHeading>Landing Pages</SectionHeading>
             <SectionDescription>
               We have {noOfLandingPages} premade landing pages. Click on the "View Live Demo" button
@@ -278,7 +284,7 @@ export default ({
               </span>
             </SectionDescription>
             <BlocksRenderer blocks={Object.values(blocks)} />
-          </SectionContainer>
+          </SectionContainer> */}
         </Content2Xl>
       </Container>
     </AnimationRevealPage>
