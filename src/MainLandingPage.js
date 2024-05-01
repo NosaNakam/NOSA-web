@@ -19,7 +19,7 @@ import { ReactComponent as HandleIcon } from "./images/handle-icon.svg";
 import { ReactComponent as ArrowRightIcon } from "./images/arrow-right-3-icon.svg";
 
 import heroScreenshotImageSrc from "./images/demo/MainLandingPageHero.png";
-import logo from "./images/logo.svg";
+import logo from "./images/logo.png";
 import useInView from "./helpers/useInView";
 import Hero from "./components/hero/BackgroundAsImage.js";
 import Welcome from "./components/features/TwoColSingleFeatureWithStats2.js";

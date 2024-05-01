@@ -5,6 +5,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "../misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "../misc/Buttons.js";
 import StatsIllustrationSrc from "../../images/stats-illustration.svg";
+import PresidentImage from "../../images/president.jpg";
 import { ReactComponent as SvgDotPattern } from "../../images/dot-pattern.svg";
 
 const Container = tw.div`relative`;
@@ -40,7 +41,7 @@ const DecoratorBlob = styled(SvgDotPattern)((props) => [
 ]);
 
 export default ({
-  subheading = "Our Track Record",
+  subheading = "A Word form Our Leader",
   heading = (
     <>
       We have been doing this <wbr /> since <span tw="text-primary-500">1999.</span>
@@ -49,7 +50,7 @@ export default ({
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   primaryButtonText = "Learn More",
   primaryButtonUrl = "https://timerse.com",
-  imageSrc = StatsIllustrationSrc,
+  imageSrc = PresidentImage,
   imageCss = null,
   imageContainerCss = null,
   imageDecoratorBlob = false,

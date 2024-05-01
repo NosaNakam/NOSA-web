@@ -83,13 +83,15 @@ export default () => {
         <StyledHeader links={navLinks} />
         <TwoColumn>
           <LeftColumn>
-            <Notification>We have now launched operations in Europe.</Notification>
+            <Notification>
+              Stay connected with your alma mater and fellow alumni to unlock memories
+            </Notification>
             <Heading>
-              <span>Hire the best</span>
+              <span>Nakam Old Students Association</span>
               <br />
-              <SlantedBackground>Marketing Team.</SlantedBackground>
+              <SlantedBackground>NOSA</SlantedBackground>
             </Heading>
-            <PrimaryAction>Read Customer Stories</PrimaryAction>
+            <PrimaryAction>Take Tour to Know Us</PrimaryAction>
           </LeftColumn>
           <RightColumn>
             {/* <StyledResponsiveVideoEmbed
