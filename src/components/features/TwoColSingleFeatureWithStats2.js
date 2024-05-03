@@ -41,7 +41,7 @@ const DecoratorBlob = styled(SvgDotPattern)((props) => [
 ]);
 
 export default ({
-  subheading = "A Word form Our Leader",
+  subheading = "From the President's Desk",
   heading = (
     <>
       We have been doing this <wbr /> since <span tw="text-primary-500">1999.</span>

@@ -10,6 +10,8 @@ import Header, {
   LogoLink,
   NavToggle,
   DesktopNavLinks,
+  DropdownLink,
+  StyledDropdownLinks,
 } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 
@@ -65,10 +67,34 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 export default () => {
   const navLinks = [
     <NavLinks key={1}>
+      <NavLink href="/">Home</NavLink>
       <NavLink href="/about">About</NavLink>
-      <NavLink href="#">Blog</NavLink>
-      <NavLink href="#">The School</NavLink>
-      <NavLink href="#">Membership</NavLink>
+      <NavLink href="#">
+        Blog
+        <StyledDropdownLinks>
+          <DropdownLink href="/events">Events </DropdownLink>
+          <DropdownLink href="/news-and-blogs">News and Blogs</DropdownLink>
+          <DropdownLink href="/gallery">Gallery</DropdownLink>
+          <DropdownLink href="showcase">Showcase</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
+      <NavLink href="#">
+        Nakam
+        <StyledDropdownLinks>
+          <DropdownLink href="#">About School</DropdownLink>
+          <DropdownLink href="#">School Achievements</DropdownLink>
+          <DropdownLink href="#">School Staff</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
+      <NavLink href="#">
+        Membership
+        <StyledDropdownLinks>
+          <DropdownLink href="#">Set Membership</DropdownLink>
+          <DropdownLink href="#">Whom we are Proud of</DropdownLink>
+          <DropdownLink href="#">Annual Dues</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
+
       <NavLink href="/contact">Contact Us</NavLink>
     </NavLinks>,
     <NavLinks key={2}>

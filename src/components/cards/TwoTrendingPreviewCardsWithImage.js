@@ -84,13 +84,13 @@ export default () => {
         <ThreeColumn>
           <HeadingColumn>
             <HeadingInfoContainer>
-              <HeadingTitle>Trending Tours</HeadingTitle>
+              <HeadingTitle>Achievements</HeadingTitle>
               <HeadingDescription>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua enim ad minim veniam.
               </HeadingDescription>
               <PrimaryLink>
-                View All Tours <ArrowRightIcon />
+                View All Our Achievements <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>
           </HeadingColumn>
@@ -99,14 +99,14 @@ export default () => {
               <Card>
                 <CardImage imageSrc={card.imageSrc} />
                 <CardText>
-                  <CardHeader>
+                  {/* <CardHeader>
                     <CardType>{card.type}</CardType>
                     <CardPrice>
                       <CardPriceAmount>{card.pricePerDay}</CardPriceAmount> per day
                     </CardPrice>
-                  </CardHeader>
+                  </CardHeader> */}
                   <CardTitle>{card.title}</CardTitle>
-                  <CardMeta>
+                  {/* <CardMeta>
                     <CardMetaFeature>
                       <TrendingIcon /> {card.trendingText}
                     </CardMetaFeature>
@@ -116,8 +116,8 @@ export default () => {
                     <CardMetaFeature>
                       <LocationIcon /> {card.locationText}
                     </CardMetaFeature>
-                  </CardMeta>
-                  <CardAction>Book Now</CardAction>
+                  </CardMeta> */}
+                  <CardAction>Read More</CardAction>
                 </CardText>
               </Card>
             </CardColumn>

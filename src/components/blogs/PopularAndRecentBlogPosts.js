@@ -128,7 +128,7 @@ export default () => {
       <ContentWithPaddingXl>
         <Row>
           <PopularPostsContainer>
-            <Heading>Popular Posts</Heading>
+            <Heading>Popular News</Heading>
             <PostsContainer>
               {popularPosts.map((post, index) => (
                 <Post
@@ -157,7 +157,7 @@ export default () => {
             </PostsContainer>
           </PopularPostsContainer>
           <RecentPostsContainer>
-            <Heading>Recent Posts</Heading>
+            <Heading>Recent News </Heading>
             <PostsContainer>
               {recentPosts.map((post, index) => (
                 <Post key={index} href={post.url} className="group">

@@ -15,22 +15,34 @@ const Header = tw.header`
   max-w-screen-xl mx-auto
 `;
 
-export const NavLinks = tw.div`inline-block`;
+export const NavLinks = tw.div`flex items-center`;
 
 /* hocus: stands for "on hover or focus"
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
  */
 export const NavLink = tw.a`
   text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
-  font-semibold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
+  font-semibold tracking-wide transition duration-300 relative
+  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500 relative
+`;
+export const DropdownLink = tw.a`
+`;
+export const StyledDropdownLinks = styled.div`
+  ${tw`relative lg:absolute z-[10] mt-2 py-2 bg-white rounded-lg shadow-lg w-[18rem] lg:w-[12rem] hidden`}
+
+  ${NavLink}:hover & {
+    ${tw`block `};
+  }
+  ${DropdownLink} {
+    ${tw`block px-4 py-2 text-gray-800 hover:bg-gray-200`}
+  }
 `;
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0
   px-8 py-3 rounded bg-primary-500 text-gray-100
   hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
-  border-b-0
+  border-b-0 flex justify-center items-center
 `;
 
 export const LogoLink = styled(NavLink)`
@@ -55,7 +67,42 @@ export const MobileNavLinks = motion(styled.div`
 export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `;
+export const defaultLinks = [
+  <NavLinks key={1}>
+    <NavLink href="/">Home</NavLink>
+    <NavLink href="/about">About</NavLink>
+    <NavLink href="#">
+      Blog
+      <StyledDropdownLinks>
+        <DropdownLink href="/events">Events </DropdownLink>
+        <DropdownLink href="/news-and-blogs">News Update</DropdownLink>
+        <DropdownLink href="/gallery">Gallery</DropdownLink>
+        <DropdownLink href="showcase">Showcase</DropdownLink>
+      </StyledDropdownLinks>
+    </NavLink>
+    <NavLink href="#">
+      Nakam
+      <StyledDropdownLinks>
+        <DropdownLink href="#">About Nakam</DropdownLink>
+        <DropdownLink href="#">School Achievements</DropdownLink>
+        <DropdownLink href="#">School Staff</DropdownLink>
+      </StyledDropdownLinks>
+    </NavLink>
+    <NavLink href="#">
+      Membership
+      <StyledDropdownLinks>
+        <DropdownLink href="#">Set Membership</DropdownLink>
+        <DropdownLink href="#">Whom we are Proud of</DropdownLink>
+        <DropdownLink href="#">Annual Dues</DropdownLink>
+      </StyledDropdownLinks>
+    </NavLink>
 
+    <NavLink href="/contact">Contact</NavLink>
+  </NavLinks>,
+  <NavLinks key={2}>
+    <PrimaryLink href="/sign-up">Be a Member</PrimaryLink>
+  </NavLinks>,
+];
 export default ({
   roundedHeaderButton = false,
   logoLink,
@@ -76,20 +123,6 @@ export default ({
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
-  const defaultLinks = [
-    <NavLinks key={1}>
-      <NavLink href="/#">About</NavLink>
-      <NavLink href="/#">Blog</NavLink>
-      <NavLink href="/#">Pricing</NavLink>
-      <NavLink href="/#">Contact Us</NavLink>
-      <NavLink href="/#" tw="lg:ml-12!">
-        Login
-      </NavLink>
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/#">
-        Sign Up
-      </PrimaryLink>
-    </NavLinks>,
-  ];
 
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];

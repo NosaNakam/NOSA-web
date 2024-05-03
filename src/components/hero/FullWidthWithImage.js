@@ -3,7 +3,13 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import Header, { LogoLink, NavLinks, NavLink as NavLinkBase } from "../headers/light.js";
+import Header, {
+  LogoLink,
+  NavLinks,
+  NavLink as NavLinkBase,
+  StyledDropdownLinks,
+  DropdownLink,
+} from "../headers/light.js";
 
 const StyledHeader = styled(Header)`
   ${tw`justify-between`}
@@ -44,11 +50,28 @@ const Actions = styled.div`
 export default ({
   navLinks = [
     <NavLinks key={1}>
-      <NavLink href="#">About</NavLink>
-      <NavLink href="#">Blog</NavLink>
-      <NavLink href="#">Pricing</NavLink>
-      <NavLink href="#">Login</NavLink>
-    </NavLinks>
+      <NavLink href="/">Home</NavLink>
+      <NavLink href="/about">About</NavLink>
+      <NavLink href="#">
+        Blog
+        <StyledDropdownLinks>
+          <DropdownLink href="/events">Events </DropdownLink>
+          <DropdownLink href="/news-and-blogs">News and Blogs</DropdownLink>
+          <DropdownLink href="/gallery">Gallery</DropdownLink>
+          <DropdownLink href="showcase">Showcase</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
+      <NavLink href="#">
+        Nakam
+        <StyledDropdownLinks>
+          <DropdownLink href="#">About School</DropdownLink>
+          <DropdownLink href="#">School Achievements</DropdownLink>
+          <DropdownLink href="#">School Staff</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
+
+      <NavLink href="/contact">Contact Us</NavLink>
+    </NavLinks>,
   ],
   heading = (
     <>
@@ -62,7 +85,7 @@ export default ({
   primaryActionUrl = "#",
   primaryActionText = "Sign Up",
   secondaryActionUrl = "#",
-  secondaryActionText = "Search Hotels"
+  secondaryActionText = "Search Hotels",
 }) => {
   return (
     <Container>

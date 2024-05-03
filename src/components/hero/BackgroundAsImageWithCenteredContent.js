@@ -3,7 +3,15 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import Header, { NavLink, NavLinks, PrimaryLink as PrimaryLinkBase, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
+import Header, {
+  NavLink,
+  NavLinks,
+  PrimaryLink as PrimaryLinkBase,
+  LogoLink,
+  NavToggle,
+  DesktopNavLinks,
+  defaultLinks,
+} from "../headers/light.js";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none w-full`}
@@ -15,7 +23,7 @@ const StyledHeader = styled(Header)`
   }
 `;
 
-const PrimaryLink = tw(PrimaryLinkBase)`rounded-full`
+const PrimaryLink = tw(PrimaryLinkBase)`rounded-full`;
 const Container = styled.div`
   ${tw`relative -mx-8 -mt-8 bg-center bg-cover h-screen min-h-144`}
   background-image: url("https://images.unsplash.com/photo-1536300007881-7e482242baa5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80");
@@ -36,38 +44,16 @@ const Heading = styled.h1`
 const PrimaryAction = tw.button`rounded-full px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 font-bold shadow transition duration-300 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:outline-none focus:shadow-outline`;
 
 export default () => {
-  const navLinks = [
-    <NavLinks key={1}>
-      <NavLink href="#">
-        About
-      </NavLink>
-      <NavLink href="#">
-        Blog
-      </NavLink>
-      <NavLink href="#">
-        Locations
-      </NavLink>
-      <NavLink href="#">
-        Pricing
-      </NavLink>
-    </NavLinks>,
-    <NavLinks key={2}>
-      <PrimaryLink href="/#">
-        Hire Us
-      </PrimaryLink>
-    </NavLinks>
-  ];
-
   return (
     <Container>
       <OpacityOverlay />
       <HeroContainer>
-        <StyledHeader links={navLinks} />
+        <StyledHeader links={defaultLinks} />
         <Content>
           <Heading>
-              Book Music & Comedy Events
-              <br />
-              anywhere in New York
+            Book Music & Comedy Events
+            <br />
+            anywhere in New York
           </Heading>
           <PrimaryAction>Search Events Near Me</PrimaryAction>
         </Content>

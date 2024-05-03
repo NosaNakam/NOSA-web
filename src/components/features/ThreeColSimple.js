@@ -56,27 +56,27 @@ export default ({
       imageSrc: ShieldIconImage,
       title: "Secure",
       description: "We strictly only deal with vendors that provide top notch security.",
-      url: "https://timerse.com"
+      url: "https://timerse.com",
     },
     {
       imageSrc: SupportIconImage,
       title: "24/7 Support",
       description: "Lorem ipsum donor amet siti ceali placeholder text",
-      url: "https://google.com"
+      url: "https://google.com",
     },
     {
       imageSrc: CustomizeIconImage,
       title: "Customizable",
       description: "Lorem ipsum donor amet siti ceali placeholder text",
-      url: "https://reddit.com"
-    }
+      url: "https://reddit.com",
+    },
   ],
   linkText = "Learn More",
   heading = "",
   subheading = "",
   description = "",
   imageContainerCss = null,
-  imageCss = null
+  imageCss = null,
 }) => {
   /*
    * This componets accepts a prop - `cards` which is an array of object denoting the cards. Each object in the cards array can have the following keys (Change it according to your need, you can also add more objects to have more cards in this feature component):
@@ -91,7 +91,7 @@ export default ({
         {subheading && <Subheading>{subheading}</Subheading>}
         {heading && <Heading>{heading}</Heading>}
         {description && <Description>{description}</Description>}
-        <ThreeColumnContainer>
+        {/* <ThreeColumnContainer>
           {cards.map((card, i) => (
             <Column key={i}>
               <Card href={card.url}>
@@ -109,7 +109,7 @@ export default ({
               </Card>
             </Column>
           ))}
-        </ThreeColumnContainer>
+        </ThreeColumnContainer> */}
       </ContentWithPaddingXl>
       <DecoratorBlob />
     </Container>
