@@ -98,7 +98,7 @@ import SignupPage from "./pages/Signup.js";
 import AboutUsPage from "./pages/AboutUs.js";
 import ContactUsPage from "./pages/ContactUs.js";
 import BlogIndexPage from "./pages/BlogIndex.js";
-// import TermsOfServicePage from "pages/TermsOfService.js";
+import NakamHistory from "./pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
 // import ComponentRenderer from "ComponentRenderer.js";
@@ -125,9 +125,10 @@ export default function App() {
           <Route path="/" element={<SharedRoute />}>
             <Route index element={<MainLandingPage />} />
             <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/contact" element={<ContactUsPage />} />
-            <Route path="/blog" element={<BlogIndexPage />} />
+            <Route path="/nakam-history" element={<NakamHistory />} />
             <Route path="/events" element={<EventLandingPage />} />
+            <Route path="/contact" element={<ContactUsPage />} />
+            <Route path="/news" element={<BlogIndexPage />} />
 
             <Route path="/thank-you" element={<ThankYouPage />} />
           </Route>

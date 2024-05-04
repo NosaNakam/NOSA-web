@@ -70,22 +70,15 @@ export const DesktopNavLinks = tw.nav`
 export const defaultLinks = [
   <NavLinks key={1}>
     <NavLink href="/">Home</NavLink>
-    <NavLink href="/about">About</NavLink>
-    <NavLink href="#">
-      Blog
-      <StyledDropdownLinks>
-        <DropdownLink href="/events">Events </DropdownLink>
-        <DropdownLink href="/news-and-blogs">News Update</DropdownLink>
-        <DropdownLink href="/gallery">Gallery</DropdownLink>
-        <DropdownLink href="showcase">Showcase</DropdownLink>
-      </StyledDropdownLinks>
-    </NavLink>
+    <NavLink href="/about">About Nosa</NavLink>
     <NavLink href="#">
       Nakam
       <StyledDropdownLinks>
-        <DropdownLink href="#">About Nakam</DropdownLink>
-        <DropdownLink href="#">School Achievements</DropdownLink>
-        <DropdownLink href="#">School Staff</DropdownLink>
+        <DropdownLink href="/nakam-history">History of Nakam</DropdownLink>
+        <DropdownLink href="founding-fathers">Founding Fathers</DropdownLink>
+        <DropdownLink href="school-management">School Management</DropdownLink>
+        <DropdownLink href="school-associations">School Associations</DropdownLink>
+        <DropdownLink href="school-achievement">School Achievements</DropdownLink>
       </StyledDropdownLinks>
     </NavLink>
     <NavLink href="#">
@@ -96,7 +89,15 @@ export const defaultLinks = [
         <DropdownLink href="#">Annual Dues</DropdownLink>
       </StyledDropdownLinks>
     </NavLink>
-
+    <NavLink href="#">
+      Blog
+      <StyledDropdownLinks>
+        <DropdownLink href="/events">Events </DropdownLink>
+        <DropdownLink href="/news">News Update</DropdownLink>
+        <DropdownLink href="/gallery">Gallery</DropdownLink>
+        <DropdownLink href="showcase">Showcase</DropdownLink>
+      </StyledDropdownLinks>
+    </NavLink>
     <NavLink href="/contact">Contact</NavLink>
   </NavLinks>,
   <NavLinks key={2}>

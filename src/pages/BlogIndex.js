@@ -50,7 +50,7 @@ const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 
 export default ({
-  headingText = "Blog Posts",
+  headingText = "News Update",
   posts = [
     {
       imageSrc:
@@ -119,7 +119,7 @@ export default ({
           )}
         </ContentWithPaddingXl>
       </Container>
-      <News />
+      {/* <News /> */}
       {/* <Footer /> */}
     </AnimationRevealPage>
   );

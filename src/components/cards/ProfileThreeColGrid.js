@@ -8,7 +8,15 @@ import { SectionDescription } from "../misc/Typography";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as LinkedinIcon } from "../../images/linkedin-icon.svg";
 import { ReactComponent as GithubIcon } from "../../images/github-icon.svg";
-import { President, VicePresident } from "../../images/ImageIndex.js";
+import {
+  Auditor,
+  Buba,
+  Canaan,
+  Michael,
+  Plangji,
+  President,
+  VicePresident,
+} from "../../images/ImageIndex.js";
 
 const HeadingContainer = tw.div``;
 const Heading = tw(SectionHeading)``;
@@ -22,7 +30,7 @@ const CardImage = styled.div`
     css`
       background-image: url("${props.imageSrc}");
     `}
-  ${tw`w-[18rem] h-[18rem] bg-contain bg-center rounded-full`}
+  ${tw`w-[18rem] h-[18rem] bg-contain bg-center bg-cover rounded-full `}
 `;
 const CardContent = styled.div`
   ${tw`flex flex-col items-center mt-6`}
@@ -88,8 +96,7 @@ export default ({
       ],
     },
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
+      imageSrc: Canaan,
       position: "General Secretary",
       name: "Silvester Wize",
       links: [
@@ -108,8 +115,7 @@ export default ({
       ],
     },
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
+      imageSrc: Plangji,
       position: "Financial Secretary ",
       name: "Himali Turn",
       links: [
@@ -128,8 +134,7 @@ export default ({
       ],
     },
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=3.45&w=512&h=512&q=80",
+      imageSrc: Michael,
       position: "Treasurer",
       name: "Troye Sivan",
       links: [
@@ -148,8 +153,7 @@ export default ({
       ],
     },
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=3.45&w=512&h=512&q=80",
+      imageSrc: Buba,
       position: "Public Relations Officer",
       name: "Holo Wo",
       links: [
@@ -168,8 +172,7 @@ export default ({
       ],
     },
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=3.45&w=512&h=512&q=80",
+      imageSrc: Auditor,
       position: "Auditor",
       name: "Holo Wo",
       links: [

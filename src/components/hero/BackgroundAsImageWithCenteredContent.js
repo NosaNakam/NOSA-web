@@ -51,9 +51,9 @@ export default () => {
         <StyledHeader links={defaultLinks} />
         <Content>
           <Heading>
-            Book Music & Comedy Events
+            Past and Upcoming NOSA Events
             <br />
-            anywhere in New York
+            anywhere in the World
           </Heading>
           <PrimaryAction>Search Events Near Me</PrimaryAction>
         </Content>
