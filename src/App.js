@@ -96,8 +96,10 @@ import LoginPage from "./pages/Login.js";
 import SignupPage from "./pages/Signup.js";
 // import PricingPage from "pages/Pricing.js";
 import AboutUsPage from "./pages/AboutUs.js";
+import Associations from "./pages/Associations.js";
 import ContactUsPage from "./pages/ContactUs.js";
 import BlogIndexPage from "./pages/BlogIndex.js";
+import NosaSets from "./pages/NosaSets.js";
 import NakamHistory from "./pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
@@ -126,9 +128,11 @@ export default function App() {
             <Route index element={<MainLandingPage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/nakam-history" element={<NakamHistory />} />
+            <Route path="/school-associations" element={<Associations />} />
             <Route path="/events" element={<EventLandingPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/news" element={<BlogIndexPage />} />
+            <Route path="/nosa-sets" element={<NosaSets />} />
 
             <Route path="/thank-you" element={<ThankYouPage />} />
           </Route>

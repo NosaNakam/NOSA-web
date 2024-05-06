@@ -70,28 +70,30 @@ export default () => {
       <NavLink href="/">Home</NavLink>
       <NavLink href="/about">About</NavLink>
       <NavLink href="#">
+        Nakam
+        <StyledDropdownLinks>
+          <DropdownLink href="/nakam-history">History of Nakam</DropdownLink>
+          <DropdownLink href="founding-fathers">Founding Fathers</DropdownLink>
+          <DropdownLink href="school-management">School Management</DropdownLink>
+          <DropdownLink href="school-associations">School Associations</DropdownLink>
+          <DropdownLink href="school-achievement">School Achievements</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
+      <NavLink href="#">
+        Membership
+        <StyledDropdownLinks>
+          <DropdownLink href="/nosa-sets">Set Membership</DropdownLink>
+          <DropdownLink href="#">Whom we are Proud of</DropdownLink>
+          <DropdownLink href="#">Annual Dues</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
+      <NavLink href="#">
         Blog
         <StyledDropdownLinks>
           <DropdownLink href="/events">Events </DropdownLink>
           <DropdownLink href="/news">News Update</DropdownLink>
           <DropdownLink href="/gallery">Gallery</DropdownLink>
           <DropdownLink href="showcase">Showcase</DropdownLink>
-        </StyledDropdownLinks>
-      </NavLink>
-      <NavLink href="#">
-        Nakam
-        <StyledDropdownLinks>
-          <DropdownLink href="#">About Nakam</DropdownLink>
-          <DropdownLink href="#">School Achievements</DropdownLink>
-          <DropdownLink href="#">School Staff</DropdownLink>
-        </StyledDropdownLinks>
-      </NavLink>
-      <NavLink href="#">
-        Membership
-        <StyledDropdownLinks>
-          <DropdownLink href="#">Set Membership</DropdownLink>
-          <DropdownLink href="#">Whom we are Proud of</DropdownLink>
-          <DropdownLink href="#">Annual Dues</DropdownLink>
         </StyledDropdownLinks>
       </NavLink>
       <NavLink href="/contact">Contact Us</NavLink>
