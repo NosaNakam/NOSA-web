@@ -112,6 +112,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SharedRoute from "./SharedRoute.js";
 import FoundingFathers from "./pages/FoundingFathers.js";
 import SchoolManagement from "./pages/SchoolManagement.js";
+import SchoolAchievements from "./pages/SchoolAchievements.js";
+import WhomWeAreProudOf from "./pages/WhomWeAreProudOf.js";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -133,10 +135,13 @@ export default function App() {
             <Route path="/school-associations" element={<Associations />} />
             <Route path="/founding-fathers" element={<FoundingFathers />} />
             <Route path="/school-management" element={<SchoolManagement />} />
+            <Route path="/school-achievement" element={<SchoolAchievements />} />
+            {/* <Route path="/school-achievement" element={< />} /> */}
             <Route path="/events" element={<EventLandingPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/news" element={<BlogIndexPage />} />
             <Route path="/nosa-sets" element={<NosaSets />} />
+            <Route path="/whom-we-are-proud-of" element={<WhomWeAreProudOf />} />
 
             <Route path="/thank-you" element={<ThankYouPage />} />
           </Route>

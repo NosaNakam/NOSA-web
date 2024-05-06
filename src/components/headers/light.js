@@ -85,8 +85,7 @@ export const defaultLinks = [
       Membership
       <StyledDropdownLinks>
         <DropdownLink href="/nosa-sets">Set Membership</DropdownLink>
-        <DropdownLink href="#">Whom we are Proud of</DropdownLink>
-        <DropdownLink href="#">Annual Dues</DropdownLink>
+        <DropdownLink href="whom-we-are-proud-of">Whom we are Proud of</DropdownLink>
       </StyledDropdownLinks>
     </NavLink>
     <NavLink href="#">

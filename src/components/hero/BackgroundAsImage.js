@@ -84,7 +84,6 @@ export default () => {
         <StyledDropdownLinks>
           <DropdownLink href="/nosa-sets">Set Membership</DropdownLink>
           <DropdownLink href="#">Whom we are Proud of</DropdownLink>
-          <DropdownLink href="#">Annual Dues</DropdownLink>
         </StyledDropdownLinks>
       </NavLink>
       <NavLink href="#">

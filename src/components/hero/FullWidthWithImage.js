@@ -51,41 +51,48 @@ export default ({
   navLinks = [
     <NavLinks key={1}>
       <NavLink href="/">Home</NavLink>
-      <NavLink href="/about">About</NavLink>
+      <NavLink href="/about">About Nosa</NavLink>
+      <NavLink href="#">
+        Nakam
+        <StyledDropdownLinks>
+          <DropdownLink href="/nakam-history">History of Nakam</DropdownLink>
+          <DropdownLink href="founding-fathers">Founding Fathers</DropdownLink>
+          <DropdownLink href="school-management">School Management</DropdownLink>
+          <DropdownLink href="school-associations">School Associations</DropdownLink>
+          <DropdownLink href="school-achievement">School Achievements</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
+      <NavLink href="#">
+        Membership
+        <StyledDropdownLinks>
+          <DropdownLink href="/nosa-sets">Set Membership</DropdownLink>
+          <DropdownLink href="whom-we-are-proud-of">Whom we are Proud of</DropdownLink>
+        </StyledDropdownLinks>
+      </NavLink>
       <NavLink href="#">
         Blog
         <StyledDropdownLinks>
           <DropdownLink href="/events">Events </DropdownLink>
-          <DropdownLink href="/news-and-blogs">News and Blogs</DropdownLink>
+          <DropdownLink href="/news">News Update</DropdownLink>
           <DropdownLink href="/gallery">Gallery</DropdownLink>
           <DropdownLink href="showcase">Showcase</DropdownLink>
         </StyledDropdownLinks>
       </NavLink>
-      <NavLink href="#">
-        Nakam
-        <StyledDropdownLinks>
-          <DropdownLink href="#">About School</DropdownLink>
-          <DropdownLink href="#">School Achievements</DropdownLink>
-          <DropdownLink href="#">School Staff</DropdownLink>
-        </StyledDropdownLinks>
-      </NavLink>
-
-      <NavLink href="/contact">Contact Us</NavLink>
     </NavLinks>,
   ],
   heading = (
     <>
-      Find Perfect Hotels
+      Find Set Members
       <wbr />
       <br />
-      <span tw="text-primary-500">anywhere you go.</span>
+      <span tw="text-primary-500">and unlock past memories</span>
     </>
   ),
   description = "We've been in the hotels business across the world for 5 years now. We assure you that you will always enjoy your stay with us.",
   primaryActionUrl = "#",
-  primaryActionText = "Sign Up",
+  primaryActionText = "Be a Member",
   secondaryActionUrl = "#",
-  secondaryActionText = "Search Hotels",
+  secondaryActionText = "Pay Dues",
 }) => {
   return (
     <Container>
