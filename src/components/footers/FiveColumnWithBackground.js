@@ -56,10 +56,10 @@ export default () => {
             <ColumnHeading>Main</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">About Us</Link>
+                <Link href="about">About Us</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Contact</Link>
+                <Link href="contact">Contact</Link>
               </LinkListItem>
               {/* <LinkListItem>
                 <Link href="#">Nakam</Link>
@@ -73,19 +73,19 @@ export default () => {
             <ColumnHeading>Nakam</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">History of Nakam</Link>
+                <Link href="/nakam-history">History of Nakam</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Founding Fathers</Link>
+                <Link href="/founding-fathers">Founding Fathers</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">School Management</Link>
+                <Link href="/school-management">School Management</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">School Associations</Link>
+                <Link href="/school-associations">School Associations</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">School Achievements</Link>
+                <Link href="/school-achievements">School Achievements</Link>
               </LinkListItem>
             </LinkList>
           </Column>
@@ -93,10 +93,10 @@ export default () => {
             <ColumnHeading>Membership</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Set Membership</Link>
+                <Link href="/nosa-sets">Set Membership</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Whom We Are Proud Of</Link>
+                <Link href="/whom-we-are-proud-of">Whom We Are Proud Of</Link>
               </LinkListItem>
               {/* <LinkListItem>
                 <Link href="#">Stories</Link>
@@ -110,16 +110,16 @@ export default () => {
             <ColumnHeading>Blog</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Events</Link>
+                <Link href="/events">Events</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">News Update</Link>
+                <Link href="/news">News Update</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Gallery</Link>
+                <Link href="/gallery">Gallery</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Showcase</Link>
+                <Link href="/showcase">Showcase</Link>
               </LinkListItem>
             </LinkList>
           </Column>
@@ -127,13 +127,13 @@ export default () => {
             <ColumnHeading>Others</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Be a Member</Link>
+                <Link href="sign-up">Be a Member</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Login</Link>
+                <Link href="login">Login</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Pay Dues</Link>
+                <Link href="pay-dues">Pay Dues</Link>
               </LinkListItem>
               {/* <LinkListItem>
                 <Link href="#">Disclaimer</Link>
