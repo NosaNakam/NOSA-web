@@ -6,18 +6,14 @@ import Blog from "../components/blogs/ThreeColSimpleWithImage.js";
 import Testimonial from "../components/testimonials/TwoColumnWithImage.js";
 import ContactUsForm from "../components/forms/SimpleContactUs.js";
 import Footer from "../components/footers/SimpleFiveColumn.js";
+import Profiles from "../components/cards/Profiles.js";
 
 export default () => (
   <AnimationRevealPage>
-    <Hero
-      heading1={"Past and Upcoming NOSA Events"}
-      heading2={"anywhere in the World"}
-      buttonAction={"Search Events"}
-      centerButton={true}
-    />
-    <Features />
+    <Hero heading1={"Our Pioneers and"} heading2={"Founding Fathers"} centerButton={false} />
+    {/* <Features /> */}
     {/* upcoming events implace of blog */}
-    <Blog />
+    <Profiles />
     {/* <Testimonial /> */}
     {/* <ContactUsForm /> */}
     {/* <Footer /> */}

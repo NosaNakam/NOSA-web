@@ -110,6 +110,7 @@ import ThankYouPage from "./ThankYouPage.js";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SharedRoute from "./SharedRoute.js";
+import FoundingFathers from "./pages/FoundingFathers.js";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -129,6 +130,7 @@ export default function App() {
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/nakam-history" element={<NakamHistory />} />
             <Route path="/school-associations" element={<Associations />} />
+            <Route path="/founding-fathers" element={<FoundingFathers />} />
             <Route path="/events" element={<EventLandingPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/news" element={<BlogIndexPage />} />
