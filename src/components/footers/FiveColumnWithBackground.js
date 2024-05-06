@@ -56,85 +56,88 @@ export default () => {
             <ColumnHeading>Main</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Blog</Link>
+                <Link href="#">About Us</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">FAQs</Link>
+                <Link href="#">Contact</Link>
               </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Support</Link>
+              {/* <LinkListItem>
+                <Link href="#">Nakam</Link>
               </LinkListItem>
               <LinkListItem>
                 <Link href="#">About Us</Link>
+              </LinkListItem> */}
+            </LinkList>
+          </Column>
+          <Column>
+            <ColumnHeading>Nakam</ColumnHeading>
+            <LinkList>
+              <LinkListItem>
+                <Link href="#">History of Nakam</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Founding Fathers</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">School Management</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">School Associations</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">School Achievements</Link>
               </LinkListItem>
             </LinkList>
           </Column>
           <Column>
-            <ColumnHeading>Product</ColumnHeading>
+            <ColumnHeading>Membership</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Log In</Link>
+                <Link href="#">Set Membership</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Personal</Link>
+                <Link href="#">Whom We Are Proud Of</Link>
               </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Business</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Team</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Press</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">Logos</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Events</Link>
-              </LinkListItem>
-              <LinkListItem>
+              {/* <LinkListItem>
                 <Link href="#">Stories</Link>
               </LinkListItem>
               <LinkListItem>
                 <Link href="#">Office</Link>
+              </LinkListItem> */}
+            </LinkList>
+          </Column>
+          <Column>
+            <ColumnHeading>Blog</ColumnHeading>
+            <LinkList>
+              <LinkListItem>
+                <Link href="#">Events</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">News Update</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Gallery</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Showcase</Link>
               </LinkListItem>
             </LinkList>
           </Column>
           <Column>
-            <ColumnHeading>Team</ColumnHeading>
+            <ColumnHeading>Others</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Career</Link>
+                <Link href="#">Be a Member</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Founders</Link>
+                <Link href="#">Login</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Culture</Link>
+                <Link href="#">Pay Dues</Link>
               </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Onboarding</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Legal</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">GDPR</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Privacy Policy</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Terms of Service</Link>
-              </LinkListItem>
-              <LinkListItem>
+              {/* <LinkListItem>
                 <Link href="#">Disclaimer</Link>
-              </LinkListItem>
+              </LinkListItem> */}
             </LinkList>
           </Column>
         </FiveColumns>

@@ -14,6 +14,7 @@ import Header, {
   StyledDropdownLinks,
 } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -117,7 +118,9 @@ export default () => {
               <br />
               <SlantedBackground>NOSA</SlantedBackground>
             </Heading>
-            <PrimaryAction>Take Tour to Know Us</PrimaryAction>
+            <PrimaryAction>
+              <Link to={"/about"}>Take Tour to Know Us</Link>
+            </PrimaryAction>
           </LeftColumn>
           <RightColumn>
             {/* <StyledResponsiveVideoEmbed

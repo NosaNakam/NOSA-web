@@ -216,7 +216,7 @@ export default ({
               </ImageContainer>
             </ImageColumn>
           </HeroRow> */}
-          <SectionContainer id="landingPageDemos">
+          {/* <SectionContainer id="landingPageDemos">
             <SectionHeading>Landing Pages</SectionHeading>
             <SectionDescription>
               We have {noOfLandingPages} premade landing pages. Click on the "View Live Demo" button
@@ -286,7 +286,7 @@ export default ({
               </span>
             </SectionDescription>
             <BlocksRenderer blocks={Object.values(blocks)} />
-          </SectionContainer>
+          </SectionContainer> */}
         </Content2Xl>
       </Container>
     </AnimationRevealPage>

@@ -114,7 +114,8 @@ import FoundingFathers from "./pages/FoundingFathers.js";
 import SchoolManagement from "./pages/SchoolManagement.js";
 import SchoolAchievements from "./pages/SchoolAchievements.js";
 import WhomWeAreProudOf from "./pages/WhomWeAreProudOf.js";
-
+import Gallary from "./pages/Gallary.js";
+import NotFound from "./pages/NotFound.js";
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
@@ -142,8 +143,10 @@ export default function App() {
             <Route path="/news" element={<BlogIndexPage />} />
             <Route path="/nosa-sets" element={<NosaSets />} />
             <Route path="/whom-we-are-proud-of" element={<WhomWeAreProudOf />} />
+            <Route path="/gallery" element={<Gallary />} />
 
             <Route path="/thank-you" element={<ThankYouPage />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Router>
