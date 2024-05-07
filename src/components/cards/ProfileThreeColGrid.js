@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
@@ -193,6 +193,7 @@ export default ({
     },
   ],
 }) => {
+  const [isModelOpen, setIsModelOpen] = useState(false);
   return (
     <Container>
       <ContentWithPaddingXl>
@@ -205,7 +206,7 @@ export default ({
           {cards.map((card, index) => (
             <Card key={index}>
               <CardImage imageSrc={card.imageSrc} />
-              <ProfileDetailModel />
+              {isModelOpen && <ProfileDetailModel />}
               <CardContent>
                 <span className="position">{card.position}</span>
                 <span className="name">{card.name}</span>
