@@ -17,6 +17,7 @@ import {
   President,
   VicePresident,
 } from "../../images/ImageIndex.js";
+import ProfileDetailModel from "../features/ProfileDetailModel.js";
 
 const HeadingContainer = tw.div``;
 const Heading = tw(SectionHeading)``;
@@ -204,6 +205,7 @@ export default ({
           {cards.map((card, index) => (
             <Card key={index}>
               <CardImage imageSrc={card.imageSrc} />
+              <ProfileDetailModel />
               <CardContent>
                 <span className="position">{card.position}</span>
                 <span className="name">{card.name}</span>
