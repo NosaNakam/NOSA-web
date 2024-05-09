@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { SectionHeading as HeadingTitle } from "../misc/Headings";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
+import { Gimba } from "../../images/ImageIndex";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -13,13 +14,13 @@ const Column = tw.div`mt-24 lg:w-1/3`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
 
-const Card = tw.div`lg:mx-4 xl:mx-8 max-w-sm lg:max-w-xs shadow-md`;
+const Card = tw.div`lg:mx-4 xl:mx-8 max-w-sm lg:max-w-xs shadow-md hover:shadow-lg`;
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`bg-cover bg-center h-80 lg:h-[50vh] rounded`,
 ]);
 const Category = tw.div`mt-4 text-secondary-100 font-bold text-sm`;
-const Title = tw.h4`mt-2 leading-relaxed font-bold text-2xl text-center`;
+const Title = tw.h4`mt-2 leading-relaxed font-bold lg:text-xl text-center`;
 const Link = tw.a`mt-2 flex justify-center text-sm text-primary-500 font-bold pb-5 text-xl`;
 const DecoratorBlob1 = tw(
   SvgDecoratorBlob1
@@ -31,10 +32,9 @@ const DecoratorBlob2 = tw(
 export default () => {
   const blogPosts = [
     {
-      imageSrc:
-        "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
+      imageSrc: Gimba,
       responsibleFor: "First Principal",
-      name: "J.Y.Lot",
+      name: "Engr. GIMBA, Haruna Ladan",
       url: "https://timerse.com",
     },
     {

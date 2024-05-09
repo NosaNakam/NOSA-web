@@ -5,5 +5,6 @@ import Plangji from "./Plangji.png";
 import VicePresident from "./VicePresident.png";
 import Auditor from "./Patience.png";
 import Canaan from "./Cenaan.png";
+import Gimba from "./Eng.Gimba.PNG";
 
-export { President, Buba, Michael, Plangji, VicePresident, Auditor, Canaan };
+export { President, Buba, Michael, Plangji, VicePresident, Auditor, Canaan, Gimba };
