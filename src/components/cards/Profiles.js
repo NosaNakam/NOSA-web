@@ -29,64 +29,22 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob2
 )`-z-10 absolute top-0 left-0 w-48 h-48 transform -translate-x-32 translate-y-full opacity-25`;
 
-export default () => {
-  const blogPosts = [
-    {
-      imageSrc: Gimba,
-      responsibleFor: "First Principal",
-      name: "Engr. GIMBA, Haruna Ladan",
-      url: "https://timerse.com",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1543365067-fa127bcb2303?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      responsibleFor: "Principal 1880-1990",
-      name: "Derek Joy",
-      url: "https://reddit.com",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      responsibleFor: "Founder",
-      name: "Mary Webstar",
-      url: "https://timerse.com",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      responsibleFor: "First Principal",
-      name: "J.Y.Lot",
-      url: "https://timerse.com",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1543365067-fa127bcb2303?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      responsibleFor: "Principal 1880-1990",
-      name: "Derek Joy",
-      url: "https://reddit.com",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      responsibleFor: "Founder",
-      name: "Mary Webstar",
-      url: "https://timerse.com",
-    },
-  ];
+export default ({ profiles, title1, title2 }) => {
   return (
     <Container>
       <Content>
         <HeadingInfoContainer>
           <HeadingTitle>
-            Meet the Brain Behind <br />
-            the Great Institution
+            {title1}
+            <br />
+            {title2}
           </HeadingTitle>
           <HeadingDescription>
             Some amazing blog posts that are written by even more amazing people.
           </HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>
-          {blogPosts.map((post, index) => (
+          {profiles.map((post, index) => (
             <Column key={index}>
               <Card>
                 <Image imageSrc={post.imageSrc} />

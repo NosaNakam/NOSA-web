@@ -18,8 +18,5 @@ export default () => (
     <Features />
     {/* upcoming events implace of blog */}
     <Blog />
-    <Testimonial />
-    {/* <ContactUsForm /> */}
-    {/* <Footer /> */}
   </AnimationRevealPage>
 );
