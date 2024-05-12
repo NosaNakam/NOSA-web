@@ -5,6 +5,8 @@ import { SectionHeading as HeadingTitle } from "../misc/Headings";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
 import { Gimba } from "../../images/ImageIndex";
+import { useDispatch, useSelector } from "react-redux";
+import { addProfileDetailsModel, openProfileModel } from "../../Redux/Services/AppSlice";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -30,6 +32,15 @@ const DecoratorBlob2 = tw(
 )`-z-10 absolute top-0 left-0 w-48 h-48 transform -translate-x-32 translate-y-full opacity-25`;
 
 export default ({ profiles, title1, title2 }) => {
+  const { isModelOpen, profileDetails } = useSelector((store) => store.AppSlice);
+  console.log(isModelOpen);
+  console.log(profileDetails);
+  const dispatch = useDispatch();
+  const handleClick = (post) => {
+    console.log(post);
+    dispatch(openProfileModel);
+    dispatch(addProfileDetailsModel(post));
+  };
   return (
     <Container>
       <Content>
@@ -45,7 +56,7 @@ export default ({ profiles, title1, title2 }) => {
         </HeadingInfoContainer>
         <ThreeColumn>
           {profiles.map((post, index) => (
-            <Column key={index}>
+            <Column key={index} onClick={() => handleClick(post)}>
               <Card>
                 <Image imageSrc={post.imageSrc} />
                 {/* <Category>{post.category}</Category> */}

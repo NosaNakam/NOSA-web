@@ -3,6 +3,6 @@ import AppSlice from "./Services/AppSlice";
 
 export const store = configureStore({
   reducer: {
-    App: AppSlice,
+    AppSlice,
   },
 });

@@ -14,7 +14,7 @@ const blogPosts = [
     imageSrc:
       "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     responsibleFor: "Set '94",
-    name: "Major General Godwin Michael Mutkut",
+    name: "Mjr. Geg. Godwin Michael Mutkut",
     url: "https://timerse.com",
   },
   {
