@@ -18,6 +18,8 @@ import {
   VicePresident,
 } from "../../images/ImageIndex.js";
 import ProfileDetailModel from "../features/ProfileDetailModel.js";
+import { useDispatch, useSelector } from "react-redux";
+import { addProfileDetailsModel, openProfileModel } from "../../Redux/Services/AppSlice.js";
 
 const HeadingContainer = tw.div``;
 const Heading = tw(SectionHeading)``;
@@ -25,7 +27,7 @@ const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 
 const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
-const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center`;
+const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center cursor-pointer`;
 const CardImage = styled.div`
   ${(props) =>
     css`
@@ -193,7 +195,13 @@ export default ({
     },
   ],
 }) => {
-  const [isModelOpen, setIsModelOpen] = useState(true);
+  const { isModelOpen } = useSelector((store) => store.AppSlice);
+
+  const dispatch = useDispatch();
+  const handleClick = (post) => {
+    dispatch(openProfileModel());
+    dispatch(addProfileDetailsModel(post));
+  };
   return (
     <Container>
       <ContentWithPaddingXl>
@@ -204,7 +212,7 @@ export default ({
         </HeadingContainer>
         <Cards>
           {cards.map((card, index) => (
-            <Card key={index}>
+            <Card key={index} onClick={() => handleClick(card)}>
               <CardImage imageSrc={card.imageSrc} />
               {isModelOpen && <ProfileDetailModel detail={card} />}
               <CardContent>

@@ -4,6 +4,8 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { ImOffice } from "react-icons/im";
 import { PiCheckSquareOffsetFill } from "react-icons/pi";
 import tw from "twin.macro";
+import { useDispatch, useSelector } from "react-redux";
+import { openProfileModel } from "../../Redux/Services/AppSlice";
 const Container = styled.div`
   ${tw`w-[90%] p-4 mx-auto h-[90%] overflow-auto mt-5 fixed bg-white z-[20] inset-0 rounded-md shadow `}
   .closeContainer {
@@ -32,22 +34,24 @@ const SocialIcon = tw.div`flex items-center gap-5 text-gray-600 text-2xl py-2`;
 const PresentWorkPlace = tw.div`text-gray-600`;
 const Bio = tw.div`text-sm py-5 lg:p-2`;
 
-export default ({ detail }) => {
+export default () => {
+  const { openProfileModel, profileDetails } = useSelector((store) => store.AppSlice);
+  const dispatch = useDispatch();
   return (
     <Container>
       <div className="close">
         <InnerContainer>
-          <FaWindowClose />
+          <FaWindowClose onClick={() => dispatch(openProfileModel())} />
         </InnerContainer>
       </div>
       <FlexContainer>
         <FlexLeft>
-          <CardImage imageSrc={detail.imageSrc} />
+          <CardImage imageSrc={profileDetails && profileDetails.imageSrc} />
         </FlexLeft>
         <FlexRight>
           <FlexRightHead>
             <NameContainer>
-              <Name>Alexander Rengkat Gudam</Name>
+              <Name>{profileDetails && profileDetails.name}</Name>
               <NosaOfficeFlex>
                 <IconFlex>
                   <ImOffice style={{ fontSize: "1.5rem" }} />

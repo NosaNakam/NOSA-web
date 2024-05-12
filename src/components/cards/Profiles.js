@@ -7,6 +7,7 @@ import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-
 import { Gimba } from "../../images/ImageIndex";
 import { useDispatch, useSelector } from "react-redux";
 import { addProfileDetailsModel, openProfileModel } from "../../Redux/Services/AppSlice";
+import ProfileDetailModel from "../features/ProfileDetailModel";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -32,13 +33,12 @@ const DecoratorBlob2 = tw(
 )`-z-10 absolute top-0 left-0 w-48 h-48 transform -translate-x-32 translate-y-full opacity-25`;
 
 export default ({ profiles, title1, title2 }) => {
-  const { isModelOpen, profileDetails } = useSelector((store) => store.AppSlice);
-  console.log(isModelOpen);
-  console.log(profileDetails);
+  const { isModelOpen } = useSelector((store) => store.AppSlice);
+
   const dispatch = useDispatch();
   const handleClick = (post) => {
     console.log(post);
-    dispatch(openProfileModel);
+    dispatch(openProfileModel());
     dispatch(addProfileDetailsModel(post));
   };
   return (
@@ -56,10 +56,11 @@ export default ({ profiles, title1, title2 }) => {
         </HeadingInfoContainer>
         <ThreeColumn>
           {profiles.map((post, index) => (
-            <Column key={index} onClick={() => handleClick(post)}>
-              <Card>
+            <Column key={index}>
+              <Card onClick={() => handleClick(post)}>
                 <Image imageSrc={post.imageSrc} />
-                {/* <Category>{post.category}</Category> */}
+                {isModelOpen && <ProfileDetailModel detail={post} />}
+
                 <Title>{post.name}</Title>
                 <Link>({post.responsibleFor})</Link>
               </Card>
