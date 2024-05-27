@@ -1,5 +1,5 @@
 {
-  "name": "treact",
+  "name": "nosa",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,11 +28,10 @@
     "twin.macro": "^3.0.0-rc.4"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "yarn build && netlify deploy --prod --dir=build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app",
