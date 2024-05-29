@@ -15,6 +15,7 @@ import TeamCardGrid from "../components/cards/ProfileThreeColGrid.js";
 import SupportIconImage from "../images/support-icon.svg";
 import ShieldIconImage from "../images/shield-icon.svg";
 import CustomerLoveIconImage from "../images/simple-icon.svg";
+import { NosaExcos } from "../Redux/Api/LocalData.js";
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 export default () => {
@@ -58,7 +59,7 @@ export default () => {
         linkText=""
       />
 
-      <TeamCardGrid subheading={<Subheading>NOSA Leadership</Subheading>} />
+      <TeamCardGrid NosaExcos={NosaExcos} subheading={<Subheading>NOSA Leadership</Subheading>} />
       {/* <Footer /> */}
     </AnimationRevealPage>
   );

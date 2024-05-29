@@ -6,5 +6,23 @@ import VicePresident from "./VicePresident.png";
 import Auditor from "./Patience.png";
 import Canaan from "./Cenaan.png";
 import Gimba from "./Gimba.png";
+import GenSect from "./Gen Sect.png";
+import FinSec from "./AyubaFinSec.png";
+import Tresurer from "./Treasurer.png";
+import Logo from "./logo.png";
+import DefaultImage from "./DefultImage.PNG";
 
-export { President, Buba, Michael, Plangji, VicePresident, Auditor, Canaan, Gimba };
+export {
+  DefaultImage,
+  President,
+  FinSec,
+  Buba,
+  Michael,
+  Plangji,
+  VicePresident,
+  Auditor,
+  Canaan,
+  Gimba,
+  GenSect,
+  Tresurer,
+};

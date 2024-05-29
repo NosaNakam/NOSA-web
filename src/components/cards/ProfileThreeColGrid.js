@@ -12,6 +12,7 @@ import {
   Auditor,
   Buba,
   Canaan,
+  DefaultImage,
   Michael,
   Plangji,
   President,
@@ -56,144 +57,10 @@ const CardLinks = styled.div`
 `;
 
 export default ({
+  NosaExcos,
   heading = "Meet Our Noble Leaders.",
   subheading = "Our Team",
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  cards = [
-    {
-      imageSrc: President,
-      position: "President",
-      name: "Adam Cuppy",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-    {
-      imageSrc: VicePresident,
-      position: "Vice President",
-      name: "Charlotte Hale",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-    {
-      imageSrc: Canaan,
-      position: "General Secretary",
-      name: "Silvester Wize",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-    {
-      imageSrc: Plangji,
-      position: "Financial Secretary ",
-      name: "Himali Turn",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-    {
-      imageSrc: Michael,
-      position: "Treasurer",
-      name: "Troye Sivan",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-    {
-      imageSrc: Buba,
-      position: "Public Relations Officer",
-      name: "Holo Wo",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-    {
-      imageSrc: Auditor,
-      position: "Auditor",
-      name: "Holo Wo",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-  ],
 }) => {
   const { isModelOpen } = useSelector((store) => store.AppSlice);
 
@@ -211,15 +78,17 @@ export default ({
           {description && <Description>{description}</Description>}
         </HeadingContainer>
         <Cards>
-          {cards.map((card, index) => (
+          {NosaExcos.map((card, index) => (
             <Card key={index} onClick={() => handleClick(card)}>
-              <CardImage imageSrc={card.imageSrc} />
+              <CardImage imageSrc={card?.image || DefaultImage} />
               {isModelOpen && <ProfileDetailModel detail={card} />}
               <CardContent>
-                <span className="position">{card.position}</span>
-                <span className="name">{card.name}</span>
+                <span className="position">{card?.position}</span>
+                <span className="name">
+                  {card?.title} {card?.name}
+                </span>
                 <CardLinks>
-                  {card.links.map((link, linkIndex) => (
+                  {card?.socialMedia?.map((link, linkIndex) => (
                     <a key={linkIndex} className="link" href={link.url}>
                       <link.icon className="icon" />
                     </a>

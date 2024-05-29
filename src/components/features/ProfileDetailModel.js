@@ -5,7 +5,7 @@ import { ImOffice } from "react-icons/im";
 import { PiCheckSquareOffsetFill } from "react-icons/pi";
 import tw from "twin.macro";
 import { useDispatch, useSelector } from "react-redux";
-import { openProfileModel } from "../../Redux/Services/AppSlice";
+import { Fragment } from "react";
 const Container = styled.div`
   ${tw`w-[90%] p-4 mx-auto h-[90%] overflow-auto mt-5 fixed bg-white z-[20] inset-0 rounded-md shadow `}
   .closeContainer {
@@ -19,7 +19,7 @@ const FlexLeft = tw.div`w-[20%]`;
 const FlexRight = tw.div`w-full lg:w-[80%] ml-0 lg:ml-[5rem]`;
 const FlexRightHead = tw.div`lg:h-[18rem]`;
 const NameContainer = tw.div`pb-5`;
-const Name = tw.div` font-bold text-2xl lg:text-5xl text-white text-gray-900 mt-5 lg:mt-0`;
+const Name = tw.div` font-bold text-2xl lg:text-5xl text-gray-900 mt-5 lg:mt-0`;
 const Position = tw.div` font-bold text-xl lg:text-3xl`;
 const CardImage = styled.div`
   ${(props) =>
@@ -46,7 +46,7 @@ export default () => {
       </div>
       <FlexContainer>
         <FlexLeft>
-          <CardImage imageSrc={profileDetails && profileDetails.imageSrc} />
+          <CardImage imageSrc={profileDetails && profileDetails.image} />
         </FlexLeft>
         <FlexRight>
           <FlexRightHead>
@@ -55,11 +55,11 @@ export default () => {
               <NosaOfficeFlex>
                 <IconFlex>
                   <ImOffice style={{ fontSize: "1.5rem" }} />
-                  <Position>NOSA President</Position>
+                  <Position>{profileDetails?.position}</Position>
                 </IconFlex>
                 <IconFlex>
                   <PiCheckSquareOffsetFill style={{ fontSize: "1.5rem" }} />
-                  <Position>NOSA Set '89</Position>
+                  <Position>NOSA Set {profileDetails?.setOf}</Position>
                 </IconFlex>
               </NosaOfficeFlex>
               <SocialIcon>
@@ -70,35 +70,26 @@ export default () => {
               </SocialIcon>
             </NameContainer>
 
-            <PresentWorkPlace> Marketer with Plateau State Brewis Company Limited</PresentWorkPlace>
+            <PresentWorkPlace>
+              Currently working as {profileDetails?.currentJob} with {profileDetails?.employer}
+            </PresentWorkPlace>
           </FlexRightHead>
-
-          <Bio>
-            After the execution of Badu Bonsu II, the throne of Busua remained empty for ten years,
-            following the ban on rebuilding the city. The Dutch dismiss the position of supreme
-            leader and refuse to recognize it during this period. Governor Anthony Van der Eb lifted
-            the ban on appointment in 1848, but did not recognize any indigenous authority or rights
-            to the supreme leader. That year, Badu Bonsu III was designated as successor, but died a
-            year later. Badu Bonsu IV , will try to plead in favor of the recognition of the rank of
-            supreme leader with different governors, without success. He committed suicide in 1863.
-            His successor, Kwaw Asua (Badu Bonsu V ) managed to re-establish healthy diplomatic
-            relations with the Dutch and fought alongside them against the British. He was
-            posthumously recognized as king. Unfortunately, the British, who regained possession of
-            the territories, refused to recognize the title of supreme leader to his descendant
-          </Bio>
-          <Bio>
-            After the execution of Badu Bonsu II, the throne of Busua remained empty for ten years,
-            following the ban on rebuilding the city. The Dutch dismiss the position of supreme
-            leader and refuse to recognize it during this period. Governor Anthony Van der Eb lifted
-            the ban on appointment in 1848, but did not recognize any indigenous authority or rights
-            to the supreme leader. That year, Badu Bonsu III was designated as successor, but died a
-            year later. Badu Bonsu IV , will try to plead in favor of the recognition of the rank of
-            supreme leader with different governors, without success. He committed suicide in 1863.
-            His successor, Kwaw Asua (Badu Bonsu V ) managed to re-establish healthy diplomatic
-            relations with the Dutch and fought alongside them against the British. He was
-            posthumously recognized as king. Unfortunately, the British, who regained possession of
-            the territories, refused to recognize the title of supreme leader to his descendant
-          </Bio>
+          {/* {profileDetails?.EducationalBackground?.map((detail, index) => {
+            return (
+              <Fragment key={index}>
+                <Bio>{detail?.primaryEducation[0]}</Bio>
+                <Bio>{detail?.secondaryEducation[0]}</Bio>
+                <Bio>{detail?.undergraduate[0]}</Bio>
+              </Fragment>
+            );
+          })} */}
+          {profileDetails?.portfolio?.map((detail, index) => {
+            return (
+              <Fragment key={index}>
+                <Bio>{detail}</Bio>
+              </Fragment>
+            );
+          })}
         </FlexRight>
       </FlexContainer>
     </Container>
