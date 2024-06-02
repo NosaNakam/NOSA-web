@@ -6,6 +6,7 @@ import { PiCheckSquareOffsetFill } from "react-icons/pi";
 import tw from "twin.macro";
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment } from "react";
+import { openProfileModel } from "../../Redux/Services/AppSlice";
 const Container = styled.div`
   ${tw`w-[90%] p-4 mx-auto h-[90%] overflow-auto mt-5 fixed bg-white z-[20] inset-0 rounded-md shadow `}
   .closeContainer {
@@ -20,7 +21,7 @@ const FlexRight = tw.div`w-full lg:w-[80%] ml-0 lg:ml-[5rem]`;
 const FlexRightHead = tw.div`lg:h-[18rem]`;
 const NameContainer = tw.div`pb-5`;
 const Name = tw.div` font-bold text-2xl lg:text-5xl text-gray-900 mt-5 lg:mt-0`;
-const Position = tw.div` font-bold text-xl lg:text-3xl`;
+const Position = tw.div` font-bold text-xl lg:text-3xl capitalize`;
 const CardImage = styled.div`
   ${(props) =>
     css`
@@ -35,13 +36,13 @@ const PresentWorkPlace = tw.div`text-gray-600`;
 const Bio = tw.div`text-sm py-5 lg:p-2`;
 
 export default () => {
-  const { openProfileModel, profileDetails } = useSelector((store) => store.AppSlice);
-  const dispatch = useDispatch();
+  const { profileDetails } = useSelector((store) => store.AppSlice);
+
   return (
     <Container>
       <div className="close">
         <InnerContainer>
-          <FaWindowClose onClick={() => dispatch(openProfileModel())} />
+          <FaWindowClose />
         </InnerContainer>
       </div>
       <FlexContainer>
@@ -51,7 +52,9 @@ export default () => {
         <FlexRight>
           <FlexRightHead>
             <NameContainer>
-              <Name>{profileDetails && profileDetails.name}</Name>
+              <Name>
+                {profileDetails.title} {profileDetails && profileDetails.name}
+              </Name>
               <NosaOfficeFlex>
                 <IconFlex>
                   <ImOffice style={{ fontSize: "1.5rem" }} />
@@ -75,11 +78,12 @@ export default () => {
             </PresentWorkPlace>
           </FlexRightHead>
           {/* {profileDetails?.EducationalBackground?.map((detail, index) => {
+            console.log(detail.primaryEducation);
             return (
               <Fragment key={index}>
-                <Bio>{detail?.primaryEducation[0]}</Bio>
-                <Bio>{detail?.secondaryEducation[0]}</Bio>
-                <Bio>{detail?.undergraduate[0]}</Bio>
+                <Bio>{detail?.primaryEducation?.map((primary) => console.log(primary))}</Bio>
+                <Bio>{detail?.secondaryEducation?.map((primary) => console.log(primary))}</Bio>
+                <Bio>{detail?.undergraduate?.map((primary) => console.log(primary))}</Bio>
               </Fragment>
             );
           })} */}

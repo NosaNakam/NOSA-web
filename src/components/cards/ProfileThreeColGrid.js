@@ -66,7 +66,7 @@ export default ({
 
   const dispatch = useDispatch();
   const handleClick = (post) => {
-    dispatch(openProfileModel());
+    dispatch(openProfileModel(true));
     dispatch(addProfileDetailsModel(post));
   };
   return (
@@ -78,25 +78,35 @@ export default ({
           {description && <Description>{description}</Description>}
         </HeadingContainer>
         <Cards>
-          {NosaExcos.map((card, index) => (
-            <Card key={index} onClick={() => handleClick(card)}>
-              <CardImage imageSrc={card?.image || DefaultImage} />
-              {isModelOpen && <ProfileDetailModel detail={card} />}
-              <CardContent>
-                <span className="position">{card?.position}</span>
-                <span className="name">
-                  {card?.title} {card?.name}
-                </span>
-                <CardLinks>
-                  {card?.socialMedia?.map((link, linkIndex) => (
-                    <a key={linkIndex} className="link" href={link.url}>
-                      <link.icon className="icon" />
+          {NosaExcos.map((card, index) => {
+            const { twitter, facebook, linkedin, email } = card.socialMedia;
+            return (
+              <Card key={index} onClick={() => handleClick(card)}>
+                <CardImage imageSrc={card?.image || DefaultImage} />
+                {isModelOpen && <ProfileDetailModel detail={card} />}
+                <CardContent>
+                  <span className="position">{card?.position}</span>
+                  <span className="name">
+                    {card?.title} {card?.name}
+                  </span>
+                  <CardLinks>
+                    <a className="link" href={twitter.url}>
+                      <twitter.icon className="icon" />
                     </a>
-                  ))}
-                </CardLinks>
-              </CardContent>
-            </Card>
-          ))}
+                    <a className="link" href={facebook.url}>
+                      <facebook.icon className="icon" />
+                    </a>
+                    <a className="link" href={linkedin.url}>
+                      <linkedin.icon className="icon" />
+                    </a>
+                    <a className="link" href={email.url}>
+                      <email.icon className="icon" />
+                    </a>
+                  </CardLinks>
+                </CardContent>
+              </Card>
+            );
+          })}
         </Cards>
       </ContentWithPaddingXl>
     </Container>

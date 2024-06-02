@@ -20,31 +20,31 @@ export const NosaExcos = [
     setOf: "1991",
     position: "president",
     image: President,
-    EducationalBackground: [
-      { primaryEducation: "" },
-      { secondaryEducation: ["Nakam Memorial Secondary School, Panyam"] },
-      { undergraduate: ["Bachelor of Law, University of Jos"] },
-      { postGraduate: ["Master’s Degree in Law"] },
-      { professionalTrainings: ["Nigerian Law School, called to the Nigerian Bar"] },
-    ],
-    socialMedia: [
-      {
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: ["Nakam Memorial Secondary School, Panyam"],
+      undergraduate: ["Bachelor of Law, University of Jos"],
+      postGraduate: ["Master’s Degree in Law"],
+      professionalTrainings: ["Nigerian Law School, called to the Nigerian Bar"],
+    },
+    socialMedia: {
+      twitter: {
         url: "https://twitter.com",
         icon: FaXTwitter,
       },
-      {
+      linkedin: {
         url: "https://linkedin.com",
         icon: FaLinkedin,
       },
-      {
+      facebook: {
         url: "https://github.com",
         icon: FaFacebookSquare,
       },
-      {
+      email: {
         url: "https://github.com",
         icon: MdEmail,
       },
-    ],
+    },
     portfolio: [
       "Beatrice Clement James Dakas is an accomplished professional with a robust background in law and administration. She completed her secondary education at the esteemed Nakam Memorial Secondary School in Panyam in 1991. Pursuing her passion for law, she obtained her first degree from the University of Jos. Following her undergraduate studies, she attended the Nigerian Law School, where she was subsequently called to the Nigerian Bar. Her academic journey continued with the attainment of a Master’s Degree in Law.",
       "Currently, Beatrice is leveraging her legal expertise and administrative skills in her role at the University of Jos. She is also an active member of the Nakam Old Students Association (NOSA), where she has held various leadership roles, including National Secretary and National Vice President. Presently, she serves as the National President of NOSA, demonstrating her dedication to the association and its mission.",
@@ -60,36 +60,35 @@ export const NosaExcos = [
     setOf: "1985",
     position: "Vice President",
     image: VicePresident,
-    EducationalBackground: [
-      { primaryEducation: "" },
-      { secondaryEducation: ["Graduated from secondary school in 1985"] },
-      { undergraduate: ["Bachelor of Agriculture, Ahmadu Bello University (ABU) Zaria, 1997"] },
-      {
-        postGraduate: [
-          "MBA in Marketing, Abubakar Tafawa Balewa University (ATBU) Bauchi, 2006",
-          "MSc in Agricultural Economics, Abubakar Tafawa Balewa University (ATBU) Bauchi, 2023",
-        ],
-      },
-      { professionalTrainings: [] },
-    ],
-    socialMedia: [
-      {
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: ["Graduated from secondary school in 1985"],
+      undergraduate: ["Bachelor of Agriculture, Ahmadu Bello University (ABU) Zaria, 1997"],
+
+      postGraduate: [
+        "MBA in Marketing, Abubakar Tafawa Balewa University (ATBU) Bauchi, 2006",
+        "MSc in Agricultural Economics, Abubakar Tafawa Balewa University (ATBU) Bauchi, 2023",
+      ],
+      professionalTrainings: [],
+    },
+    socialMedia: {
+      twitter: {
         url: "https://twitter.com",
         icon: FaXTwitter,
       },
-      {
+      linkedin: {
         url: "https://linkedin.com",
         icon: FaLinkedin,
       },
-      {
+      facebook: {
         url: "https://github.com",
         icon: FaFacebookSquare,
       },
-      {
+      email: {
         url: "https://github.com",
         icon: MdEmail,
       },
-    ],
+    },
     portfolio: [
       "Nansel Newton is a distinguished professional and leader with extensive experience in both business and politics. He graduated from secondary school in 1985 and went on to earn a Bachelor of Agriculture from Ahmadu Bello University (ABU) Zaria in 1997. He furthered his education with an MBA in Marketing from Abubakar Tafawa Balewa University (ATBU) Bauchi in 2006 and most recently, an MSc in Agricultural Economics from the same institution in 2023.",
       "My professional journey includes significant roles in various managerial capacities within the Fast-Moving Consumer Goods (FMCG) sector. My expertise spans customer relationship management, sales development, distribution, planning, and marketing. These roles have honed my skills in strategic planning and execution, positioning me as a versatile and knowledgeable leader in the business domain.",
@@ -105,31 +104,31 @@ export const NosaExcos = [
     setOf: "2004",
     position: "Secretary General",
     image: GenSect,
-    EducationalBackground: [
-      { primaryEducation: "" },
-      { secondaryEducation: ["Nakam Memorial Secondary School, Panyam (July 2004)"] },
-      { undergraduate: ["Bachelor of Civil Engineering, Ahmadu Bello University (ABU) Zaria"] },
-      { postGraduate: [] },
-      { professionalTrainings: [] },
-    ],
-    socialMedia: [
-      {
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: ["Nakam Memorial Secondary School, Panyam (July 2004)"],
+      undergraduate: ["Bachelor of Civil Engineering, Ahmadu Bello University (ABU) Zaria"],
+      postGraduate: [],
+      professionalTrainings: [],
+    },
+    socialMedia: {
+      twitter: {
         url: "https://twitter.com",
         icon: FaXTwitter,
       },
-      {
+      linkedin: {
         url: "https://linkedin.com",
         icon: FaLinkedin,
       },
-      {
+      facebook: {
         url: "https://github.com",
         icon: FaFacebookSquare,
       },
-      {
+      email: {
         url: "https://github.com",
         icon: MdEmail,
       },
-    ],
+    },
     portfolio: [
       "James Tangnaan Dapiya, a dedicated civil engineer, has made significant contributions to the Nakam Old Students Association (NOSA). He completed his secondary education at Nakam Memorial Secondary School, Panyam, in July 2004, and went on to study Civil Engineering at Ahmadu Bello University (ABU) Zaria.",
       "During my time at ABU Zaria, He was instrumental in establishing the NOSA ABU Zaria branch, which brought together NOSA members from all tertiary institutions in Zaria. I served as the Secretary of this branch and was responsible for publishing the first-ever NAKAMCERT magazine in 2006, an issue dedicated to Mr. Derek Charles Joy.",
@@ -145,31 +144,31 @@ export const NosaExcos = [
     setOf: "2004",
     position: "Financial Secretary",
     image: FinSec,
-    EducationalBackground: [
-      { primaryEducation: "" },
-      { secondaryEducation: ["Nakam Memorial Secondary School, Panyam (July 2004)"] },
-      { undergraduate: ["Bachelor of Civil Engineering, Ahmadu Bello University (ABU) Zaria"] },
-      { postGraduate: [] },
-      { professionalTrainings: [] },
-    ],
-    socialMedia: [
-      {
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: ["Nakam Memorial Secondary School, Panyam (July 2004)"],
+      undergraduate: ["Bachelor of Civil Engineering, Ahmadu Bello University (ABU) Zaria"],
+      postGraduate: [],
+      professionalTrainings: [],
+    },
+    socialMedia: {
+      twitter: {
         url: "https://twitter.com",
         icon: FaXTwitter,
       },
-      {
+      linkedin: {
         url: "https://linkedin.com",
         icon: FaLinkedin,
       },
-      {
+      facebook: {
         url: "https://github.com",
         icon: FaFacebookSquare,
       },
-      {
+      email: {
         url: "https://github.com",
         icon: MdEmail,
       },
-    ],
+    },
     portfolio: [
       "James Tangnaan Dapiya, a dedicated civil engineer, has made significant contributions to the Nakam Old Students Association (NOSA). He completed his secondary education at Nakam Memorial Secondary School, Panyam, in July 2004, and went on to study Civil Engineering at Ahmadu Bello University (ABU) Zaria.",
       "During my time at ABU Zaria, He was instrumental in establishing the NOSA ABU Zaria branch, which brought together NOSA members from all tertiary institutions in Zaria. I served as the Secretary of this branch and was responsible for publishing the first-ever NAKAMCERT magazine in 2006, an issue dedicated to Mr. Derek Charles Joy.",
@@ -185,38 +184,37 @@ export const NosaExcos = [
     setOf: "",
     position: "Assistant General Secretary",
     image: "",
-    EducationalBackground: [
-      { primaryEducation: "" },
-      { secondaryEducation: ["Nakam Memorial Secondary School"] },
-      {
-        undergraduate: [
-          "Diploma in Banking & Finance, University of Jos",
-          "BSc in Political Science, University of Abuja",
-        ],
-      },
-      { postGraduate: [] },
-      {
-        professionalTrainings: [],
-      },
-    ],
-    socialMedia: [
-      {
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: ["Nakam Memorial Secondary School"],
+
+      undergraduate: [
+        "Diploma in Banking & Finance, University of Jos",
+        "BSc in Political Science, University of Abuja",
+      ],
+
+      postGraduate: [],
+
+      professionalTrainings: [],
+    },
+    socialMedia: {
+      twitter: {
         url: "https://twitter.com",
         icon: FaXTwitter,
       },
-      {
+      linkedin: {
         url: "https://linkedin.com",
         icon: FaLinkedin,
       },
-      {
+      facebook: {
         url: "https://github.com",
         icon: FaFacebookSquare,
       },
-      {
+      email: {
         url: "https://github.com",
         icon: MdEmail,
       },
-    ],
+    },
     portfolio: [],
   },
   {
@@ -227,40 +225,39 @@ export const NosaExcos = [
     setOf: "",
     position: "Treasurer",
     image: Tresurer,
-    EducationalBackground: [
-      { primaryEducation: "" },
-      { secondaryEducation: ["Nakam Memorial Secondary School"] },
-      {
-        undergraduate: [
-          "Diploma in Banking & Finance, University of Jos",
-          "BSc in Political Science, University of Abuja",
-        ],
-      },
-      { postGraduate: [] },
-      {
-        professionalTrainings: [
-          "Series of professional courses organized by First Bank and external consultants",
-        ],
-      },
-    ],
-    socialMedia: [
-      {
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: ["Nakam Memorial Secondary School"],
+
+      undergraduate: [
+        "Diploma in Banking & Finance, University of Jos",
+        "BSc in Political Science, University of Abuja",
+      ],
+
+      postGraduate: [],
+
+      professionalTrainings: [
+        "Series of professional courses organized by First Bank and external consultants",
+      ],
+    },
+    socialMedia: {
+      twitter: {
         url: "https://twitter.com",
         icon: FaXTwitter,
       },
-      {
+      linkedin: {
         url: "https://linkedin.com",
         icon: FaLinkedin,
       },
-      {
+      facebook: {
         url: "https://github.com",
         icon: FaFacebookSquare,
       },
-      {
+      email: {
         url: "https://github.com",
         icon: MdEmail,
       },
-    ],
+    },
     portfolio: [
       "Arkibus S Pofi is a seasoned banker with branch services and retail banking experience spanning over three decades with First Bank of Nigeria Limited. I have worked in different branches of the bank in over four states and the FCT, including the Abuja Main and National Assembly branches in Abuja.",
       "He was the pioneer Head of Operations of First Bank's National Assembly and Asokoro branches in Abuja, and I have served as a branch Manager in over four branches. Additionally, I have been a member of the Disciplinary Committee of First Bank in the Jos Area.",
@@ -276,37 +273,212 @@ export const NosaExcos = [
     setOf: "",
     position: "Welf. & Social Secretary ",
     image: "",
-    EducationalBackground: [
-      { primaryEducation: "" },
-      { secondaryEducation: ["Nakam Memorial Secondary School"] },
-      {
-        undergraduate: [],
-      },
-      { postGraduate: [] },
-      {
-        professionalTrainings: [],
-      },
-    ],
-    socialMedia: [
-      {
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: ["Nakam Memorial Secondary School"],
+
+      undergraduate: [],
+
+      postGraduate: [],
+
+      professionalTrainings: [],
+    },
+    socialMedia: {
+      twitter: {
         url: "https://twitter.com",
         icon: FaXTwitter,
       },
-      {
+      linkedin: {
         url: "https://linkedin.com",
         icon: FaLinkedin,
       },
-      {
+      facebook: {
         url: "https://github.com",
         icon: FaFacebookSquare,
       },
-      {
+      email: {
         url: "https://github.com",
         icon: MdEmail,
       },
-    ],
+    },
     portfolio: [],
   },
+  {
+    name: "Bunkat Jurbe",
+    title: "Bar.",
+    currentJob: "Legal Practitioner",
+    employer: "TJJ Danjuma Legal",
+    setOf: "",
+    position: "Legal Advisor ",
+    image: "", // Assuming there is no image available
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: [""],
+      undergraduate: [""],
+      postGraduate: [""],
+      professionalTrainings: [""],
+    },
+    socialMedia: {
+      twitter: {
+        url: "https://twitter.com",
+        icon: FaXTwitter,
+      },
+      linkedin: {
+        url: "https://linkedin.com",
+        icon: FaLinkedin,
+      },
+      facebook: {
+        url: "https://github.com",
+        icon: FaFacebookSquare,
+      },
+      email: {
+        url: "https://github.com",
+        icon: MdEmail,
+      },
+    },
+    portfolio: [
+      "Bunkat Jurbe is a legal practitioner currently working with the private firm TJJ Danjuma Legal. I am a member of the International Federation of Women Lawyers (FIDA) Plateau State chapter.",
+    ],
+  },
+  {
+    name: "Danok Canaan Anthony",
+    title: "Mr.",
+    currentJob: "Lecturer",
+    employer: "Federal College of Education, Pankshin",
+    setOf: "1988",
+    position: "Lecturer",
+    image: Canaan,
+    EducationalBackground: {
+      primaryEducation: "",
+      secondaryEducation: ["Nakam Memorial Secondary School, 1982-1988"],
+      undergraduate: [],
+      postGraduate: [],
+      professionalTrainings: [],
+    },
+    socialMedia: {
+      twitter: {
+        url: "https://twitter.com",
+        icon: FaXTwitter,
+      },
+      linkedin: {
+        url: "https://linkedin.com",
+        icon: FaLinkedin,
+      },
+      facebook: {
+        url: "https://github.com",
+        icon: FaFacebookSquare,
+      },
+      email: {
+        url: "https://github.com",
+        icon: MdEmail,
+      },
+    },
+    portfolio: [
+      "Danok Canaan Anthony is a dedicated lecturer in the Agricultural Science Education Department at the Federal College of Education in Pankshin.",
+      "He completed his secondary education at Nakam Memorial Secondary School from 1982 to 1988.",
+      "He resides in Pankshin town, where he is known for his commitment to education and community development.",
+    ],
+  },
+  {
+    name: "Buba Luka",
+    title: "Mr.",
+    currentJob: "Chief Admin Officer",
+    employer: "Independent National Electoral Commission (INEC)",
+    setOf: "1994",
+    position: "Public Relation Officer (PRO)",
+    image: Buba,
+    EducationalBackground: {
+      primaryEducation: "Demonstration Primary School, Gindiri, Class of 1988",
+      secondaryEducation: ["Nakam Memorial Secondary School, Panyam, 1994/95 Set"],
+
+      undergraduate: [
+        "School of Preliminary Studies (SPS), Keffi, IJMB, 1997/98",
+        "BA in History, University of Maiduguri, 2002",
+      ],
+
+      postGraduate: [],
+      professionalTrainings: [],
+    },
+    socialMedia: {
+      twitter: {
+        url: "https://twitter.com",
+        icon: FaXTwitter,
+      },
+      linkedin: {
+        url: "https://linkedin.com",
+        icon: FaLinkedin,
+      },
+      facebook: {
+        url: "https://github.com",
+        icon: FaFacebookSquare,
+      },
+      email: {
+        url: "https://github.com",
+        icon: MdEmail,
+      },
+    },
+    portfolio: [
+      "Buba Luka is a Chief Admin. Officer at the Independent National Electoral Commission (INEC), where he serves as the head of the Civil Society Organisations Unit.",
+      "He is also the Publicity Secretary (PRO) for the National Organization of Students and Alumni (NOSA) as of November 2023.",
+      "He began his educational journey at Demonstration Primary School in Gindiri, graduating in 1988, and continued at Nakam Memorial Secondary School in Panyam, class of 1994/95.",
+      "He pursued his preliminary studies at the School of Preliminary Studies (SPS) in Keffi, completing his IJMB in 1997/98, and went on to earn a BA in History from the University of Maiduguri in 2002.",
+      "Buba Luka is an author, a nationalist, and a youth advocate. He is passionate about communicating ideals that transform lives and society and is always open to learning new things.",
+    ],
+  },
+  {
+    name: "Dashal Patience",
+    title: "Mrs.",
+    currentJob: "Auditor",
+    employer: "Sterling Bank",
+    setOf: "2008",
+    position: "Auditor",
+    image: Auditor,
+    EducationalBackground: {
+      primaryEducation: ["Staff Demonstration Primary School"],
+      secondaryEducation: ["Nakam Memorial Secondary School, Set 2008"],
+
+      undergraduate: [
+        "National Diploma (ND) in Accounting",
+        "BSc in Accounting, ISCOM University, Benin Republic",
+      ],
+
+      postGraduate: [],
+      professionalTrainings: [],
+    },
+    socialMedia: {
+      twitter: {
+        url: "https://twitter.com",
+        icon: FaXTwitter,
+      },
+      linkedin: {
+        url: "https://linkedin.com",
+        icon: FaLinkedin,
+      },
+      facebook: {
+        url: "https://github.com",
+        icon: FaFacebookSquare,
+      },
+      email: {
+        url: "https://github.com",
+        icon: MdEmail,
+      },
+    },
+    portfolio: [
+      "Dashal Patience is an experienced auditor currently working with Sterling Bank.",
+      "She holds a BSc in Accounting from ISCOM University in Benin Republic.",
+      "Patience is married and has two adorable children.",
+      "She is committed to her professional growth and has a keen interest in ensuring financial integrity within her organization.",
+      "Patience Dashal is an indigene of Bwai, in Mangu local government of Plateau State, belonging to the Mwaghavul tribe.",
+      "She completed her primary education at Staff Demonstration Primary School and her secondary education at Nakam Memorial Secondary School, graduating in 2008.",
+      "With over 7 years of banking experience, she has specialized in teller, funds transfer, and customer support services.",
+      "Currently, she also serves as the Auditor for the Nakam Old Student Association (NOSA).",
+      "In addition to her professional pursuits, Patience is married and blessed with two beautiful children.",
+      "She is known for her willingness to accept new challenges to improve both herself and her workplace.",
+    ],
+  },
+];
+
+export const WhomeWeAreProudOf = [
   {
     name: "Bunkat Jurbe",
     title: "Bar.",
@@ -342,142 +514,6 @@ export const NosaExcos = [
     ],
     portfolio: [
       "Bunkat Jurbe is a legal practitioner currently working with the private firm TJJ Danjuma Legal. I am a member of the International Federation of Women Lawyers (FIDA) Plateau State chapter.",
-    ],
-  },
-  {
-    name: "Danok Canaan Anthony",
-    title: "Mr.",
-    currentJob: "Lecturer",
-    employer: "Federal College of Education, Pankshin",
-    setOf: "1988",
-    position: "Lecturer",
-    image: Canaan,
-    EducationalBackground: [
-      { primaryEducation: "" },
-      { secondaryEducation: ["Nakam Memorial Secondary School, 1982-1988"] },
-      { undergraduate: [] },
-      { postGraduate: [] },
-      { professionalTrainings: [] },
-    ],
-    socialMedia: [
-      {
-        url: "https://twitter.com",
-        icon: FaXTwitter,
-      },
-      {
-        url: "https://linkedin.com",
-        icon: FaLinkedin,
-      },
-      {
-        url: "https://github.com",
-        icon: FaFacebookSquare,
-      },
-      {
-        url: "https://github.com",
-        icon: MdEmail,
-      },
-    ],
-    portfolio: [
-      "Danok Canaan Anthony is a dedicated lecturer in the Agricultural Science Education Department at the Federal College of Education in Pankshin.",
-      "He completed his secondary education at Nakam Memorial Secondary School from 1982 to 1988.",
-      "He resides in Pankshin town, where he is known for his commitment to education and community development.",
-    ],
-  },
-  {
-    name: "Buba Luka",
-    title: "Mr.",
-    currentJob: "Chief Admin Officer",
-    employer: "Independent National Electoral Commission (INEC)",
-    setOf: "1994",
-    position: "Public Relation Officer (PRO)",
-    image: Buba,
-    EducationalBackground: [
-      { primaryEducation: ["Demonstration Primary School, Gindiri, Class of 1988"] },
-      { secondaryEducation: ["Nakam Memorial Secondary School, Panyam, 1994/95 Set"] },
-      {
-        undergraduate: [
-          "School of Preliminary Studies (SPS), Keffi, IJMB, 1997/98",
-          "BA in History, University of Maiduguri, 2002",
-        ],
-      },
-      { postGraduate: [] },
-      { professionalTrainings: [] },
-    ],
-    socialMedia: [
-      {
-        url: "https://twitter.com",
-        icon: FaXTwitter,
-      },
-      {
-        url: "https://linkedin.com",
-        icon: FaLinkedin,
-      },
-      {
-        url: "https://github.com",
-        icon: FaFacebookSquare,
-      },
-      {
-        url: "https://github.com",
-        icon: MdEmail,
-      },
-    ],
-    portfolio: [
-      "Buba Luka is a Chief Admin. Officer at the Independent National Electoral Commission (INEC), where he serves as the head of the Civil Society Organisations Unit.",
-      "He is also the Publicity Secretary (PRO) for the National Organization of Students and Alumni (NOSA) as of November 2023.",
-      "He began his educational journey at Demonstration Primary School in Gindiri, graduating in 1988, and continued at Nakam Memorial Secondary School in Panyam, class of 1994/95.",
-      "He pursued his preliminary studies at the School of Preliminary Studies (SPS) in Keffi, completing his IJMB in 1997/98, and went on to earn a BA in History from the University of Maiduguri in 2002.",
-      "Buba Luka is an author, a nationalist, and a youth advocate. He is passionate about communicating ideals that transform lives and society and is always open to learning new things.",
-    ],
-  },
-  {
-    name: "Dashal Patience",
-    title: "Mrs.",
-    currentJob: "Auditor",
-    employer: "Sterling Bank",
-    setOf: "2008",
-    position: "Auditor",
-    image: Auditor,
-    EducationalBackground: [
-      { primaryEducation: ["Staff Demonstration Primary School"] },
-      { secondaryEducation: ["Nakam Memorial Secondary School, Set 2008"] },
-      {
-        undergraduate: [
-          "National Diploma (ND) in Accounting",
-          "BSc in Accounting, ISCOM University, Benin Republic",
-        ],
-      },
-      { postGraduate: [] },
-      { professionalTrainings: [] },
-    ],
-    socialMedia: [
-      {
-        url: "https://twitter.com",
-        icon: FaXTwitter,
-      },
-      {
-        url: "https://linkedin.com",
-        icon: FaLinkedin,
-      },
-      {
-        url: "https://github.com",
-        icon: FaFacebookSquare,
-      },
-      {
-        url: "mailto:daferpatience@gmail.com",
-        icon: MdEmail,
-      },
-    ],
-    portfolio: [
-      "Dashal Patience is an experienced auditor currently working with Sterling Bank.",
-      "She holds a BSc in Accounting from ISCOM University in Benin Republic.",
-      "Patience is married and has two adorable children.",
-      "She is committed to her professional growth and has a keen interest in ensuring financial integrity within her organization.",
-      "Patience Dashal is an indigene of Bwai, in Mangu local government of Plateau State, belonging to the Mwaghavul tribe.",
-      "She completed her primary education at Staff Demonstration Primary School and her secondary education at Nakam Memorial Secondary School, graduating in 2008.",
-      "With over 7 years of banking experience, she has specialized in teller, funds transfer, and customer support services.",
-      "Currently, she also serves as the Auditor for the Nakam Old Student Association (NOSA).",
-      "In addition to her professional pursuits, Patience is married and blessed with two beautiful children.",
-      "She is known for her willingness to accept new challenges to improve both herself and her workplace.",
     ],
   },
 ];
