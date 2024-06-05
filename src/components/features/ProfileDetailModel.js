@@ -34,10 +34,18 @@ const IconFlex = tw.div`cursor-pointer flex items-center gap-3 text-primary-600 
 const SocialIcon = tw.div`flex items-center gap-5 text-gray-600 text-2xl py-2`;
 const PresentWorkPlace = tw.div`text-gray-600`;
 const Bio = tw.div`text-sm py-5 lg:p-2`;
-
+const Link = styled.a`
+  ${tw`mr-5 text-2xl last:mr-0 text-gray-600 hocus:text-primary-500 transition duration-300`}
+`;
 export default () => {
   const { profileDetails } = useSelector((store) => store.AppSlice);
-
+  const combinedEducation = [
+    ...profileDetails.EducationalBackground.primaryEducation,
+    ...profileDetails.EducationalBackground.secondaryEducation,
+    ...profileDetails.EducationalBackground.undergraduate,
+    ...profileDetails.EducationalBackground.postGraduate,
+  ];
+  console.log(combinedEducation);
   return (
     <Container>
       <div className="close">
@@ -66,10 +74,18 @@ export default () => {
                 </IconFlex>
               </NosaOfficeFlex>
               <SocialIcon>
-                <FaFacebookSquare />
-                <FaSquareXTwitter />
-                <FaInstagramSquare />
-                <FaLinkedin />
+                <Link href={profileDetails.socialMedia.twitter.url}>
+                  <profileDetails.socialMedia.twitter.icon />
+                </Link>
+                <Link href={profileDetails.socialMedia.facebook.url}>
+                  <profileDetails.socialMedia.facebook.icon />
+                </Link>
+                <Link href={profileDetails.socialMedia.linkedin.url}>
+                  <profileDetails.socialMedia.linkedin.icon />
+                </Link>
+                <Link href={`mailto:${profileDetails.socialMedia.email.url}`}>
+                  <profileDetails.socialMedia.email.icon />
+                </Link>
               </SocialIcon>
             </NameContainer>
 
@@ -77,16 +93,16 @@ export default () => {
               Currently working as {profileDetails?.currentJob} with {profileDetails?.employer}
             </PresentWorkPlace>
           </FlexRightHead>
-          {/* {profileDetails?.EducationalBackground?.map((detail, index) => {
-            console.log(detail.primaryEducation);
+          <Position>Education</Position>
+          {/* <Bio>{profileDetails.name} went to:</Bio> */}
+          {combinedEducation.map((detail, index) => {
             return (
               <Fragment key={index}>
-                <Bio>{detail?.primaryEducation?.map((primary) => console.log(primary))}</Bio>
-                <Bio>{detail?.secondaryEducation?.map((primary) => console.log(primary))}</Bio>
-                <Bio>{detail?.undergraduate?.map((primary) => console.log(primary))}</Bio>
+                <Bio>{detail}</Bio>
               </Fragment>
             );
-          })} */}
+          })}
+          <Position style={{ marginTop: "1rem" }}>Portfolio</Position>
           {profileDetails?.portfolio?.map((detail, index) => {
             return (
               <Fragment key={index}>

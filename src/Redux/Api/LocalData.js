@@ -1,4 +1,5 @@
 import {
+  AssSecGen,
   Auditor,
   Buba,
   Canaan,
@@ -29,7 +30,7 @@ export const NosaExcos = [
     },
     socialMedia: {
       twitter: {
-        url: "https://twitter.com",
+        url: "https://twitter.com/beadakas247",
         icon: FaXTwitter,
       },
       linkedin: {
@@ -37,11 +38,11 @@ export const NosaExcos = [
         icon: FaLinkedin,
       },
       facebook: {
-        url: "https://github.com",
+        url: "https://facebook.com",
         icon: FaFacebookSquare,
       },
       email: {
-        url: "https://github.com",
+        url: "beatricedakas@gmail.com",
         icon: MdEmail,
       },
     },
@@ -61,8 +62,8 @@ export const NosaExcos = [
     position: "Vice President",
     image: VicePresident,
     EducationalBackground: {
-      primaryEducation: "",
-      secondaryEducation: ["Graduated from secondary school in 1985"],
+      primaryEducation: [],
+      secondaryEducation: ["Nakam Memorial secondary school, Panyam in 1985"],
       undergraduate: ["Bachelor of Agriculture, Ahmadu Bello University (ABU) Zaria, 1997"],
 
       postGraduate: [
@@ -73,7 +74,7 @@ export const NosaExcos = [
     },
     socialMedia: {
       twitter: {
-        url: "https://twitter.com",
+        url: "https://twitter.com/@nanselnewton",
         icon: FaXTwitter,
       },
       linkedin: {
@@ -85,7 +86,7 @@ export const NosaExcos = [
         icon: FaFacebookSquare,
       },
       email: {
-        url: "https://github.com",
+        url: "nanselgreen144@gmail.com",
         icon: MdEmail,
       },
     },
@@ -105,7 +106,7 @@ export const NosaExcos = [
     position: "Secretary General",
     image: GenSect,
     EducationalBackground: {
-      primaryEducation: "",
+      primaryEducation: [],
       secondaryEducation: ["Nakam Memorial Secondary School, Panyam (July 2004)"],
       undergraduate: ["Bachelor of Civil Engineering, Ahmadu Bello University (ABU) Zaria"],
       postGraduate: [],
@@ -125,7 +126,7 @@ export const NosaExcos = [
         icon: FaFacebookSquare,
       },
       email: {
-        url: "https://github.com",
+        url: "jamezdapiya@gmail.com ",
         icon: MdEmail,
       },
     },
@@ -145,7 +146,7 @@ export const NosaExcos = [
     position: "Financial Secretary",
     image: FinSec,
     EducationalBackground: {
-      primaryEducation: "",
+      primaryEducation: [],
       secondaryEducation: ["Nakam Memorial Secondary School, Panyam (July 2004)"],
       undergraduate: ["Bachelor of Civil Engineering, Ahmadu Bello University (ABU) Zaria"],
       postGraduate: [],
@@ -183,9 +184,9 @@ export const NosaExcos = [
     employer: "",
     setOf: "",
     position: "Assistant General Secretary",
-    image: "",
+    image: AssSecGen,
     EducationalBackground: {
-      primaryEducation: "",
+      primaryEducation: [],
       secondaryEducation: ["Nakam Memorial Secondary School"],
 
       undergraduate: [
@@ -211,7 +212,7 @@ export const NosaExcos = [
         icon: FaFacebookSquare,
       },
       email: {
-        url: "https://github.com",
+        url: "josephkamji2017@gmail.com",
         icon: MdEmail,
       },
     },
@@ -226,7 +227,7 @@ export const NosaExcos = [
     position: "Treasurer",
     image: Tresurer,
     EducationalBackground: {
-      primaryEducation: "",
+      primaryEducation: [],
       secondaryEducation: ["Nakam Memorial Secondary School"],
 
       undergraduate: [
@@ -274,13 +275,10 @@ export const NosaExcos = [
     position: "Welf. & Social Secretary ",
     image: "",
     EducationalBackground: {
-      primaryEducation: "",
+      primaryEducation: [],
       secondaryEducation: ["Nakam Memorial Secondary School"],
-
       undergraduate: [],
-
       postGraduate: [],
-
       professionalTrainings: [],
     },
     socialMedia: {
@@ -312,7 +310,7 @@ export const NosaExcos = [
     position: "Legal Advisor ",
     image: "", // Assuming there is no image available
     EducationalBackground: {
-      primaryEducation: "",
+      primaryEducation: [],
       secondaryEducation: [""],
       undergraduate: [""],
       postGraduate: [""],
@@ -320,7 +318,7 @@ export const NosaExcos = [
     },
     socialMedia: {
       twitter: {
-        url: "https://twitter.com",
+        url: "https://x.com/GBunkat?t=6-r7XFcZ9eJXNTauFybKxg&s=08",
         icon: FaXTwitter,
       },
       linkedin: {
@@ -328,7 +326,7 @@ export const NosaExcos = [
         icon: FaLinkedin,
       },
       facebook: {
-        url: "https://github.com",
+        url: "https://www.facebook.com/melodi.bunkat?mibextid=ZbWKwL",
         icon: FaFacebookSquare,
       },
       email: {
@@ -349,7 +347,7 @@ export const NosaExcos = [
     position: "Lecturer",
     image: Canaan,
     EducationalBackground: {
-      primaryEducation: "",
+      primaryEducation: [],
       secondaryEducation: ["Nakam Memorial Secondary School, 1982-1988"],
       undergraduate: [],
       postGraduate: [],
@@ -369,7 +367,7 @@ export const NosaExcos = [
         icon: FaFacebookSquare,
       },
       email: {
-        url: "https://github.com",
+        url: "canaandanok@gmail.com",
         icon: MdEmail,
       },
     },
@@ -388,7 +386,7 @@ export const NosaExcos = [
     position: "Public Relation Officer (PRO)",
     image: Buba,
     EducationalBackground: {
-      primaryEducation: "Demonstration Primary School, Gindiri, Class of 1988",
+      primaryEducation: ["Demonstration Primary School, Gindiri, Class of 1988"],
       secondaryEducation: ["Nakam Memorial Secondary School, Panyam, 1994/95 Set"],
 
       undergraduate: [
@@ -488,7 +486,7 @@ export const WhomeWeAreProudOf = [
     position: "Legal Advisor ",
     image: "", // Assuming there is no image available
     EducationalBackground: [
-      { primaryEducation: "" },
+      { primaryEducation: [] },
       { secondaryEducation: [""] },
       { undergraduate: [""] },
       { postGraduate: [""] },

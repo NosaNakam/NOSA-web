@@ -11,6 +11,7 @@ import FinSec from "./AyubaFinSec.png";
 import Tresurer from "./Treasurer.png";
 import Logo from "./logo.png";
 import DefaultImage from "./DefultImage.PNG";
+import AssSecGen from "./AssistantSecGen.png";
 
 export {
   DefaultImage,
@@ -25,4 +26,5 @@ export {
   Gimba,
   GenSect,
   Tresurer,
+  AssSecGen,
 };
