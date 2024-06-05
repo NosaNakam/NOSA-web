@@ -3,6 +3,7 @@ import AnimationRevealPage from "../helpers/AnimationRevealPage.js";
 import Header from "../components/headers/light.js";
 import Profiles from "../components/cards/Profiles.js";
 import { Gimba, Plangji } from "../images/ImageIndex.js";
+import { WhomeWeAreProudOf } from "../Redux/Api/LocalData.js";
 const blogPosts = [
   {
     imageSrc: Gimba,
@@ -43,7 +44,7 @@ export default () => (
     <Header />
 
     <Profiles
-      profiles={blogPosts}
+      profiles={WhomeWeAreProudOf}
       title1={`Meet these Vibrant People `}
       title2={`we are Proud of`}
     />

@@ -24,7 +24,7 @@ const Image = styled.div((props) => [
 ]);
 const Category = tw.div`mt-4 text-secondary-100 font-bold text-sm`;
 const Title = tw.h4`mt-2 leading-relaxed font-bold lg:text-xl text-center`;
-const Link = tw.a`mt-2 flex justify-center text-sm text-primary-500 font-bold pb-5 text-xl`;
+const Link = tw.div`mt-2 flex justify-center text-sm text-primary-500 font-bold pb-5 text-xl`;
 const DecoratorBlob1 = tw(
   SvgDecoratorBlob1
 )`-z-10 absolute bottom-0 right-0 w-48 h-48 transform translate-x-40 -translate-y-8 opacity-25`;
@@ -37,7 +37,6 @@ export default ({ profiles, title1, title2 }) => {
 
   const dispatch = useDispatch();
   const handleClick = (post) => {
-    console.log(post);
     dispatch(openProfileModel());
     dispatch(addProfileDetailsModel(post));
   };
@@ -58,11 +57,10 @@ export default ({ profiles, title1, title2 }) => {
           {profiles.map((post, index) => (
             <Column key={index}>
               <Card onClick={() => handleClick(post)}>
-                <Image imageSrc={post.imageSrc} />
+                <Image imageSrc={post.image} />
                 {isModelOpen && <ProfileDetailModel detail={post} />}
-
                 <Title>{post.name}</Title>
-                <Link>({post.responsibleFor})</Link>
+                <Link>(NOSA set {post.setOf})</Link>
               </Card>
             </Column>
           ))}

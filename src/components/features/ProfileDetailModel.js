@@ -45,7 +45,6 @@ export default () => {
     ...profileDetails.EducationalBackground.undergraduate,
     ...profileDetails.EducationalBackground.postGraduate,
   ];
-  console.log(combinedEducation);
   return (
     <Container>
       <div className="close">
@@ -64,10 +63,12 @@ export default () => {
                 {profileDetails.title} {profileDetails && profileDetails.name}
               </Name>
               <NosaOfficeFlex>
-                <IconFlex>
-                  <ImOffice style={{ fontSize: "1.5rem" }} />
-                  <Position>{profileDetails?.position}</Position>
-                </IconFlex>
+                {profileDetails?.position && (
+                  <IconFlex>
+                    <ImOffice style={{ fontSize: "1.5rem" }} />
+                    <Position>{profileDetails?.position}</Position>
+                  </IconFlex>
+                )}
                 <IconFlex>
                   <PiCheckSquareOffsetFill style={{ fontSize: "1.5rem" }} />
                   <Position>NOSA Set {profileDetails?.setOf}</Position>
@@ -94,7 +95,6 @@ export default () => {
             </PresentWorkPlace>
           </FlexRightHead>
           <Position>Education</Position>
-          {/* <Bio>{profileDetails.name} went to:</Bio> */}
           {combinedEducation.map((detail, index) => {
             return (
               <Fragment key={index}>
@@ -102,6 +102,17 @@ export default () => {
               </Fragment>
             );
           })}
+          {profileDetails.EducationalBackground.professionalTrainings.length > 0 ? (
+            <Bio>
+              {profileDetails.name} underwent{" "}
+              {profileDetails.EducationalBackground.professionalTrainings.map((train, index) => (
+                <span key={index}>{train}</span>
+              ))}
+            </Bio>
+          ) : (
+            ""
+          )}
+
           <Position style={{ marginTop: "1rem" }}>Portfolio</Position>
           {profileDetails?.portfolio?.map((detail, index) => {
             return (
