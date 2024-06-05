@@ -32,7 +32,9 @@ export default () => {
       <Features
         subheading={<Subheading>History of NOSA</Subheading>}
         heading="Our Journey so Far"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        description="Nakam Old Students Association NOSA started in 1978 upon the completion of study for the first set of students of Nakam. 
+It is the association of old students of Nakam Memorial Secondary school Panyam, who come together to help in the advancement of education in the region through networking with each other to maintain or advance the welfare, educational standards, infrastructure and general development of their Alma mater. 
+It consist of a large number of members spread across the globe, moulded according to strong Christian principles, values & beliefs to make impact in their various endeavors. "
         linkText=""
       />
       <MainFeature1
@@ -55,8 +57,32 @@ export default () => {
       <Features
         // subheading={<Subheading>Our Values</Subheading>}
         heading="The NOSA Anthem."
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        linkText=""
+        description={`
+        WHAT A FRIEND WE HAVE IN JESUS\n
+1. What a Friend we have in Jesus,\n
+All our sins and griefs to bear!\n
+What a privilege to carry\n
+Everything to God in prayer!\n
+O what peace we often forfeit,\n
+O what needless pain we bear,\n
+All because we do not carry\n
+Everything to God in prayer!\n\n
+2. Have we trials and temptations?\n
+Is there trouble anywhere?\n
+We should never be discouraged,\n
+Take it to the Lord in prayer.\n
+Can we find a friend so faithful\n
+Who will all our sorrows share?\n
+Jesus knows our every weakness,\n
+Take it to the Lord in prayer.\n\n
+3. Are we weak and heavy-laden,\n
+Cumbered with a load of care?\n
+Precious Savior, still our refuge\n
+Take it to the Lord in prayer;\n
+Do thy friends despise, forsake thee?\n
+Take it to the Lord in prayer;\n
+In His arms He'll take and shield thee,\n
+Thou wilt find a solace there.`}
       />
 
       <TeamCardGrid NosaExcos={NosaExcos} subheading={<Subheading>NOSA Leadership</Subheading>} />

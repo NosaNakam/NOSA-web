@@ -479,7 +479,7 @@ export const NosaExcos = [
 export const WhomeWeAreProudOf = [
   {
     name: "Bunkat Jurbe",
-    title: "Bar.",
+    title: "Engr.",
     currentJob: "Legal Practitioner",
     employer: "TJJ Danjuma Legal",
     setOf: "",
