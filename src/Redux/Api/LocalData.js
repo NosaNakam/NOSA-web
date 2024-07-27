@@ -3,10 +3,12 @@ import {
   Auditor,
   Buba,
   Canaan,
+  Damwesh,
   DefaultImage,
   FinSec,
   GenSect,
   Gimba,
+  LegalAdvisor,
   Michael,
   Plangji,
   President,
@@ -312,7 +314,7 @@ export const NosaExcos = [
     employer: "TJJ Danjuma Legal",
     setOf: "",
     position: "Legal Advisor",
-    image: "", // Assuming there is no image available
+    image: LegalAdvisor, // Assuming there is no image available
     EducationalBackground: {
       primaryEducation: [],
       secondaryEducation: [""],
@@ -626,7 +628,7 @@ export const WhomeWeAreProudOf = [
     currentJob: "Liaison Officer",
     employer: "Nakam Memorial Secondary School, Panyam",
     setOf: "1984",
-    image: DefaultImage,
+    image: Damwesh,
     EducationalBackground: {
       primaryEducation: [],
       secondaryEducation: ["Nakam Memorial Secondary School, Panyam (1984)"],

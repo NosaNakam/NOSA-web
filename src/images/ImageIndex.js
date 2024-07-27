@@ -12,6 +12,8 @@ import Tresurer from "./Treasurer.png";
 import Logo from "./logo.png";
 import DefaultImage from "./DefultImage.PNG";
 import AssSecGen from "./AssistantSecGen.png";
+import Damwesh from "./Damwesh.png";
+import LegalAdvisor from "./LegalAdvisor.png";
 
 export {
   DefaultImage,
@@ -27,4 +29,6 @@ export {
   GenSect,
   Tresurer,
   AssSecGen,
+  Damwesh,
+  LegalAdvisor,
 };
