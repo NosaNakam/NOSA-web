@@ -101,6 +101,7 @@ import ContactUsPage from "./pages/ContactUs.js";
 import BlogIndexPage from "./pages/BlogIndex.js";
 import NosaSets from "./pages/NosaSets.js";
 import NakamHistory from "./pages/TermsOfService.js";
+import NakamAchievements from "./pages/NakamAchievements.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
 // import ComponentRenderer from "ComponentRenderer.js";
@@ -134,9 +135,9 @@ export default function App() {
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/nakam-history" element={<NakamHistory />} />
             <Route path="/school-associations" element={<Associations />} />
-            <Route path="/founding-fathers" element={<FoundingFathers />} />
-            <Route path="/school-management" element={<SchoolManagement />} />
-            <Route path="/school-achievement" element={<SchoolAchievements />} />
+            {/* <Route path="/founding-fathers" element={<FoundingFathers />} /> */}
+            {/* <Route path="/school-management" element={<SchoolManagement />} /> */}
+            <Route path="/school-achievement" element={<NakamAchievements />} />
             {/* <Route path="/school-achievement" element={< />} /> */}
             <Route path="/events" element={<EventLandingPage />} />
             <Route path="/contact" element={<ContactUsPage />} />

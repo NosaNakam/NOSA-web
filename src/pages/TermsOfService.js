@@ -73,7 +73,7 @@ export default ({ headingText = "Brief History of Nakam" }) => {
           </Text>
         </ContentWithPaddingXl>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </AnimationRevealPage>
   );
 };

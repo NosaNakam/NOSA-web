@@ -50,7 +50,7 @@ const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 
 export default ({
-  headingText = "School's Achievements",
+  headingText = "Some of the School's Achievements",
   posts = [
     // {
     //   imageSrc:

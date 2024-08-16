@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/footers/FiveColumnWithBackground";
 const SharedRoute = () => {
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <Outlet />
       <Footer />
     </div>
