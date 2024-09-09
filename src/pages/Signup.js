@@ -87,7 +87,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <SocialButtonsContainer>
+              {/* <SocialButtonsContainer>
                 {socialButtons.map((socialButton, index) => (
                   <SocialButton key={index} href={socialButton.url}>
                     <span className="iconContainer">
@@ -96,19 +96,23 @@ export default ({
                     <span className="text">{socialButton.text}</span>
                   </SocialButton>
                 ))}
-              </SocialButtonsContainer>
-              <DividerTextContainer>
+              </SocialButtonsContainer> */}
+              {/* <DividerTextContainer>
                 <DividerText>Or Sign up with your e-mail</DividerText>
-              </DividerTextContainer>
+              </DividerTextContainer> */}
               <Form>
-                <Input type="email" placeholder="Email" />
+                <Input type="email" placeholder="First name" />
+                <Input type="password" placeholder="surname" />
+                <Input type="password" placeholder="Phone" />
+                <Input type="password" placeholder="Email" />
                 <Input type="password" placeholder="Password" />
+                {/* <Input type="password" placeholder="Password" />SET! */}
                 <SubmitButton type="submit">
                   <SubmitButtonIcon className="icon" />
                   <span className="text">{submitButtonText}</span>
                 </SubmitButton>
-                <p tw="mt-6 text-xs text-gray-600 text-center">
-                  I agree to abide by treact's{" "}
+                {/* <p tw="mt-6 text-xs text-gray-600 text-center">
+                  I agree to abide by NOSA's{" "}
                   <a href={tosUrl} tw="border-b border-gray-500 border-dotted">
                     Terms of Service
                   </a>{" "}
@@ -116,7 +120,7 @@ export default ({
                   <a href={privacyPolicyUrl} tw="border-b border-gray-500 border-dotted">
                     Privacy Policy
                   </a>
-                </p>
+                </p> */}
 
                 <p tw="mt-8 text-sm text-gray-600 text-center">
                   Already have an account?{" "}

@@ -56,8 +56,8 @@ export default ({
         Nakam
         <StyledDropdownLinks>
           <DropdownLink href="/nakam-history">History of Nakam</DropdownLink>
-          <DropdownLink href="founding-fathers">Founding Fathers</DropdownLink>
-          <DropdownLink href="school-management">School Management</DropdownLink>
+          {/* <DropdownLink href="founding-fathers">Founding Fathers</DropdownLink>
+          <DropdownLink href="school-management">School Management</DropdownLink> */}
           <DropdownLink href="school-associations">School Associations</DropdownLink>
           <DropdownLink href="school-achievement">School Achievements</DropdownLink>
         </StyledDropdownLinks>
@@ -66,7 +66,7 @@ export default ({
         Membership
         <StyledDropdownLinks>
           <DropdownLink href="/nosa-sets">Set Membership</DropdownLink>
-          <DropdownLink href="whom-we-are-proud-of">Whom we are Proud of</DropdownLink>
+          <DropdownLink href="whom-we-are-proud-of">Whom we are Proud</DropdownLink>
         </StyledDropdownLinks>
       </NavLink>
       <NavLink href="#">
@@ -75,7 +75,7 @@ export default ({
           <DropdownLink href="/events">Events </DropdownLink>
           <DropdownLink href="/news">News Update</DropdownLink>
           <DropdownLink href="/gallery">Gallery</DropdownLink>
-          <DropdownLink href="showcase">Showcase</DropdownLink>
+          <DropdownLink href="/showcase">Showcase</DropdownLink>
         </StyledDropdownLinks>
       </NavLink>
     </NavLinks>,
