@@ -68,7 +68,7 @@ export default ({ headingText = "Brief History of Nakam" }) => {
             </p>
             <p>
               This objective informed the choice of the school&#39;s motto,
-              <strong> &#39;walk in the Light&#39;</strong> .
+              <strong style={{ fontSize: "larger" }}> &#39;walk in the Light&#39;</strong> .
             </p>
           </Text>
         </ContentWithPaddingXl>

@@ -44,12 +44,12 @@ export default ({
   subheading = "From the President's Desk",
   heading = (
     <>
-      We have been doing this <wbr /> since <span tw="text-primary-500">1999.</span>
+      We have been in existence <wbr /> since <span tw="text-primary-500">1978</span>
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  primaryButtonText = "Learn More",
-  primaryButtonUrl = "https://timerse.com",
+  description = "As President of the Nakam Old Students Association, I am thrilled to welcome you to our website. This platform allows us to reconnect with old friends, share memories, and build a supportive community of alumni. Our goal is to uphold the values we gained at Nakam Memorial Secondary School and give back to both the school and each other. I encourage you to explore the site, engage with fellow alumni, and join us in celebrating Nakam @50. Your participation is vital to keeping our legacy strong. Together, we can achieve much more.",
+  primaryButtonText = null,
+  primaryButtonUrl = null,
   imageSrc = PresidentImage,
   imageCss = null,
   imageContainerCss = null,
@@ -94,17 +94,15 @@ export default ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
-            {/* <Statistics>
-              {statistics.map((statistic, index) => (
-                <Statistic key={index}>
-                  <Value>{statistic.value}</Value>
-                  <Key>{statistic.key}</Key>
-                </Statistic>
-              ))}
-            </Statistics> */}
-            <PrimaryButton as="a" href={primaryButtonUrl}>
+            <div style={{ marginTop: "1rem" }}>
+              <p>Warm regards,</p>
+              <p style={{ fontSize: "larger" }}>
+                <strong>Barr. (Mrs.) Beatrice C. J. Dakas</strong>
+              </p>
+            </div>
+            {/* <PrimaryButton as="a" href={primaryButtonUrl}>
               {primaryButtonText}
-            </PrimaryButton>
+            </PrimaryButton> */}
           </TextContent>
         </TextColumn>
       </TwoColumn>

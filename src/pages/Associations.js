@@ -37,7 +37,7 @@ with Jesus Christ and its normally headed
 by a Patron. Activities include Bible
 Studies, Prayer meetings, drama, talks, etc."
         primaryButtonText=""
-        imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
+        imageSrc="https://www.fcsnigeria.org/wp-content/uploads/2023/11/1.png"
       />
 
       <MainFeature1
@@ -46,7 +46,7 @@ Studies, Prayer meetings, drama, talks, etc."
         buttonRounded={false}
         description="The Boys' Brigade (BB) and Girls' Brigade (GB) are extracurricular activities for students that include activities like parades, physical exercise, sword drills, Bible studies, and games. These sessions are held on Tuesdays from 4:00 PM to 5:00 PM and are mandatory for junior students but optional for senior students. The Boys' Brigade aims to promote the Christian faith among boys and instill values such as obedience, reverence, discipline, self-respect, and other traits that contribute to Christian manliness. The Girls' Brigade also emphasizes respect and obedience. Both organizations have significantly influenced many individuals, particularly in the areas of security and military service, as many personnel received early training through these brigades, impacting their future careers."
         primaryButtonText=""
-        imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
+        imageSrc="https://thaichristian.ac.th/wp-content/uploads/2020/10/New-BW_GB-BB.jpg"
         textOnLeft={false}
       />
 
@@ -75,20 +75,9 @@ students.
 The games include footballing, Basket ball,
 Table tennis, Athletics, Badminton etc."
         primaryButtonText=""
-        imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
+        imageSrc="https://media.istockphoto.com/id/1411680801/vector/board-games-combined-in-a-circle-element-flat-vector-illustration-isolated.jpg?s=612x612&w=0&k=20&c=zm64LC96_70-ZfhBMzMjT0reTanCtM0ikj2Cve_icF8="
         textOnLeft={true}
       />
-      {/* <MainFeature1
-        subheading={<Subheading>Our Mission</Subheading>}
-        heading="Press Club"
-        buttonRounded={false}
-        primaryButtonText="Contact Us"
-        imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
-        textOnLeft={false}
-      /> */}
-
-      {/* <TeamCardGrid subheading={<Subheading>NOSA Leadership</Subheading>} /> */}
-      {/* <Footer /> */}
     </AnimationRevealPage>
   );
 };

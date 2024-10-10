@@ -84,13 +84,13 @@ export default () => {
         <ThreeColumn>
           <HeadingColumn>
             <HeadingInfoContainer>
-              <HeadingTitle>Achievements</HeadingTitle>
+              <HeadingTitle>Our Gallery</HeadingTitle>
               <HeadingDescription>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua enim ad minim veniam.
               </HeadingDescription>
               <PrimaryLink>
-                View All Our Achievements <ArrowRightIcon />
+                View All Our Gallery <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>
           </HeadingColumn>
@@ -117,7 +117,7 @@ export default () => {
                       <LocationIcon /> {card.locationText}
                     </CardMetaFeature>
                   </CardMeta> */}
-                  <CardAction>Read More</CardAction>
+                  <CardAction>View More</CardAction>
                 </CardText>
               </Card>
             </CardColumn>

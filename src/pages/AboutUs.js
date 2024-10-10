@@ -27,7 +27,7 @@ export default () => {
         subheading={<Subheading>Our Core Values</Subheading>}
         heading="We are Nakam Old Students Association"
         buttonRounded={false}
-        primaryButtonText="See Portfolio"
+        primaryButtonText=""
         imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
       />
       <Features
@@ -42,7 +42,7 @@ It consist of a large number of members spread across the globe, moulded accordi
         subheading={<Subheading>Our Vision</Subheading>}
         heading="We aim to disrupt the design space."
         buttonRounded={false}
-        primaryButtonText="Contact Us"
+        primaryButtonText=""
         imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
         textOnLeft={false}
       />
@@ -51,7 +51,7 @@ It consist of a large number of members spread across the globe, moulded accordi
         subheading={<Subheading>Our Mission</Subheading>}
         heading="We aim to disrupt the design space."
         buttonRounded={false}
-        primaryButtonText="Contact Us"
+        primaryButtonText=""
         imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
         textOnLeft={true}
       />

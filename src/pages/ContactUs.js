@@ -20,7 +20,7 @@ export default () => {
       <ContactDetails
         cards={[
           {
-            title: "New York",
+            title: "Head Office, Jos",
             description: (
               <>
                 <Address>
@@ -33,7 +33,7 @@ export default () => {
             ),
           },
           {
-            title: "Illinois",
+            title: "Abuja",
             description: (
               <>
                 <Address>
@@ -46,7 +46,7 @@ export default () => {
             ),
           },
           {
-            title: "California",
+            title: "Lagos",
             description: (
               <>
                 <Address>
@@ -59,7 +59,7 @@ export default () => {
             ),
           },
           {
-            title: "Tennessee",
+            title: "Panyam",
             description: (
               <>
                 <Address>
@@ -72,7 +72,7 @@ export default () => {
             ),
           },
           {
-            title: "New Jersey",
+            title: "Kaduna",
             description: (
               <>
                 <Address>
@@ -85,7 +85,7 @@ export default () => {
             ),
           },
           {
-            title: "Ohio",
+            title: "Bauchi",
             description: (
               <>
                 <Address>

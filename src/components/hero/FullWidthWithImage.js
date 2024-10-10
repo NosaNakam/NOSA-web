@@ -75,7 +75,7 @@ export default ({
           <DropdownLink href="/events">Events </DropdownLink>
           <DropdownLink href="/news">News Update</DropdownLink>
           <DropdownLink href="/gallery">Gallery</DropdownLink>
-          <DropdownLink href="/showcase">Showcase</DropdownLink>
+          {/* <DropdownLink href="/showcase">Showcase</DropdownLink> */}
         </StyledDropdownLinks>
       </NavLink>
     </NavLinks>,
@@ -89,7 +89,7 @@ export default ({
     </>
   ),
   description = "We've been in the hotels business across the world for 5 years now. We assure you that you will always enjoy your stay with us.",
-  primaryActionUrl = "#",
+  primaryActionUrl = "/sign-up",
   primaryActionText = "Be a Member",
   secondaryActionUrl = "#",
   secondaryActionText = "Pay Dues",

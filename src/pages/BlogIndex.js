@@ -54,7 +54,7 @@ export default ({
   posts = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+        "https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=",
       category: "Travel Tips",
       date: "April 21, 2020",
       title: "Safely Travel in Foreign Countries",
@@ -75,12 +75,12 @@ export default ({
     getPlaceholderPost(),
     getPlaceholderPost(),
     getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
+    // getPlaceholderPost(),
+    // getPlaceholderPost(),
+    // getPlaceholderPost(),
+    // getPlaceholderPost(),
+    // getPlaceholderPost(),
+    // getPlaceholderPost(),
   ],
 }) => {
   const [visible, setVisible] = useState(7);
@@ -127,7 +127,7 @@ export default ({
 
 const getPlaceholderPost = () => ({
   imageSrc:
-    "https://images.unsplash.com/photo-1418854982207-12f710b74003?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+    "https://media.istockphoto.com/id/1409309637/vector/breaking-news-label-banner-isolated-vector-design.jpg?s=612x612&w=0&k=20&c=JoQHezk8t4hw8xXR1_DtTeWELoUzroAevPHo0Lth2Ow=",
   category: "Travel Guide",
   date: "April 19, 2020",
   title: "Visit the beautiful Alps in Switzerland",

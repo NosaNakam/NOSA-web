@@ -57,10 +57,10 @@ export default () => {
         }
       /> */}
       <Blog
-        subheading="Blog"
+        subheading=""
         heading={
           <>
-            We love <HighlightedText>Writing</HighlightedText>
+            Our Gallery <HighlightedText>Our Memories</HighlightedText>
           </>
         }
       />

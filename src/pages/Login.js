@@ -58,7 +58,7 @@ const IllustrationImage = styled.div`
 export default ({
   logoLinkUrl = "#",
   illustrationImageSrc = illustration,
-  headingText = "Sign In To Treact",
+  headingText = "Sign In ",
   socialButtons = [
     {
       iconImageSrc: googleIconImageSrc,
@@ -74,7 +74,7 @@ export default ({
   submitButtonText = "Sign In",
   SubmitButtonIcon = LoginIcon,
   forgotPasswordUrl = "#",
-  signupUrl = "#",
+  signupUrl = "sign-up",
 }) => (
   <AnimationRevealPage>
     <Container>

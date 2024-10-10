@@ -46,10 +46,10 @@ const DecoratorBlob2 = tw(
 )`-z-10 absolute top-0 left-0 w-48 h-48 transform -translate-x-32 translate-y-full opacity-25`;
 
 export default ({
-  subheading = "Blog",
+  subheading = "",
   heading = (
     <>
-      We Love <span tw="text-primary-500">Writing.</span>
+      Check our <span tw="text-primary-500">Events</span>
     </>
   ),
   description = "Some amazing blog posts that are written by even more amazing people.",
