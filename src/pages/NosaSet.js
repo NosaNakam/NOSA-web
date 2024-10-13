@@ -17,7 +17,7 @@ const image =
   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80";
 
 const Container = tw.div`w-[90%] mx-auto`;
-const TopContainer = tw.div`bg-[#f9f9f9] pt-[1.rem] shadow-md`;
+const TopContainer = tw.div`bg-[#f9f9f9] pt-[1rem] shadow-md`;
 const GroupHero = tw.div`w-full rounded-lg h-[60vh] pt-5`;
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
