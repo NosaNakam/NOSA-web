@@ -117,6 +117,12 @@ import SchoolAchievements from "./pages/SchoolAchievements.js";
 import WhomWeAreProudOf from "./pages/WhomWeAreProudOf.js";
 import Gallary from "./pages/Gallary.js";
 import NotFound from "./pages/NotFound.js";
+import NosaSet from "./pages/NosaSet.js";
+import Discussion from "./components/testimonials/Discussion.js";
+import Members from "./components/testimonials/Members.js";
+import Posts from "./components/testimonials/Posts.js";
+import GroupEvents from "./components/testimonials/GroupEvents.js";
+import Media from "./components/testimonials/Media.js";
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
@@ -143,6 +149,15 @@ export default function App() {
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/news" element={<BlogIndexPage />} />
             <Route path="/nosa-sets" element={<NosaSets />} />
+
+            <Route path="/nosa-sets/:set" element={<NosaSet />}>
+              <Route path="discussion" element={<Discussion />} />
+              <Route path="members" element={<Members />} />
+              <Route path="posts" index element={<Posts />} />
+              <Route path="events" element={<GroupEvents />} />
+              <Route path="media" element={<Media />} />
+            </Route>
+
             <Route path="/whom-we-are-proud-of" element={<WhomWeAreProudOf />} />
             <Route path="/gallery" element={<Gallary />} />
 
