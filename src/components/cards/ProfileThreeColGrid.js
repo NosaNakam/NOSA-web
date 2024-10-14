@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
@@ -8,16 +8,7 @@ import { SectionDescription } from "../misc/Typography";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as LinkedinIcon } from "../../images/linkedin-icon.svg";
 import { ReactComponent as GithubIcon } from "../../images/github-icon.svg";
-import {
-  Auditor,
-  Buba,
-  Canaan,
-  DefaultImage,
-  Michael,
-  Plangji,
-  President,
-  VicePresident,
-} from "../../images/ImageIndex.js";
+import { DefaultImage } from "../../images/ImageIndex.js";
 import ProfileDetailModel from "../features/ProfileDetailModel.js";
 import { useDispatch, useSelector } from "react-redux";
 import { addProfileDetailsModel, openProfileModel } from "../../Redux/Services/AppSlice.js";
@@ -28,13 +19,18 @@ const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`mx-auto text-center`;
 
 const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
-const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center cursor-pointer`;
+const Card = styled.div`
+  ${tw`mt-24 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center cursor-pointer transition-transform duration-300 ease-in-out`}
+  &:hover {
+    ${tw`transform scale-105 shadow-lg py-5`}
+  }
+`;
 const CardImage = styled.div`
   ${(props) =>
     css`
       background-image: url("${props.imageSrc}");
     `}
-  ${tw`w-[18rem] h-[18rem] bg-contain bg-center bg-cover rounded-full `}
+  ${tw`w-[18rem] h-[18rem] bg-contain bg-center bg-cover rounded-full border-4 border-gray-200`}
 `;
 const CardContent = styled.div`
   ${tw`flex flex-col items-center mt-6`}
@@ -43,7 +39,7 @@ const CardContent = styled.div`
   }
   .name {
     ${tw`mt-1 text-xl font-medium text-gray-900`}
-  9
+  }
 `;
 
 const CardLinks = styled.div`
@@ -69,6 +65,7 @@ export default ({
     dispatch(openProfileModel(true));
     dispatch(addProfileDetailsModel(post));
   };
+
   return (
     <Container>
       <ContentWithPaddingXl>
@@ -90,18 +87,38 @@ export default ({
                     {card?.title} {card?.name}
                   </span>
                   <CardLinks>
-                    <a className="link" href={twitter.url}>
-                      <twitter.icon className="icon" />
-                    </a>
-                    <a className="link" href={facebook.url}>
-                      <facebook.icon className="icon" />
-                    </a>
-                    <a className="link" href={linkedin.url}>
-                      <linkedin.icon className="icon" />
-                    </a>
-                    <a className="link" href={email.url}>
-                      <email.icon className="icon" />
-                    </a>
+                    {twitter && (
+                      <a
+                        className="link"
+                        href={twitter.url}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <TwitterIcon className="icon" />
+                      </a>
+                    )}
+                    {facebook && (
+                      <a
+                        className="link"
+                        href={facebook.url}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <GithubIcon className="icon" />
+                      </a>
+                    )}
+                    {linkedin && (
+                      <a
+                        className="link"
+                        href={linkedin.url}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <LinkedinIcon className="icon" />
+                      </a>
+                    )}
+                    {email && (
+                      <a className="link" href={`mailto:${email.url}`}>
+                        <GithubIcon className="icon" />
+                      </a>
+                    )}
                   </CardLinks>
                 </CardContent>
               </Card>

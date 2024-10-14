@@ -123,6 +123,7 @@ import Members from "./components/testimonials/Members.js";
 import Posts from "./components/testimonials/Posts.js";
 import GroupEvents from "./components/testimonials/GroupEvents.js";
 import Media from "./components/testimonials/Media.js";
+import UserProfile from "./pages/UserProfile.js";
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
@@ -149,11 +150,11 @@ export default function App() {
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/news" element={<BlogIndexPage />} />
             <Route path="/nosa-sets" element={<NosaSets />} />
-
+            <Route path="/user/:userId" element={<UserProfile />} />
             <Route path="/nosa-sets/:set" element={<NosaSet />}>
               <Route index element={<Posts />} />
               <Route path="discussion" element={<Discussion />} />
-              <Route path="members" element={<Members />} />
+              <Route path="members" element={<Members />}></Route>
               <Route path="posts" element={<Posts />} />
               <Route path="events" element={<GroupEvents />} />
               <Route path="media" element={<Media />} />
