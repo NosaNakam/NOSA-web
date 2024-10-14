@@ -151,9 +151,10 @@ export default function App() {
             <Route path="/nosa-sets" element={<NosaSets />} />
 
             <Route path="/nosa-sets/:set" element={<NosaSet />}>
+              <Route index element={<Posts />} />
               <Route path="discussion" element={<Discussion />} />
               <Route path="members" element={<Members />} />
-              <Route path="posts" index element={<Posts />} />
+              <Route path="posts" element={<Posts />} />
               <Route path="events" element={<GroupEvents />} />
               <Route path="media" element={<Media />} />
             </Route>
