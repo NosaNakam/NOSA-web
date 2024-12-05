@@ -5,6 +5,8 @@ import AnimationRevealPage from "../helpers/AnimationRevealPage";
 import Nav from "../components/headers/light";
 import { NavLink, Outlet } from "react-router-dom";
 import { IoMdSearch } from "react-icons/io";
+import TabCardGrid from "../components/cards/TabCardGrid";
+import SubLeaderProfile from "../components/cards/SubLeaderProfile";
 const links = [
   { name: "Posts", link: "./posts" }, // Relative paths
   { name: "Members", link: "./members" },
@@ -51,7 +53,7 @@ const NosaSet = () => {
           <FlexContainer>
             <SmallText>199 Members</SmallText>
             <div style={{ display: "flex", gap: "0.5rem" }}>
-              <ControlButton>Invite</ControlButton>
+              <ControlButton>Pay Set Dues</ControlButton>
               <ControlButton>Share</ControlButton>
             </div>
           </FlexContainer>

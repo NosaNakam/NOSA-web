@@ -1,164 +1,111 @@
 import React from "react";
+import styled, { css } from "styled-components";
 import tw from "twin.macro";
-import styled from "styled-components";
-import { FaTwitter, FaLinkedin, FaGithub, FaComments } from "react-icons/fa";
+import { FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
+import Header from "../components/headers/light";
+const Container = styled.div`
+  ${tw`w-[90%] p-4 mx-auto mt-5 bg-white rounded-md shadow`}
+`;
+const HeaderContainer = tw.div`mb-10 mt-5`;
+const FlexContainer = tw.div`flex flex-col lg:flex-row gap-5`;
+const FlexLeft = tw.div`w-full lg:w-[20%] flex-shrink-0`;
+const FlexRight = tw.div`w-full lg:w-[80%]`;
+const NameContainer = tw.div`pb-5`;
+const Name = tw.h1`font-bold text-2xl lg:text-4xl text-gray-900`;
+const Title = tw.h2`font-semibold text-xl lg:text-2xl capitalize text-gray-600 mt-2`;
+const CardImage = styled.div`
+  ${(props) =>
+    css`
+      background-image: url("${props.imageSrc}");
+    `}
+  ${tw`w-[12rem] h-[12rem] bg-cover bg-center rounded shadow-md`}
+`;
 
-const Container = tw.div`w-full max-w-3xl mx-auto flex flex-col bg-white p-6 rounded-md shadow-lg`;
-const CoverPhoto = styled.div`
-  ${(props) => `
-    background-image: url("${props.coverSrc}");
-  `}
-  ${tw`w-full h-40 bg-cover bg-center rounded-md`}
+const SocialLinks = tw.div`flex items-center gap-4 mt-4`;
+const Link = styled.a`
+  ${tw`text-xl text-gray-600 hover:text-primary-500 transition duration-300`}
 `;
-const ProfileImage = styled.div`
-  ${(props) => `
-    background-image: url("${props.imageSrc}");
-  `}
-  ${tw`w-32 h-32 bg-cover bg-center border-4 border-white rounded-full mx-auto -mt-20`}
-`;
-const UserName = tw.h2`text-3xl font-bold text-center mt-2`;
-const UserTitle = tw.p`text-lg text-center text-gray-600 mb-4`;
-const InfoSection = tw.div`mt-4 bg-gray-100 p-4 rounded-md`;
-const InfoTitle = tw.h3`text-lg font-semibold mb-2`;
-const InfoText = tw.p`text-gray-700`;
-const SocialMediaLinks = tw.div`flex justify-center mt-2 space-x-4`;
-const SocialMediaLink = tw.a`text-gray-400 hover:text-blue-600 transition duration-300`;
-const ChatButton = tw.button`mt-6 bg-blue-500 text-white py-2 px-4 rounded-md flex items-center justify-center hover:bg-blue-600 transition duration-200`;
+
+const Bio = tw.p`text-gray-700 mt-3`;
+const SectionTitle = tw.h3`font-semibold text-lg mt-8 text-gray-800`;
+const Highlight = tw.span`text-primary-500 font-bold`;
 
 const UserProfile = () => {
-  // Hardcoded user details
   const user = {
-    firstName: "John",
-    surname: "Doe",
-    email: "john.doe@example.com",
-    phone: "123-456-7890",
-    image: "https://via.placeholder.com/120",
-    cover: "https://via.placeholder.com/800x200", // Example cover photo
+    name: "John Doe",
     title: "Software Engineer",
-    socialMedia: [
-      { platform: "twitter", url: "http://twitter.com/johndoe" },
-      { platform: "linkedin", url: "http://linkedin.com/in/johndoe" },
-      { platform: "facebook", url: "http://facebook.com/johndoe" },
-    ],
-    educationalBackground: {
-      primaryEducation: "Primary School A",
-      secondaryEducation: ["High School B"],
-      undergraduate: ["Bachelor of Science in Computer Science"],
-      postGraduate: ["Master of Science in Software Engineering"],
-      professionalTrainings: ["Certification in Web Development"],
-    },
-    portfolio: "http://johndoedesign.com",
+    image: "https://via.placeholder.com/150",
+    currentSetPost: "President",
+    prefectPost: "Science Prefect",
     currentJob: "Senior Developer",
     employer: "Tech Company",
-    yearOfGraduation: "2020",
-    role: "member",
+    socialMedia: {
+      twitter: { url: "http://twitter.com/johndoe", icon: FaTwitter },
+      linkedin: { url: "http://linkedin.com/in/johndoe", icon: FaLinkedin },
+      facebook: { url: "http://facebook.com/johndoe", icon: FaFacebook },
+    },
+    portfolio: ["http://johndoeportfolio.com"],
   };
 
   return (
-    <Container>
-      {/* Cover Photo */}
-      <CoverPhoto coverSrc={user.cover} />
+    <>
+      <HeaderContainer>
+        <Header />
+      </HeaderContainer>
+      <Container>
+        <FlexContainer>
+          {/* Profile Image */}
+          <FlexLeft>
+            <CardImage imageSrc={user.image} />
+          </FlexLeft>
 
-      {/* Profile Image */}
-      <ProfileImage imageSrc={user.image || "https://via.placeholder.com/120"} />
-      <UserName>{`${user.firstName} ${user.surname}`}</UserName>
-      <UserTitle>{user.title}</UserTitle>
+          {/* Profile Details */}
+          <FlexRight>
+            <NameContainer>
+              <Name>{user.name}</Name>
+              <div>(Koko Master)</div>
+              <Title>{user.title}</Title>
 
-      {/* Contact Information */}
-      <InfoSection>
-        <InfoTitle>Contact Information</InfoTitle>
-        <InfoText>Email: {user.email}</InfoText>
-        <InfoText>Phone: {user.phone || "N/A"}</InfoText>
-      </InfoSection>
+              <SocialLinks>
+                {Object.values(user.socialMedia).map((social, index) => (
+                  <Link key={index} href={social.url} target="_blank" rel="noopener noreferrer">
+                    <social.icon />
+                  </Link>
+                ))}
+              </SocialLinks>
+            </NameContainer>
 
-      {/* Social Media Links */}
-      <InfoSection>
-        <InfoTitle>Social Media</InfoTitle>
-        <SocialMediaLinks>
-          {user.socialMedia.map((social) => {
-            switch (social.platform) {
-              case "twitter":
-                return (
-                  <SocialMediaLink
-                    key={social.url}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <FaTwitter size={24} />
-                  </SocialMediaLink>
-                );
-              case "linkedin":
-                return (
-                  <SocialMediaLink
-                    key={social.url}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <FaLinkedin size={24} />
-                  </SocialMediaLink>
-                );
-              case "facebook":
-                return (
-                  <SocialMediaLink
-                    key={social.url}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <FaGithub size={24} />
-                  </SocialMediaLink>
-                );
-              default:
-                return null;
-            }
-          })}
-        </SocialMediaLinks>
-      </InfoSection>
+            {/* Current Job */}
+            <Bio>
+              Currently working as <Highlight>{user.currentJob}</Highlight> with{" "}
+              <Highlight>{user.employer}</Highlight>.
+            </Bio>
 
-      {/* Education Information */}
-      <InfoSection>
-        <InfoTitle>Education</InfoTitle>
-        {user.educationalBackground && (
-          <div>
-            <InfoText>Primary: {user.educationalBackground.primaryEducation || "N/A"}</InfoText>
-            <InfoText>
-              Secondary: {user.educationalBackground.secondaryEducation.join(", ") || "N/A"}
-            </InfoText>
-            <InfoText>
-              Undergraduate: {user.educationalBackground.undergraduate.join(", ") || "N/A"}
-            </InfoText>
-            <InfoText>
-              Postgraduate: {user.educationalBackground.postGraduate.join(", ") || "N/A"}
-            </InfoText>
-            <InfoText>
-              Professional Trainings:{" "}
-              {user.educationalBackground.professionalTrainings.join(", ") || "N/A"}
-            </InfoText>
-          </div>
-        )}
-      </InfoSection>
+            {/* Current Set Post */}
+            <SectionTitle>Current Set Post</SectionTitle>
+            <Bio>{user.currentSetPost}</Bio>
 
-      {/* Portfolio Section */}
-      {user.portfolio && (
-        <InfoSection>
-          <InfoTitle>Portfolio</InfoTitle>
-          <InfoText>
-            <a
-              href={user.portfolio}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500">
-              {user.portfolio}
-            </a>
-          </InfoText>
-        </InfoSection>
-      )}
+            {/* Prefect Post */}
+            <SectionTitle>Prefect Post Held</SectionTitle>
+            <Bio>{user.prefectPost}</Bio>
 
-      {/* Chat Initiation Button */}
-      <ChatButton>
-        <FaComments className="mr-2" />
-        Start Chat
-      </ChatButton>
-    </Container>
+            {/* Portfolio */}
+            <SectionTitle>Portfolio</SectionTitle>
+            {user.portfolio.map((site, index) => (
+              <Bio key={index}>
+                <a
+                  href={site}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 underline">
+                  {site}
+                </a>
+              </Bio>
+            ))}
+          </FlexRight>
+        </FlexContainer>
+      </Container>
+    </>
   );
 };
 
