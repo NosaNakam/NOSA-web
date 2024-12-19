@@ -31,5 +31,12 @@ export const authApiSlice = createApi({
       }),
     }),
     //logout
+    logout: build.mutation({
+      query: (data) => ({
+        url: `${AUTH_URL}/logout`,
+        method: "POST",
+        body: {},
+      }),
+    }),
   }),
 });
