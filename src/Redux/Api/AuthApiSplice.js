@@ -15,6 +15,13 @@ export const authApiSlice = createApi({
       }),
     }),
     // verify email mutation
+    verifyEmail: build.mutation({
+      query: (data) => ({
+        url: `${AUTH_URL}/verify-email`,
+        method: "POST",
+        body: data,
+      }),
+    }),
     //login mutation
     //logout
   }),
