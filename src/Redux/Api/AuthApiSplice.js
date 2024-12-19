@@ -23,6 +23,13 @@ export const authApiSlice = createApi({
       }),
     }),
     //login mutation
+    login: build.mutation({
+      query: (data) => ({
+        url: `${AUTH_URL}/login`,
+        method: "POST",
+        body: data,
+      }),
+    }),
     //logout
   }),
 });
