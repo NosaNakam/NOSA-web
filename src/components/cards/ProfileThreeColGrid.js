@@ -80,7 +80,7 @@ export default ({
             return (
               <Card key={index} onClick={() => handleClick(card)}>
                 <CardImage imageSrc={card?.image || DefaultImage} />
-                {isModelOpen && <ProfileDetailModel detail={card} />}
+
                 <CardContent>
                   <span className="position">{card?.position}</span>
                   <span className="name">
@@ -125,6 +125,7 @@ export default ({
             );
           })}
         </Cards>
+        {isModelOpen && <ProfileDetailModel />}
       </ContentWithPaddingXl>
     </Container>
   );

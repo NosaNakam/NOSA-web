@@ -154,13 +154,13 @@ export default function App() {
             <Route path="/nosa-sets/:set" element={<NosaSet />}>
               <Route index element={<Members />} />
               <Route path="discussion" element={<Discussion />} />
-              <Route path="members" element={<Members />}></Route>
+              <Route path="members" element={<Members />} />
               <Route path="posts" element={<Posts />} />
               <Route path="events" element={<GroupEvents />} />
               <Route path="media" element={<Media />} />
             </Route>
 
-            <Route path="/whom-we-are-proud-of" element={<WhomWeAreProudOf />} />
+            <Route path="/our-developers" element={<WhomWeAreProudOf />} />
             <Route path="/gallery" element={<Gallary />} />
 
             <Route path="/thank-you" element={<ThankYouPage />} />

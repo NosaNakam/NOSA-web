@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import { BsFillSendFill } from "react-icons/bs";
 import { FiMoreVertical } from "react-icons/fi";
 
-const Container = tw.div`w-full h-[80vh] flex flex-col bg-[#f9f9f9] rounded-md shadow-md`;
+const Container = tw.div`w-full mt-5 h-[80vh] flex flex-col bg-[#f9f9f9] rounded-md shadow-md`;
 const ChatHeader = tw.div`flex justify-between items-center bg-white p-4 border-b border-gray-200 rounded-t-md`;
 const GroupName = tw.h2`text-xl font-semibold`;
 const ChatBody = tw.div`flex-1 overflow-y-auto p-4 bg-[#f2f2f2]`;

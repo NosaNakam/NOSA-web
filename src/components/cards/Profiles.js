@@ -50,7 +50,7 @@ export default ({ profiles, title1, title2 }) => {
             {title2}
           </HeadingTitle>
           <HeadingDescription>
-            Some amazing blog posts that are written by even more amazing people.
+            Meet the brilliant minds behind our success—the development team driving our innovation.
           </HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>

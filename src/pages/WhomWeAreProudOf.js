@@ -45,8 +45,8 @@ export default () => (
 
     <Profiles
       profiles={WhomeWeAreProudOf}
-      title1={`Meet these Vibrant People `}
-      title2={`we are Proud of`}
+      title1={`Meet Our Dynamic Development`}
+      title2={`Dynamos`}
     />
   </AnimationRevealPage>
 );

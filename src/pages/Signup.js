@@ -40,6 +40,7 @@ const DividerText = tw.div`leading-none px-2 inline-block text-sm text-gray-600 
 
 const Form = tw.form`mx-auto max-w-xs`;
 const Input = tw.input`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0`;
+const Select = tw.select`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0`;
 const SubmitButton = styled.button`
   ${tw`mt-5 tracking-wide font-semibold bg-primary-500 text-gray-100 w-full py-4 rounded-lg hover:bg-primary-900 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
   .icon {
@@ -101,11 +102,12 @@ export default ({
                 <DividerText>Or Sign up with your e-mail</DividerText>
               </DividerTextContainer> */}
               <Form>
-                <Input type="email" placeholder="First name" />
-                <Input type="password" placeholder="surname" />
-                <Input type="password" placeholder="Phone" />
-                <Input type="password" placeholder="Email" />
+                <Input type="text" placeholder="First name" />
+                <Input type="text" placeholder="surname" />
+                <Input type="date" placeholder="Year of Graduation" />
+                <Input type="email" placeholder="Email" />
                 <Input type="password" placeholder="Password" />
+
                 {/* <Input type="password" placeholder="Password" />SET! */}
                 <SubmitButton type="submit">
                   <SubmitButtonIcon className="icon" />

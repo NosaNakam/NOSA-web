@@ -39,6 +39,7 @@ const Link = styled.a`
 `;
 export default () => {
   const { profileDetails } = useSelector((store) => store.AppSlice);
+  const distach = useDispatch();
   const combinedEducation = [
     ...profileDetails.EducationalBackground.primaryEducation,
     ...profileDetails.EducationalBackground.secondaryEducation,
@@ -48,7 +49,7 @@ export default () => {
   return (
     <Container>
       <div className="close">
-        <InnerContainer>
+        <InnerContainer onClick={() => distach(openProfileModel())}>
           <FaWindowClose />
         </InnerContainer>
       </div>
