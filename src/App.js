@@ -124,6 +124,7 @@ import Posts from "./components/testimonials/Posts.js";
 import GroupEvents from "./components/testimonials/GroupEvents.js";
 import Media from "./components/testimonials/Media.js";
 import UserProfile from "./pages/UserProfile.js";
+import EmailVerification from "./pages/EmailVerification.js";
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
@@ -137,6 +138,7 @@ export default function App() {
           <Route path="/components/:type/:name" element={<ComponentRenderer />} />
           <Route path="/sign-up" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/auth/verify-email" element={<EmailVerification />} />
           <Route path="/" element={<SharedRoute />}>
             <Route index element={<MainLandingPage />} />
             <Route path="/about" element={<AboutUsPage />} />

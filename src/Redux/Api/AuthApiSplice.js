@@ -40,3 +40,5 @@ export const authApiSlice = createApi({
     }),
   }),
 });
+export const { useRegisterMutation, useVerifyEmailMutation, useLoginMutation, useLogoutMutation } =
+  authApiSlice;
