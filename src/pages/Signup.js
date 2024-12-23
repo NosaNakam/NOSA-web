@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import AnimationRevealPage from "../helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "../components/misc/Layouts";
 import tw from "twin.macro";
@@ -8,9 +8,9 @@ import illustration from "../images/signup-illustration.svg";
 import logo from "../images/logo.png";
 
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
-import { dates } from "../helpers/extras.js";
 import { useRegisterMutation } from "../Redux/Api/AuthApiSplice.js";
 import { useNavigate } from "react-router-dom"; // Correct import
+import { useGetAllSetsQuery } from "../Redux/Api/SetApiSice.js";
 
 const Container = tw(
   ContainerBase
@@ -22,7 +22,6 @@ const LogoImage = tw.img`h-12 mx-auto`;
 const MainContent = tw.div`mt-12 flex flex-col items-center`;
 const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold`;
 const FormContainer = tw.div`w-full flex-1 mt-8`;
-
 const Form = tw.form`mx-auto max-w-xs`;
 const Input = tw.input`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0`;
 const Select = tw.select`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0`;
@@ -49,30 +48,34 @@ export default ({
   SubmitButtonIcon = SignUpIcon,
   signInUrl = "/login",
 }) => {
-  const [graduationYear, setGraduationYear] = useState("");
+  const { data } = useGetAllSetsQuery();
+  const [nosaSet, setNosaSet] = useState("");
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Use the navigate hook
-  const [register, { isLoading, isError }] = useRegisterMutation();
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  const [register, { isLoading }] = useRegisterMutation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setSuccessMessage("");
+    setErrorMessage("");
+
     try {
       const res = await register({
         firstName,
         surname,
         email,
-        yearOfGraduation: graduationYear,
+        nosaSet,
         password,
       }).unwrap();
-      console.log(res);
-      alert("Registration successful! Redirecting to login...");
-      navigate("/login"); // Redirect to login page
+      setSuccessMessage(res.message);
+      setTimeout(() => navigate("/login"), 4000);
     } catch (error) {
-      console.error(error.data?.message || "An error occurred");
-      alert(error.data?.message || "An error occurred");
+      setErrorMessage(error.data?.message || "An error occurred during registration");
     }
   };
 
@@ -88,6 +91,8 @@ export default ({
               <Heading>{headingText}</Heading>
               <FormContainer>
                 <Form onSubmit={handleSubmit}>
+                  {successMessage && <p tw="mt-4 text-green-600 text-center">{successMessage}</p>}
+                  {errorMessage && <p tw="mt-4 text-red-600 text-center">{errorMessage}</p>}
                   <Input
                     onChange={(e) => setFirstName(e.target.value)}
                     value={firstName}
@@ -101,17 +106,20 @@ export default ({
                     placeholder="Surname"
                   />
                   <Select
-                    value={graduationYear}
-                    onChange={(e) => setGraduationYear(e.target.value)}
+                    value={nosaSet}
+                    onChange={(e) => setNosaSet(e.target.value)}
                     defaultValue="">
                     <option value="" disabled>
-                      Select graduation year
+                      Select Your Set
                     </option>
-                    {dates.map((date, index) => (
-                      <option value={date.value} key={index}>
-                        {date.graduationYear}
-                      </option>
-                    ))}
+                    {data?.sets.map((set, index) => {
+                      const { name, _id } = set;
+                      return (
+                        <Fragment key={_id}>
+                          <option value={_id}>NOSA Set {name}</option>
+                        </Fragment>
+                      );
+                    })}
                   </Select>
                   <Input
                     onChange={(e) => setEmail(e.target.value)}

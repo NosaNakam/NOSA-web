@@ -21,5 +21,12 @@ export const setApiSlice = createApi({
         method: "GET",
       }),
     }),
+    getSingleSet: build.query({
+      query: (setId) => ({
+        url: `${SET_URL}/${setId}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
+export const { useGetAllSetsQuery, useGetAllSetMembersQuery, useGetSingleSetQuery } = setApiSlice;

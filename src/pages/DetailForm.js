@@ -9,6 +9,7 @@ import { ReactComponent as SaveIcon } from "feather-icons/dist/icons/save.svg";
 import { useSelector } from "react-redux";
 import { useUpdateCurrentUserMutation } from "../Redux/Api/UserApiSlice.js";
 import { useNavigate } from "react-router-dom";
+import { setRoles, titles } from "../helpers/extras.js";
 
 const Container = tw(
   ContainerBase
@@ -132,12 +133,17 @@ export default ({
                     type="tel"
                     placeholder="Phone"
                   />
-                  <Input
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                    type="text"
-                    placeholder="Title"
-                  />
+
+                  <Select value={title} onChange={(e) => setTitle(e.target.value)} defaultValue="">
+                    <option value="" disabled>
+                      Title
+                    </option>
+                    {titles?.map((title, index) => (
+                      <option key={index} value={title}>
+                        {title}
+                      </option>
+                    ))}
+                  </Select>
                   <Input
                     onChange={(e) => setCurrentJob(e.target.value)}
                     value={currentJob}
@@ -150,12 +156,20 @@ export default ({
                     type="text"
                     placeholder="Employer"
                   />
-                  <Input
-                    onChange={(e) => setPosition(e.target.value)}
+
+                  <Select
                     value={position}
-                    type="text"
-                    placeholder="Position"
-                  />
+                    onChange={(e) => setPosition(e.target.value)}
+                    defaultValue="">
+                    <option value="" disabled>
+                      Your Set Role
+                    </option>
+                    {setRoles?.map((role, index) => (
+                      <option key={index} value={role}>
+                        {role}
+                      </option>
+                    ))}
+                  </Select>
                   <Select value={maritalStatus} onChange={(e) => setMaritalStatus(e.target.value)}>
                     <option value="" disabled>
                       Select Marital Status

@@ -17,3 +17,47 @@ if (month + 1 > 8) {
     });
   }
 }
+
+export const setRoles = [
+  "President",
+  "Vice President",
+  "Secretary General",
+  "Assistant Secretary",
+  "Financial Secretary",
+  "Treasurer",
+  "Welfare & Social Secretary",
+  "Legal Advisor",
+  "Deputy Legal Advisor",
+  "Publicity Secretary",
+  "Auditor",
+  "Member",
+  "Others",
+];
+export const titles = [
+  "Mr.",
+  "Mrs.",
+  "Miss.",
+  "Ms.",
+  "Dr.",
+  "Prof.",
+  "Pharm.",
+  "Barr.",
+  "Eng.",
+  "Rev.",
+  "Sir",
+  "Lady",
+  "Hon.",
+  "Chief",
+  "Capt.",
+  "Col.",
+  "Maj.",
+  "Lt.",
+  "Gen.",
+  "Arch.",
+  "Pastor",
+  "Alhaji",
+  "Hajia",
+  "Prince",
+  "Princess",
+  "Dame",
+];

@@ -32,8 +32,9 @@ const Image = styled.div((props) => [
 const image =
   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80";
 
-export const ListMembers = () => {
+export const ListMembers = ({ members }) => {
   const [visibleModel, setVisibleModel] = useState(null);
+  console.log(members);
 
   const toggleModel = (index) => {
     setVisibleModel(visibleModel === index ? null : index);
@@ -44,7 +45,7 @@ export const ListMembers = () => {
         <InnerContainer>
           <Heading>Members</Heading>
           <SearchInput placeholder="Search a member..." />
-          {[...Array(3)].map((_, index) => (
+          {members.map((member, index) => (
             <PostDetailsWrapper key={index}>
               <PostDetailsFlex>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -52,7 +53,7 @@ export const ListMembers = () => {
                     <Image imageSrc={image} />
                   </Profile>
                   <PostDetailUserFlex>
-                    <SubHeading>Alexander Rengkat</SubHeading>
+                    <SubHeading>{member?.fullName}</SubHeading>
                     <p>Joined 2 years ago</p>
                   </PostDetailUserFlex>
                 </div>

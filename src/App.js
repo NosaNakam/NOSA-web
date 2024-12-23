@@ -161,7 +161,7 @@ export default function App() {
             <Route path="/news" element={<BlogIndexPage />} />
             <Route path="/nosa-sets" element={<NosaSets />} />
             <Route path="/user/:userId" element={<UserProfile />} />
-            <Route path="/nosa-sets/:set" element={<NosaSet />}>
+            <Route path="/nosa-sets/:setId" element={<NosaSet />}>
               <Route index element={<Members />} />
               <Route path="discussion" element={<Discussion />} />
               <Route path="members" element={<Members />} />

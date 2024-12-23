@@ -6,6 +6,8 @@ import { ListMembers } from "../members/ListMembers";
 import CardMembers from "../members/CardMembers";
 import { IoGridOutline } from "react-icons/io5";
 import { FaListUl } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import { useGetAllSetMembersQuery } from "../../Redux/Api/SetApiSice";
 
 // Styled Components
 
@@ -13,6 +15,8 @@ const Display = tw.div`w-full flex justify-end gap-3 mt-5`;
 const IconCont = tw.div`cursor-pointer bg-gray-300 rounded-full p-3 shadow`;
 const Members = () => {
   const [displayMembers, setDisplayMembers] = useState("grid");
+  const { setId } = useParams();
+  const { data, isLoading } = useGetAllSetMembersQuery(setId);
 
   return (
     <div>
@@ -27,7 +31,11 @@ const Members = () => {
       </Display>
 
       {/* Member display */}
-      {displayMembers === "grid" ? <CardMembers /> : <ListMembers />}
+      {displayMembers === "grid" ? (
+        <CardMembers members={data?.data} />
+      ) : (
+        <ListMembers members={data?.data} />
+      )}
     </div>
   );
 };

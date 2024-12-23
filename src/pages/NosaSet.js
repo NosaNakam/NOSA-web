@@ -3,10 +3,11 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import AnimationRevealPage from "../helpers/AnimationRevealPage";
 import Nav from "../components/headers/light";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { IoMdSearch } from "react-icons/io";
 import TabCardGrid from "../components/cards/TabCardGrid";
 import SubLeaderProfile from "../components/cards/SubLeaderProfile";
+import { useGetSingleSetQuery } from "../Redux/Api/SetApiSice";
 const links = [
   { name: "Posts", link: "./posts" }, // Relative paths
   { name: "Members", link: "./members" },
@@ -40,6 +41,9 @@ const GroupNav = tw.div`w-1/2 flex gap-5`;
 const Contain = tw.div`w-[90%] mx-auto`;
 
 const NosaSet = () => {
+  const { setId } = useParams();
+  const { data, isLoading } = useGetSingleSetQuery(setId);
+
   return (
     // <AnimationRevealPage>
     <div style={{ background: "white" }}>
@@ -49,9 +53,9 @@ const NosaSet = () => {
           <GroupHero>
             <Image imageSrc={image} />
           </GroupHero>
-          <GroupName>NOSA SET 2013</GroupName>
+          <GroupName>NOSA SET {data?.set?.name}</GroupName>
           <FlexContainer>
-            <SmallText>199 Members</SmallText>
+            <SmallText>{data?.set?.members?.length} Members</SmallText>
             <div style={{ display: "flex", gap: "0.5rem" }}>
               <ControlButton>Pay Set Dues</ControlButton>
               <ControlButton>Share</ControlButton>
