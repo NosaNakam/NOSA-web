@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import AnimationRevealPage from "../helpers/AnimationRevealPage.js";
 import { Container as ContainerBase } from "../components/misc/Layouts";
 import tw from "twin.macro";
 import styled from "styled-components";
-import { css } from "styled-components/macro"; //eslint-disable-line
 import illustration from "../images/login-illustration.svg";
 import logo from "../images/logo.png";
-import googleIconImageSrc from "../images/google-icon.png";
-import twitterIconImageSrc from "../images/twitter-icon.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
+import { useDispatch } from "react-redux";
+import { saveUser } from "../Redux/Services/AppSlice.js";
+import { useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../Redux/Api/AuthApiSplice.js";
 
 const Container = tw(
   ContainerBase
@@ -20,20 +21,7 @@ const LogoImage = tw.img`h-12 mx-auto`;
 const MainContent = tw.div`mt-12 flex flex-col items-center`;
 const Heading = tw.h1`text-2xl xl:text-3xl font-extrabold`;
 const FormContainer = tw.div`w-full flex-1 mt-8`;
-
-const SocialButtonsContainer = tw.div`flex flex-col items-center`;
-const SocialButton = styled.a`
-  ${tw`w-full max-w-xs font-semibold rounded-lg py-3 border text-gray-900 bg-gray-100 hocus:bg-gray-200 hocus:border-gray-400 flex items-center justify-center transition-all duration-300 focus:outline-none focus:shadow-outline text-sm mt-5 first:mt-0`}
-  .iconContainer {
-    ${tw`bg-white p-2 rounded-full`}
-  }
-  .icon {
-    ${tw`w-4`}
-  }
-  .text {
-    ${tw`ml-4`}
-  }
-`;
+const Notification = tw.div`mt-4 p-3 text-center text-sm rounded-lg`;
 
 const Form = tw.form`mx-auto max-w-xs`;
 const Input = tw.input`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0`;
@@ -52,76 +40,105 @@ const IllustrationImage = styled.div`
   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
 `;
 
-export default ({
-  logoLinkUrl = "#",
-  illustrationImageSrc = illustration,
-  headingText = "Sign In ",
-  socialButtons = [
-    {
-      iconImageSrc: googleIconImageSrc,
-      text: "Sign In With Google",
-      url: "https://google.com",
-    },
-    {
-      iconImageSrc: twitterIconImageSrc,
-      text: "Sign In With Twitter",
-      url: "https://twitter.com",
-    },
-  ],
+const LoginPage = ({
+  headingText = "Sign In to Your Account",
   submitButtonText = "Sign In",
   SubmitButtonIcon = LoginIcon,
-  forgotPasswordUrl = "#",
-  signupUrl = "sign-up",
-}) => (
-  <AnimationRevealPage>
-    <Container>
-      <Content>
-        <MainContainer>
-          <LogoLink href={logoLinkUrl}>
-            <LogoImage src={logo} />
-          </LogoLink>
-          <MainContent>
-            <Heading>{headingText}</Heading>
-            <FormContainer>
-              {/* <SocialButtonsContainer>
-                {socialButtons.map((socialButton, index) => (
-                  <SocialButton key={index} href={socialButton.url}>
-                    <span className="iconContainer">
-                      <img src={socialButton.iconImageSrc} className="icon" alt="" />
-                    </span>
-                    <span className="text">{socialButton.text}</span>
-                  </SocialButton>
-                ))}
-              </SocialButtonsContainer> */}
-              {/* <DividerTextContainer>
-                <DividerText>Or Sign in with your e-mail</DividerText>
-              </DividerTextContainer> */}
-              <Form>
-                <Input type="email" placeholder="Email" />
-                <Input type="password" placeholder="Password" />
-                <SubmitButton type="submit">
-                  <SubmitButtonIcon className="icon" />
-                  <span className="text">{submitButtonText}</span>
-                </SubmitButton>
-              </Form>
-              <p tw="mt-6 text-xs text-gray-600 text-center">
-                <a href={forgotPasswordUrl} tw="border-b border-gray-500 border-dotted">
-                  Forgot Password ?
-                </a>
-              </p>
-              <p tw="mt-8 text-sm text-gray-600 text-center">
-                Dont have an account?{" "}
-                <a href={signupUrl} tw="border-b border-gray-500 border-dotted">
-                  Sign Up
-                </a>
-              </p>
-            </FormContainer>
-          </MainContent>
-        </MainContainer>
-        <IllustrationContainer>
-          <IllustrationImage imageSrc={illustrationImageSrc} />
-        </IllustrationContainer>
-      </Content>
-    </Container>
-  </AnimationRevealPage>
-);
+  logoLinkUrl = "/",
+  signupUrl = "/sign-up",
+  forgotPasswordUrl = "/forgot-password",
+  illustrationImageSrc = illustration,
+}) => {
+  const [login, { isLoading }] = useLoginMutation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [notification, setNotification] = useState({ message: "", type: "" });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!email || !password) {
+      setNotification({ message: "Please fill in all fields.", type: "error" });
+      return;
+    }
+
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(saveUser(res.user));
+      setNotification({ message: res.message, type: "success" });
+      setTimeout(() => {
+        if (res.user.firstVisit) {
+          navigate("/user-detail");
+        } else {
+          navigate("/");
+        }
+      }, 1500);
+    } catch (error) {
+      setNotification({ message: error?.data?.message, type: "error" });
+    }
+  };
+
+  return (
+    <AnimationRevealPage>
+      <Container>
+        <Content>
+          <MainContainer>
+            <LogoLink href={logoLinkUrl}>
+              <LogoImage src={logo} />
+            </LogoLink>
+            <MainContent>
+              <Heading>{headingText}</Heading>
+              <FormContainer>
+                {notification.message && (
+                  <Notification
+                    style={{
+                      backgroundColor: notification.type === "success" ? "#DFF2BF" : "#FFBABA",
+                      color: notification.type === "success" ? "#4F8A10" : "#D8000C",
+                    }}>
+                    {notification.message}
+                  </Notification>
+                )}
+                <Form onSubmit={handleSubmit}>
+                  <Input
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    type="email"
+                    placeholder="Email"
+                  />
+                  <Input
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    type="password"
+                    placeholder="Password"
+                  />
+                  <SubmitButton type="submit">
+                    <SubmitButtonIcon className="icon" />
+                    <span className="text">{isLoading ? "Logging..." : submitButtonText}</span>
+                  </SubmitButton>
+                </Form>
+                <p tw="mt-6 text-xs text-gray-600 text-center">
+                  <a href={forgotPasswordUrl} tw="border-b border-gray-500 border-dotted">
+                    Forgot Password?
+                  </a>
+                </p>
+                <p tw="mt-8 text-sm text-gray-600 text-center">
+                  Don't have an account?{" "}
+                  <a href={signupUrl} tw="border-b border-gray-500 border-dotted">
+                    Sign Up
+                  </a>
+                </p>
+              </FormContainer>
+            </MainContent>
+          </MainContainer>
+          <IllustrationContainer>
+            <IllustrationImage imageSrc={illustrationImageSrc} />
+          </IllustrationContainer>
+        </Content>
+      </Container>
+    </AnimationRevealPage>
+  );
+};
+
+export default LoginPage;
