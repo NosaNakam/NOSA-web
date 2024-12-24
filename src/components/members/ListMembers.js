@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { BsThreeDots } from "react-icons/bs";
@@ -35,7 +35,10 @@ const image =
 export const ListMembers = ({ members }) => {
   const [visibleModel, setVisibleModel] = useState(null);
   console.log(members);
-
+  const setLeaders = members.filter(
+    (member) => member.position !== "member" && member.position !== "others"
+  );
+  console.log(setLeaders);
   const toggleModel = (index) => {
     setVisibleModel(visibleModel === index ? null : index);
   };
@@ -71,32 +74,25 @@ export const ListMembers = ({ members }) => {
       <RightContainer>
         <Heading>Set Officials</Heading>
         <SearchInput placeholder="Search an official..." />
-        <PostDetailsWrapper>
-          <PostDetailsFlex>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Profile>
-                <Image imageSrc={image} />
-              </Profile>
-              <PostDetailUserFlex>
-                <SubHeading>Alexander Rengkat</SubHeading>
-                <p>President</p>
-              </PostDetailUserFlex>
-            </div>
-          </PostDetailsFlex>
-        </PostDetailsWrapper>
-        <PostDetailsWrapper>
-          <PostDetailsFlex>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Profile>
-                <Image imageSrc={image} />
-              </Profile>
-              <PostDetailUserFlex>
-                <SubHeading>Alexander Rengkat</SubHeading>
-                <p>Vice President</p>
-              </PostDetailUserFlex>
-            </div>
-          </PostDetailsFlex>
-        </PostDetailsWrapper>
+        {setLeaders?.map((leader) => {
+          return (
+            <Fragment key={leader._id}>
+              <PostDetailsWrapper>
+                <PostDetailsFlex>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <Profile>
+                      <Image imageSrc={image} />
+                    </Profile>
+                    <PostDetailUserFlex>
+                      <SubHeading>{leader.fullName}</SubHeading>
+                      <p>{leader.position}</p>
+                    </PostDetailUserFlex>
+                  </div>
+                </PostDetailsFlex>
+              </PostDetailsWrapper>
+            </Fragment>
+          );
+        })}
       </RightContainer>
     </Container>
   );
