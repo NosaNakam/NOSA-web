@@ -38,7 +38,7 @@ const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 export default ({ headingText = "" }) => {
   const { data, isLoading } = useGetAllSetsQuery({});
   const [visible, setVisible] = useState(7);
-
+  console.log(data);
   const onLoadMoreClick = () => {
     setVisible((v) => v + 6);
   };
@@ -46,8 +46,8 @@ export default ({ headingText = "" }) => {
   if (isLoading) return <div>Loading...</div>;
 
   // Safely create a sorted copy of the array
-  const sortedSets = [...data?.data]?.sort((a, b) => parseInt(a.name) - parseInt(b.name));
-
+  const sortedSets = [...data?.sets]?.sort((a, b) => parseInt(a.name) - parseInt(b.name));
+  console.log(sortedSets);
   return (
     <AnimationRevealPage>
       <Container>
@@ -56,15 +56,15 @@ export default ({ headingText = "" }) => {
             <Heading>{headingText}</Heading>
           </HeadingRow>
           <Posts>
-            {/* Display the 1978 set at the top */}
-            {sortedSets?.slice(0, visible).map((post, index) => (
+            {sortedSets.slice(0, visible).map((post, index) => (
               <PostContainer key={index} featured={post.name === "1978"}>
                 <Post className="group" as="a" href={`/nosa-sets/${post._id}`}>
                   <Image imageSrc="https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80" />
                   <Info>
                     <CreationDate>{`Set ${post.name}`}</CreationDate>
                     <Title>{`NOSA Set ${post.name}`}</Title>
-                    {post.members.length > 0 && (
+                    {/* Safely handle undefined `members` */}
+                    {post.members?.length > 0 && (
                       <Description>{`Members: ${post.members.length}`}</Description>
                     )}
                   </Info>
@@ -72,7 +72,7 @@ export default ({ headingText = "" }) => {
               </PostContainer>
             ))}
           </Posts>
-          {visible < sortedSets?.length && (
+          {visible < sortedSets.length && (
             <ButtonContainer>
               <LoadMoreButton onClick={onLoadMoreClick}>Load More</LoadMoreButton>
             </ButtonContainer>

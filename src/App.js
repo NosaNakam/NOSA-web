@@ -127,11 +127,11 @@ import UserProfile from "./pages/UserProfile.js";
 import EmailVerification from "./pages/EmailVerification.js";
 import { useSelector } from "react-redux";
 import DetailForm from "./pages/DetailForm.js";
+import PrivateRoute from "./PrivateRoute.js";
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
   const { isLogin, user } = useSelector((state) => state.AppSlice);
-  console.log(user);
   return (
     <>
       <GlobalStyles />
@@ -145,7 +145,6 @@ export default function App() {
             path="/user-detail"
             element={user?.firstVisit ? <DetailForm /> : <MainLandingPage />}
           />
-
           <Route path="/auth/verify-email" element={<EmailVerification />} />
           <Route path="/" element={<SharedRoute />}>
             <Route index element={<MainLandingPage />} />
@@ -163,11 +162,11 @@ export default function App() {
             <Route path="/user/:userId" element={<UserProfile />} />
             <Route path="/nosa-sets/:setId" element={<NosaSet />}>
               <Route index element={<Members />} />
-              <Route path="discussion" element={<Discussion />} />
               <Route path="members" element={<Members />} />
-              <Route path="posts" element={<Posts />} />
-              <Route path="events" element={<GroupEvents />} />
-              <Route path="media" element={<Media />} />
+              <Route path="discussion" element={<PrivateRoute component={Discussion} />} />
+              <Route path="posts" element={<PrivateRoute component={Posts} />} />
+              <Route path="events" element={<PrivateRoute component={GroupEvents} />} />
+              <Route path="media" element={<PrivateRoute component={Media} />} />
             </Route>
 
             <Route path="/our-developers" element={<WhomWeAreProudOf />} />

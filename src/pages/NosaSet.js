@@ -8,6 +8,7 @@ import { IoMdSearch } from "react-icons/io";
 import TabCardGrid from "../components/cards/TabCardGrid";
 import SubLeaderProfile from "../components/cards/SubLeaderProfile";
 import { useGetSingleSetQuery } from "../Redux/Api/SetApiSice";
+import { useSelector } from "react-redux";
 const links = [
   { name: "Posts", link: "./posts" }, // Relative paths
   { name: "Members", link: "./members" },
@@ -41,12 +42,21 @@ const GroupNav = tw.div`w-1/2 flex gap-5`;
 const Contain = tw.div`w-[90%] mx-auto`;
 
 const NosaSet = () => {
+  const { user } = useSelector((state) => state.AppSlice);
   const { setId } = useParams();
   const { data, isLoading } = useGetSingleSetQuery(setId);
 
+  if (isLoading) {
+    return (
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
   return (
-    // <AnimationRevealPage>
     <div style={{ background: "white" }}>
+      {/* Set Header */}
       <TopContainer>
         <Nav />
         <Container>
@@ -63,6 +73,7 @@ const NosaSet = () => {
           </FlexContainer>
           <NavFlex>
             <GroupNav>
+              {/* Map through links with access control */}
               {links.map((link) => (
                 <StyledNavLink
                   key={link.link}
@@ -78,11 +89,12 @@ const NosaSet = () => {
           </NavFlex>
         </Container>
       </TopContainer>
+
+      {/* Set Content */}
       <Contain>
         <Outlet />
       </Contain>
     </div>
-    // </AnimationRevealPage>
   );
 };
 
