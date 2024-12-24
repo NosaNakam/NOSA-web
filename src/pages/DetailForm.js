@@ -66,6 +66,7 @@ export default ({
         employer,
         position,
         maritalStatus,
+        firstVisit: false,
       }).unwrap();
       setNotification({ message: res.message, type: "success" });
       setTimeout(() => navigate("/"), 2000);
