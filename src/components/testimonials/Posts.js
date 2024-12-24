@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
@@ -6,6 +6,9 @@ import { RiChat1Fill } from "react-icons/ri";
 import { IoIosShareAlt } from "react-icons/io";
 import { FaImage } from "react-icons/fa";
 import { BsPinAngleFill, BsThreeDots } from "react-icons/bs";
+import { useCreateSetPostMutation, useGetAllSetPostsQuery } from "../../Redux/Api/SetPostApiSlice";
+import { useParams } from "react-router-dom";
+import Loading from "./Loading";
 
 const Container = tw.div`w-full flex flex-col lg:flex-row gap-5`;
 const LeftContainer = tw.div`w-full lg:w-[60%]`;
@@ -16,6 +19,10 @@ const Profile = tw.div`w-12 h-12`;
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`rounded-full bg-cover bg-center h-full shadow-md`,
+]);
+const ImagePost = styled.div((props) => [
+  `background-image: url("${props.imageSrc}");`,
+  tw`rounded-lg bg-cover bg-center h-full shadow-md`,
 ]);
 
 const InputContainer = tw.div`flex-1 flex flex-col gap-3`;
@@ -32,19 +39,25 @@ const image =
   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80";
 
 const Posts = () => {
+  const { setId } = useParams();
+  const { data, isLoading } = useGetAllSetPostsQuery(setId);
+  const [addPost] = useCreateSetPostMutation();
   const [postContent, setPostContent] = useState("");
 
   const handleInputChange = (e) => {
     setPostContent(e.target.value);
   };
 
-  const handlePostSubmit = () => {
+  const handlePostSubmit = async () => {
+    const res = await addPost({}).unwrap();
     // Handle the post submission logic here
     console.log("Post submitted:", postContent);
     // Optionally reset the input and button state
     setPostContent("");
   };
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <Container>
       <LeftContainer>
@@ -73,42 +86,50 @@ const Posts = () => {
           </PostFlex>
         </InnerContainer>
 
-        <InnerContainer>
-          <PostDetailsFlex>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Profile>
-                <Image imageSrc={image} />
-              </Profile>
-              <PostDetailUserFlex>
-                <h2 className="font-semibold">Alexander Rengkat</h2>
-                <p className="text-sm text-gray-500">May 5, 2023</p>
-              </PostDetailUserFlex>
-            </div>
-            <BsThreeDots style={{ cursor: "pointer" }} />
-          </PostDetailsFlex>
-          <MainPost>
-            To handle CORS (Cross-Origin Resource Sharing) issues when two sites (e.g., a dashboard
-            and a main website) are using the same API, you can take the following approaches...
-          </MainPost>
-          <IconContainer>
-            <Icon>
-              <AiFillLike fontSize={24} />
-              <span>Like</span>
-            </Icon>
-            <Icon>
-              <AiFillDislike fontSize={24} />
-              <span>Dislike</span>
-            </Icon>
-            <Icon>
-              <RiChat1Fill fontSize={24} />
-              <span>Comment</span>
-            </Icon>
-            <Icon>
-              <IoIosShareAlt fontSize={24} />
-              <span>Share</span>
-            </Icon>
-          </IconContainer>
-        </InnerContainer>
+        <div>
+          {data?.posts?.map((post) => {
+            return (
+              <Fragment key={post?._id}>
+                <InnerContainer>
+                  <PostDetailsFlex>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <Profile>
+                        <Image imageSrc={image} />
+                      </Profile>
+                      <PostDetailUserFlex>
+                        <h2 className="font-semibold">
+                          {post?.author?.firstName} {post?.author?.surname}
+                        </h2>
+                        <p className="text-sm text-gray-500">May 5, 2023</p>
+                      </PostDetailUserFlex>
+                    </div>
+                    <BsThreeDots style={{ cursor: "pointer" }} />
+                  </PostDetailsFlex>
+                  <MainPost>{post?.content}</MainPost>
+                  {post?.image && <ImagePost imageSrc={image} />}
+                  <IconContainer>
+                    <Icon>
+                      ({post?.interactions?.likes?.length})<AiFillLike fontSize={24} />
+                      <span>Like</span>
+                    </Icon>
+                    <Icon>
+                      ({post?.interactions?.dislikes?.length}) <AiFillDislike fontSize={24} />
+                      <span>Dislike</span>
+                    </Icon>
+                    <Icon>
+                      <RiChat1Fill fontSize={24} />
+                      <span>Comment</span>
+                    </Icon>
+                    <Icon>
+                      ({post?.interactions?.shares?.length})<IoIosShareAlt fontSize={24} />
+                      <span>Share</span>
+                    </Icon>
+                  </IconContainer>
+                </InnerContainer>
+              </Fragment>
+            );
+          })}
+        </div>
       </LeftContainer>
 
       {/* Pinned Posts Section */}
