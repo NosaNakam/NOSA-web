@@ -31,8 +31,20 @@ export const setPostApiSlice = createApi({
       }),
       invalidatesTags: ["Post"],
     }),
+    //Delete set post
+    deleteSetPost: build.mutation({
+      query: (postId) => ({
+        url: `${SET_POST_URL}/${postId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Post"],
+    }),
   }),
 });
 
-export const { useGetAllSetPostsQuery, useGetSetPostByIdQuery, useCreateSetPostMutation } =
-  setPostApiSlice;
+export const {
+  useGetAllSetPostsQuery,
+  useGetSetPostByIdQuery,
+  useCreateSetPostMutation,
+  useDeleteSetPostMutation,
+} = setPostApiSlice;

@@ -4,6 +4,7 @@ import { authApiSlice } from "./Api/AuthApiSplice";
 import { userApiSlice } from "./Api/UserApiSlice";
 import { setApiSlice } from "./Api/SetApiSice";
 import { setPostApiSlice } from "./Api/SetPostApiSlice";
+import { setDiscussionApiSlice } from "./Api/SetDiscussionApiSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,11 +13,12 @@ export const store = configureStore({
     [userApiSlice.reducerPath]: userApiSlice.reducer,
     [setApiSlice.reducerPath]: setApiSlice.reducer,
     [setPostApiSlice.reducerPath]: setPostApiSlice.reducer,
+    [setDiscussionApiSlice.reducerPath]: setDiscussionApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(authApiSlice.middleware)
       .concat(userApiSlice.middleware)
       .concat(setApiSlice.middleware)
-      .concat(setPostApiSlice.middleware),
+      .concat(setDiscussionApiSlice.middleware),
 });
