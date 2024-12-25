@@ -61,3 +61,14 @@ export const titles = [
   "Princess",
   "Dame",
 ];
+
+export const formatDate = (isoDateString) => {
+  const date = new Date(isoDateString);
+  const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+};
+export const formatDateWithoutDay = (isoDateString) => {
+  const date = new Date(isoDateString);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+};

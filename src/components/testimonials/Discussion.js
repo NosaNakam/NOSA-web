@@ -1,10 +1,13 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { BsFillSendFill } from "react-icons/bs";
 import { FiMoreVertical } from "react-icons/fi";
 import { useParams } from "react-router-dom";
-import { useGetAllSetChatsQuery } from "../../Redux/Api/SetDiscussionApiSlice";
+import {
+  useGetAllSetChatsQuery,
+  useSendSetChatMutation,
+} from "../../Redux/Api/SetDiscussionApiSlice";
 import { useSelector } from "react-redux";
 
 const Container = tw.div`w-full mt-5 h-[80vh] flex flex-col bg-[#f9f9f9] rounded-md shadow-md`;
@@ -32,6 +35,8 @@ const Discussion = () => {
   const { setId } = useParams();
   const { user } = useSelector((state) => state.AppSlice);
   const { data, isLoading } = useGetAllSetChatsQuery(setId);
+  const [sendMessage] = useSendSetChatMutation();
+  const [text, setText] = useState("");
 
   const chatBodyRef = useRef(null);
 
@@ -41,7 +46,14 @@ const Discussion = () => {
       chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
     }
   }, [data?.messages]);
-
+  const handleSend = async () => {
+    try {
+      const res = await sendMessage({ text, setId }).uwrap();
+      console.log(res);
+    } catch (error) {
+      console.log(error?.data?.message);
+    }
+  };
   return (
     <Container>
       {/* Chat Header */}
@@ -70,8 +82,12 @@ const Discussion = () => {
 
       {/* Chat Footer */}
       <ChatFooter>
-        <MessageInput placeholder="Type a message..." />
-        <SendButton>
+        <MessageInput
+          onChange={(e) => setText(e.target.value)}
+          value={text}
+          placeholder="Type a message..."
+        />
+        <SendButton onClick={handleSend}>
           <BsFillSendFill />
         </SendButton>
       </ChatFooter>

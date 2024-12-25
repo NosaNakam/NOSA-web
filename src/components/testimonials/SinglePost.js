@@ -8,6 +8,7 @@ import { useDeleteSetPostMutation } from "../../Redux/Api/SetPostApiSlice";
 import Loading from "./Loading";
 import { useSelector } from "react-redux";
 import { BsThreeDots } from "react-icons/bs";
+import { formatDate, formatDateWithoutDay } from "../../helpers/extras";
 
 const InnerContainer = tw.div`w-full bg-[#f9f9f9] rounded-md shadow-md p-5 my-5`;
 
@@ -65,7 +66,7 @@ const SinglePost = ({ post }) => {
             <h2 className="font-semibold">
               {post?.author?.firstName} {post?.author?.surname}
             </h2>
-            <p className="text-sm text-gray-500">May 5, 2023</p>
+            <p className="text-sm text-gray-500">{formatDateWithoutDay(post?.createdAt)}</p>
           </PostDetailUserFlex>
         </div>
         {user.id === post?.author?._id && (

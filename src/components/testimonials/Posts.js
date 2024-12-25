@@ -102,7 +102,7 @@ const Posts = () => {
                   <input
                     type="file"
                     accept="image/*"
-                    style={{ visibility: "hidden" }}
+                    style={{ display: "none" }}
                     onChange={handleImageSelect}
                   />
                 </ImageButton>

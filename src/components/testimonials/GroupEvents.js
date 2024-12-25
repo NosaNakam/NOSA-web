@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { AiFillCalendar, AiOutlineClockCircle } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsPinAngleFill } from "react-icons/bs";
+import { useGetAllSetEventsQuery } from "../../Redux/Api/setEventApiSlice";
+import { useParams } from "react-router-dom";
+import SingleSetEvent from "./SingleSetEvent";
+import { formatDate } from "../../helpers/extras";
+// import Event from "../../../../backend/model/setEventModel";
 
 const Container = tw.div`w-full flex flex-col lg:flex-row gap-5`;
 const LeftContainer = tw.div`w-full lg:w-[60%]`;
@@ -23,8 +28,11 @@ const SidebarEventItem = styled.div`
 `;
 
 const GroupEvents = () => {
-  const [rsvp, setRsvp] = useState(false);
+  const { setId } = useParams();
+  const { data, isLoading } = useGetAllSetEventsQuery(setId);
+  const pinEvents = data?.events?.filter((event) => event.isPined);
 
+  const [rsvp, setRsvp] = useState(false);
   const handleRsvpClick = () => {
     setRsvp(!rsvp);
   };
@@ -33,62 +41,36 @@ const GroupEvents = () => {
     <Container>
       {/* Main Event Section */}
       <LeftContainer>
-        <InnerContainer>
-          <EventHeader />
-          <EventTitle>Annual Tech Conference 2024</EventTitle>
-
-          {/* Event Date, Time, and Location */}
-          <EventDetailsFlex>
-            <AiFillCalendar />
-            <EventDate>Saturday, October 20, 2024</EventDate>
-          </EventDetailsFlex>
-          <EventDetailsFlex>
-            <AiOutlineClockCircle />
-            <span>10:00 AM - 5:00 PM</span>
-          </EventDetailsFlex>
-          <EventDetailsFlex>
-            <FaMapMarkerAlt />
-            <span>123 Conference Center, Main Street, Lagos</span>
-          </EventDetailsFlex>
-
-          {/* Event Description */}
-          <EventDescription>
-            Join us for the Annual Tech Conference 2024, where industry leaders and enthusiasts
-            gather to discuss the latest trends, innovations, and future of technology. Whether
-            you're a developer, designer, or tech enthusiast, there's something for everyone!
-          </EventDescription>
-
-          {/* RSVP Button */}
-          <div className="mt-5">
-            <RSVPButton onClick={handleRsvpClick}>{rsvp ? "Cancel RSVP" : "RSVP Now"}</RSVPButton>
-          </div>
-        </InnerContainer>
+        {data?.events.length < 1 ? (
+          <p>There is no event for now</p>
+        ) : (
+          data?.events?.map((event) => {
+            return (
+              <Fragment>
+                <SingleSetEvent event={event} />
+              </Fragment>
+            );
+          })
+        )}
       </LeftContainer>
 
       {/* Right Container for Related Events */}
       <RightContainer>
         <h2 className="font-bold text-lg pb-4">Upcoming Events</h2>
-        <SidebarEventItem>
-          <BsPinAngleFill />
-          <div>
-            <p className="font-semibold">Coding Bootcamp</p>
-            <p className="text-sm text-gray-500">October 28, 2024</p>
-          </div>
-        </SidebarEventItem>
-        <SidebarEventItem>
-          <BsPinAngleFill />
-          <div>
-            <p className="font-semibold">Tech Expo 2024</p>
-            <p className="text-sm text-gray-500">November 15, 2024</p>
-          </div>
-        </SidebarEventItem>
-        <SidebarEventItem>
-          <BsPinAngleFill />
-          <div>
-            <p className="font-semibold">Web Development Workshop</p>
-            <p className="text-sm text-gray-500">December 2, 2024</p>
-          </div>
-        </SidebarEventItem>
+        {pinEvents?.map((event) => {
+          console.log(event);
+          return (
+            <Fragment key={event._id}>
+              <SidebarEventItem>
+                <BsPinAngleFill />
+                <div>
+                  <p className="font-semibold">{event?.title}</p>
+                  <p className="text-sm text-gray-500">{formatDate(event?.date)}</p>
+                </div>
+              </SidebarEventItem>
+            </Fragment>
+          );
+        })}
       </RightContainer>
     </Container>
   );
