@@ -13,8 +13,7 @@ export const store = configureStore({
     [userApiSlice.reducerPath]: userApiSlice.reducer,
     [setApiSlice.reducerPath]: setApiSlice.reducer,
     [setPostApiSlice.reducerPath]: setPostApiSlice.reducer,
-    [setDiscussionApiSlice.reducerPath]: setPostApiSlice.reducer,
-    [setDiscussionApiSlice.reducerPath]: setPostApiSlice.reducer,
+    [setDiscussionApiSlice.reducerPath]: setDiscussionApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

@@ -2,7 +2,7 @@ import React from "react";
 import { BsPinAngleFill } from "react-icons/bs";
 import tw from "twin.macro";
 const InnerContainer = tw.div`w-full bg-[#f9f9f9] rounded-md shadow-md p-5 my-5`;
-const PostAuthor = tw.div`text-bold`;
+const PostAuthor = tw.div`font-semibold`;
 function PinPost({ post }) {
   return (
     <InnerContainer>

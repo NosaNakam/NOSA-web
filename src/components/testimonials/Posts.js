@@ -51,7 +51,7 @@ const Posts = () => {
   const { data, isLoading } = useGetAllSetPostsQuery(setId);
   const [addPost] = useCreateSetPostMutation();
   const [postContent, setPostContent] = useState("");
-  const [activePopup, setActivePopup] = useState(null);
+  // const [activePopup, setActivePopup] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const pinPosts = data?.posts?.filter((post) => post?.isPinned);
 
@@ -70,9 +70,9 @@ const Posts = () => {
     console.log("Selected image:", e.target.files[0]);
   };
 
-  const togglePopup = (postId) => {
-    setActivePopup((prev) => (prev === postId ? null : postId));
-  };
+  // const togglePopup = (postId) => {
+  //   setActivePopup((prev) => (prev === postId ? null : postId));
+  // };
 
   if (isLoading) {
     return <Loading />;
@@ -102,7 +102,7 @@ const Posts = () => {
                   <input
                     type="file"
                     accept="image/*"
-                    style={{ display: "none" }}
+                    style={{ visibility: "hidden" }}
                     onChange={handleImageSelect}
                   />
                 </ImageButton>
