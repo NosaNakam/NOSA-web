@@ -15,6 +15,7 @@ import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import { useSelector } from "react-redux";
 import SinglePost from "./SinglePost";
+import PinPost from "./PinPost";
 
 const Container = tw.div`w-full flex flex-col lg:flex-row gap-5`;
 const LeftContainer = tw.div`w-full lg:w-[60%]`;
@@ -48,12 +49,11 @@ const image =
 const Posts = () => {
   const { setId } = useParams();
   const { data, isLoading } = useGetAllSetPostsQuery(setId);
-  const [deletePost] = useDeleteSetPostMutation();
-  const { user } = useSelector((state) => state.AppSlice);
   const [addPost] = useCreateSetPostMutation();
   const [postContent, setPostContent] = useState("");
   const [activePopup, setActivePopup] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const pinPosts = data?.posts?.filter((post) => post?.isPinned);
 
   const handleInputChange = (e) => {
     setPostContent(e.target.value);
@@ -126,17 +126,13 @@ const Posts = () => {
       {/* Pinned Posts Section */}
       <PinContainer>
         <h2 className="font-bold text-lg pb-4">Pinned Post</h2>
-        <InnerContainer>
-          <div className="flex items-center gap-3">
-            <BsPinAngleFill fontSize={20} />
-            <div>
-              <p className="font-semibold">Important Announcement</p>
-              <p className="text-sm text-gray-500">
-                Please read the updated community guidelines...
-              </p>
-            </div>
-          </div>
-        </InnerContainer>
+        {pinPosts?.map((post) => {
+          return (
+            <Fragment key={post._id}>
+              <PinPost post={post} />
+            </Fragment>
+          );
+        })}
       </PinContainer>
     </Container>
   );

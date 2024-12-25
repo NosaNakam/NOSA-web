@@ -17,24 +17,24 @@ export const setDiscussionApiSlice = createApi({
     }),
     //get single chat by id
     getSingleChatById: build.query({
-      query: (postId) => ({
-        url: `${SET_CHAT_URL}/${postId}`,
+      query: (messageId) => ({
+        url: `${SET_CHAT_URL}/${messageId}`,
         method: "GET",
       }),
     }),
     //send message
     sendSetChat: build.mutation({
-      query: (newPost) => ({
+      query: (newMessage) => ({
         url: `${SET_CHAT_URL}`,
         method: "POST",
-        body: newPost,
+        body: newMessage,
       }),
       invalidatesTags: ["Chat"],
     }),
     //Delete set message
     deleteSetMessage: build.mutation({
-      query: (postId) => ({
-        url: `${SET_CHAT_URL}/${postId}`,
+      query: (messageId) => ({
+        url: `${SET_CHAT_URL}/${messageId}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Chat"],

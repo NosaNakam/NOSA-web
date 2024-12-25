@@ -13,12 +13,14 @@ export const store = configureStore({
     [userApiSlice.reducerPath]: userApiSlice.reducer,
     [setApiSlice.reducerPath]: setApiSlice.reducer,
     [setPostApiSlice.reducerPath]: setPostApiSlice.reducer,
-    [setDiscussionApiSlice.reducerPath]: setDiscussionApiSlice.reducer,
+    [setDiscussionApiSlice.reducerPath]: setPostApiSlice.reducer,
+    [setDiscussionApiSlice.reducerPath]: setPostApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(authApiSlice.middleware)
       .concat(userApiSlice.middleware)
       .concat(setApiSlice.middleware)
+      .concat(setPostApiSlice.middleware)
       .concat(setDiscussionApiSlice.middleware),
 });
