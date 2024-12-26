@@ -39,4 +39,9 @@ export const blogApiSlice = createApi({
   }),
 });
 
-export const { useGetAllSetEventsQuery, useGetSetEventByIdQuery } = blogApiSlice;
+export const {
+  useGetAllEventsQuery,
+  useGetAllNewsQuery,
+  useGetAllBlogsQuery,
+  useGetAllBlogsAndNewsEventsQuery,
+} = blogApiSlice;

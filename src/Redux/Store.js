@@ -6,6 +6,7 @@ import { setApiSlice } from "./Api/SetApiSice";
 import { setPostApiSlice } from "./Api/SetPostApiSlice";
 import { setDiscussionApiSlice } from "./Api/SetDiscussionApiSlice";
 import { setEventApiSlice } from "./Api/setEventApiSlice";
+import { blogApiSlice } from "./Api/BlogApiSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     [setPostApiSlice.reducerPath]: setPostApiSlice.reducer,
     [setDiscussionApiSlice.reducerPath]: setDiscussionApiSlice.reducer,
     [setEventApiSlice.reducerPath]: setEventApiSlice.reducer,
+    [blogApiSlice.reducerPath]: blogApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -24,5 +26,6 @@ export const store = configureStore({
       .concat(setApiSlice.middleware)
       .concat(setPostApiSlice.middleware)
       .concat(setDiscussionApiSlice.middleware)
-      .concat(setEventApiSlice.middleware),
+      .concat(setEventApiSlice.middleware)
+      .concat(blogApiSlice.middleware),
 });
