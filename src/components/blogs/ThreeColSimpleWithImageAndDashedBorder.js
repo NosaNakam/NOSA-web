@@ -8,6 +8,8 @@ import { ReactComponent as UserIcon } from "feather-icons/dist/icons/user.svg";
 import { ReactComponent as TagIcon } from "feather-icons/dist/icons/tag.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
+import { useGetAllBlogsQuery } from "../../Redux/Api/BlogApiSlice";
+import Loading from "../testimonials/Loading";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -44,48 +46,22 @@ const DecoratorBlob1 = tw(
 const DecoratorBlob2 = tw(
   SvgDecoratorBlob2
 )`-z-10 absolute top-0 left-0 w-48 h-48 transform -translate-x-32 translate-y-full opacity-25`;
-
+const imageSrc =
+  "https://images.unsplash.com/photo-1479660095429-2cf4e1360472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80";
 export default ({
   subheading = "",
   heading = (
     <>
-      Check our <span tw="text-primary-500">Events</span>
+      Check our <span tw="text-primary-500">Blogs</span>
     </>
   ),
   description = "Some amazing blog posts that are written by even more amazing people.",
 }) => {
-  const blogPosts = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      author: "Adam Wathan",
-      category: "SEO",
-      title: "Optimizing your website for your main keyword",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      url: "https://reddit.com",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1479660095429-2cf4e1360472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      author: "Owais Khan",
-      category: "Advertising",
-      title: "Creating The perfect advertisement campaign",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      url: "https://timerse.com",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      author: "Steve Schoger",
-      category: "Social Media",
-      title: "Efficient management of your social media assets",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      url: "https://timerse.com",
-    },
-  ];
+  const { data, isLoading } = useGetAllBlogsQuery({});
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Container>
       <Content>
@@ -95,19 +71,19 @@ export default ({
           <HeadingDescription>{description}</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>
-          {blogPosts.map((post, index) => (
-            <Column key={index}>
+          {data?.data?.map((post, index) => (
+            <Column key={post._id}>
               <Card>
-                <Image imageSrc={post.imageSrc} />
+                <Image imageSrc={imageSrc} />
                 <Details>
                   <MetaContainer>
                     <Meta>
                       <UserIcon />
-                      <div>{post.author}</div>
+                      <div>{post?.user?.fullName}</div>
                     </Meta>
                     <Meta>
                       <TagIcon />
-                      <div>{post.category}</div>
+                      <div style={{ textTransform: "capitalize" }}>{post.category}</div>
                     </Meta>
                   </MetaContainer>
                   <Title>{post.title}</Title>
