@@ -42,11 +42,6 @@ const SinglePost = ({ post }) => {
     console.log(res);
   };
 
-  //   const handleImageSelect = (e) => {
-  //     setSelectedImage(e.target.files[0]);
-  //     console.log("Selected image:", e.target.files[0]);
-  //   };
-
   const togglePopup = (postId) => {
     setActivePopup((prev) => (prev === postId ? null : postId));
   };

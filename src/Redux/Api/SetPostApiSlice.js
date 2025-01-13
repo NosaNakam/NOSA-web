@@ -39,6 +39,14 @@ export const setPostApiSlice = createApi({
       }),
       invalidatesTags: ["Post"],
     }),
+    //uploadImage
+    uploadImage: build.mutation({
+      query: (image) => ({
+        url: `${SET_POST_URL}/upload-image`,
+        method: "POST",
+        body: image,
+      }),
+    }),
   }),
 });
 
@@ -47,4 +55,5 @@ export const {
   useGetSetPostByIdQuery,
   useCreateSetPostMutation,
   useDeleteSetPostMutation,
+  useUploadImageMutation,
 } = setPostApiSlice;

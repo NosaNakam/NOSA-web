@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
@@ -10,6 +10,7 @@ import {
   useCreateSetPostMutation,
   useDeleteSetPostMutation,
   useGetAllSetPostsQuery,
+  useUploadImageMutation,
 } from "../../Redux/Api/SetPostApiSlice";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
@@ -36,6 +37,7 @@ const InputContainer = tw.div`flex-1 flex flex-col gap-3`;
 const PostInput = tw.textarea`w-full h-[3rem] py-2 px-5 rounded-[1.5rem] bg-white border-gray-300 border-2 overflow-hidden resize-none focus:outline-none`;
 const SubmitButton = tw.button`py-2 px-4 rounded-md bg-primary-500 text-white font-bold transition duration-200 hover:bg-primary-600`;
 const ImageButton = tw.button`flex items-center gap-2 py-2 px-4 rounded-md bg-gray-300 text-black font-bold transition duration-200 hover:bg-gray-400`;
+
 const PostDetailsFlex = tw.div`flex justify-between items-center pb-3 border-b-[1px] border-gray-200`;
 const PostDetailUserFlex = tw.div`flex flex-col`;
 const MainPost = tw.div`pt-2 pb-4`;
@@ -49,31 +51,56 @@ const image =
 const Posts = () => {
   const { setId } = useParams();
   const { data, isLoading } = useGetAllSetPostsQuery(setId);
+  const [uploadImage] = useUploadImageMutation();
   const [addPost] = useCreateSetPostMutation();
   const [postContent, setPostContent] = useState("");
-  // const [activePopup, setActivePopup] = useState(null);
+  const [message, setMessage] = useState({ type: "", text: "" });
   const [selectedImage, setSelectedImage] = useState(null);
   const pinPosts = data?.posts?.filter((post) => post?.isPinned);
+  console.log(data);
+  const fileInputRef = useRef(null);
 
   const handleInputChange = (e) => {
     setPostContent(e.target.value);
   };
 
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleImageSelect = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      try {
+        const res = await uploadImage(formData).unwrap();
+        console.log("Image upload response:", res);
+        setSelectedImage(res?.postImgUrl);
+        setMessage({ type: "success", text: "Image uploaded successfully." });
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        setMessage({ type: "error", text: "Failed to upload image." });
+      }
+    }
+  };
   const handlePostSubmit = async () => {
-    const res = await addPost({ content: postContent, nosaSet: setId }).unwrap();
-    console.log(res);
-    setPostContent("");
+    try {
+      const res = await addPost({
+        content: postContent,
+        nosaSet: setId,
+        image: selectedImage,
+      }).unwrap();
+
+      console.log("Post created successfully:", res);
+      setPostContent("");
+      setSelectedImage(null);
+    } catch (error) {
+      console.error("Error creating post:", error);
+      setMessage({ type: "error", text: "Failed to create post." });
+    }
   };
-
-  const handleImageSelect = (e) => {
-    setSelectedImage(e.target.files[0]);
-    console.log("Selected image:", e.target.files[0]);
-  };
-
-  // const togglePopup = (postId) => {
-  //   setActivePopup((prev) => (prev === postId ? null : postId));
-  // };
-
   if (isLoading) {
     return <Loading />;
   }
@@ -96,17 +123,20 @@ const Posts = () => {
               />
               <div
                 style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <ImageButton>
+                <ImageButton onClick={handleButtonClick}>
                   <FaImage />
                   <span>Attach Image</span>
                   <input
                     type="file"
                     accept="image/*"
+                    ref={fileInputRef}
                     style={{ display: "none" }}
                     onChange={handleImageSelect}
                   />
                 </ImageButton>
-                {postContent && <SubmitButton onClick={handlePostSubmit}>Post</SubmitButton>}
+                {(postContent || selectedImage) && (
+                  <SubmitButton onClick={handlePostSubmit}>Post</SubmitButton>
+                )}
               </div>
             </InputContainer>
           </PostFlex>

@@ -38,16 +38,17 @@ const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 export default ({ headingText = "" }) => {
   const { data, isLoading } = useGetAllSetsQuery({});
   const [visible, setVisible] = useState(7);
-  console.log(data);
+
   const onLoadMoreClick = () => {
     setVisible((v) => v + 6);
   };
 
   if (isLoading) return <div>Loading...</div>;
 
-  // Safely create a sorted copy of the array
-  const sortedSets = [...data?.sets]?.sort((a, b) => parseInt(a.name) - parseInt(b.name));
+  const sortedSets = [...(data?.sets || [])].sort((a, b) => parseInt(a.name) - parseInt(b.name));
+
   console.log(sortedSets);
+
   return (
     <AnimationRevealPage>
       <Container>
