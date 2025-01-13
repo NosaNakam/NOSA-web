@@ -9,6 +9,7 @@ import Loading from "./Loading";
 import { useSelector } from "react-redux";
 import { BsThreeDots } from "react-icons/bs";
 import { formatDate, formatDateWithoutDay } from "../../helpers/extras";
+import { useGetAllPostCommentsQuery } from "../../Redux/Api/PostCommentApiSlice";
 
 const InnerContainer = tw.div`w-full bg-[#f9f9f9] rounded-md shadow-md p-5 my-5`;
 
@@ -39,6 +40,7 @@ const image =
 
 const SinglePost = ({ post }) => {
   const [deletePost, { isLoading }] = useDeleteSetPostMutation();
+  const { data } = useGetAllPostCommentsQuery();
   const { user } = useSelector((state) => state.AppSlice);
   const [activePopup, setActivePopup] = useState(null);
   // console.log(post);
@@ -104,11 +106,7 @@ const SinglePost = ({ post }) => {
           <span>Share</span>
         </Icon> */}
       </IconContainer>
-      <input
-        type="text"
-        placeholder="Add a comment..."
-        style={{ width: "100%", padding: "0.5rem", marginTop: "1rem" }}
-      />
+      {/* <PostCommentInput /> */}
     </InnerContainer>
   );
 };
