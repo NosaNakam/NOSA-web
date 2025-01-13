@@ -17,15 +17,20 @@ const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`rounded-full bg-cover bg-center h-full shadow-md`,
 ]);
-const ImagePost = styled.div((props) => [
-  `background-image: url("${props.imageSrc}");`,
-  tw`rounded-lg bg-cover bg-center h-full shadow-md`,
-]);
+const ImagePostWrapper = styled.div`
+  ${tw`rounded-lg h-full shadow-md flex justify-center `}
+`;
+
+const ImagePost = ({ src, alt }) => (
+  <ImagePostWrapper>
+    <img src={src} alt={alt} className="w-full h-full object-cover rounded-[12px]" />
+  </ImagePostWrapper>
+);
 
 const PostDetailsFlex = tw.div`flex justify-between items-center pb-3 border-b-[1px] border-gray-200`;
 const PostDetailUserFlex = tw.div`flex flex-col`;
 const MainPost = tw.div`pt-2 pb-4`;
-const IconContainer = tw.div`flex justify-between text-gray-700 items-center border-t-2 border-gray-200 pt-4`;
+const IconContainer = tw.div`flex justify-between text-gray-700 items-center border-t-2 border-gray-200 pt-6`;
 const Icon = tw.div`flex items-center gap-2 cursor-pointer`;
 const PopupMenu = tw.div`absolute bg-white w-[10rem] shadow-md rounded p-2 mt-2 text-sm right-0`;
 
@@ -36,7 +41,7 @@ const SinglePost = ({ post }) => {
   const [deletePost, { isLoading }] = useDeleteSetPostMutation();
   const { user } = useSelector((state) => state.AppSlice);
   const [activePopup, setActivePopup] = useState(null);
-
+  // console.log(post);
   const handleDeletePost = async (postId) => {
     const res = await deletePost(postId).unwrap();
     console.log(res);
@@ -79,7 +84,8 @@ const SinglePost = ({ post }) => {
         )}
       </PostDetailsFlex>
       <MainPost>{post?.content}</MainPost>
-      {post?.image && <ImagePost imageSrc={image} />}
+      {post?.image && <ImagePost src={post?.image} alt="Post image" />}
+
       <IconContainer>
         <Icon>
           ({post?.interactions?.likes?.length})<AiFillLike fontSize={24} />
@@ -93,10 +99,10 @@ const SinglePost = ({ post }) => {
           <RiChat1Fill fontSize={24} />
           <span>Comment</span>
         </Icon>
-        <Icon>
+        {/* <Icon>
           ({post?.interactions?.shares?.length})<IoIosShareAlt fontSize={24} />
           <span>Share</span>
-        </Icon>
+        </Icon> */}
       </IconContainer>
       <input
         type="text"
