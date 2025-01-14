@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 import { BsThreeDots } from "react-icons/bs";
 import { formatDate, formatDateWithoutDay } from "../../helpers/extras";
 import { useGetAllPostCommentsQuery } from "../../Redux/Api/PostCommentApiSlice";
+import PostCommentInput from "./PostCommentInput";
+import CommentModal from "./CommentModal";
 
 const InnerContainer = tw.div`w-full bg-[#f9f9f9] rounded-md shadow-md p-5 my-5`;
 
@@ -40,10 +42,13 @@ const image =
 
 const SinglePost = ({ post }) => {
   const [deletePost, { isLoading }] = useDeleteSetPostMutation();
-  const { data } = useGetAllPostCommentsQuery();
   const { user } = useSelector((state) => state.AppSlice);
   const [activePopup, setActivePopup] = useState(null);
+  const [showCommentModal, setShowCommentModal] = useState(false);
   // console.log(post);
+  const toggleCommentModal = () => {
+    setShowCommentModal((prev) => !prev);
+  };
   const handleDeletePost = async (postId) => {
     const res = await deletePost(postId).unwrap();
     console.log(res);
@@ -97,16 +102,15 @@ const SinglePost = ({ post }) => {
           ({post?.interactions?.dislikes?.length}) <AiFillDislike fontSize={24} />
           <span>Dislike</span>
         </Icon>
-        <Icon>
-          <RiChat1Fill fontSize={24} />
+        <Icon onClick={toggleCommentModal}>
+          ({post?.interactions?.comments?.length})<RiChat1Fill fontSize={24} />
           <span>Comment</span>
         </Icon>
-        {/* <Icon>
-          ({post?.interactions?.shares?.length})<IoIosShareAlt fontSize={24} />
-          <span>Share</span>
-        </Icon> */}
       </IconContainer>
-      {/* <PostCommentInput /> */}
+      <PostCommentInput post={post} />
+      {showCommentModal && (
+        <CommentModal setShowCommentModal={toggleCommentModal} postId={post?._id} />
+      )}
     </InnerContainer>
   );
 };

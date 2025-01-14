@@ -22,7 +22,7 @@ export const postCommentApiSlice = createApi({
         method: "POST",
         body: newComment,
       }),
-      invalidatesTags: ["Comment"],
+      invalidatesTags: ["Comment", "Post"],
     }),
     //Delete post comment
     deletePostComment: build.mutation({
