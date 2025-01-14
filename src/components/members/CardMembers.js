@@ -4,6 +4,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { Container } from "../misc/Layouts.js";
 import { SectionHeading } from "../misc/Headings.js";
+import { DefaultImage } from "../../images/ImageIndex.js";
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
@@ -72,7 +73,7 @@ export default function CardMembers({ members }) {
             <CardContainer key={index}>
               <Card>
                 <img
-                  src={member.imageSrc || defaultImage}
+                  src={member.imageSrc || DefaultImage}
                   alt={member.fullName}
                   tw="w-full h-56 object-cover rounded-t"
                 />

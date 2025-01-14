@@ -12,10 +12,11 @@ import { formatDate, formatDateWithoutDay } from "../../helpers/extras";
 import { useGetAllPostCommentsQuery } from "../../Redux/Api/PostCommentApiSlice";
 import PostCommentInput from "./PostCommentInput";
 import CommentModal from "./CommentModal";
+import { FaUser } from "react-icons/fa";
 
 const InnerContainer = tw.div`w-full bg-[#f9f9f9] rounded-md shadow-md p-5 my-5`;
 
-const Profile = tw.div`w-12 h-12`;
+const Profile = tw.div`w-12 h-12 bg-gray-300 rounded-full overflow-hidden flex items-center justify-center`;
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`rounded-full bg-cover bg-center h-full shadow-md`,
@@ -36,9 +37,6 @@ const MainPost = tw.div`pt-2 pb-4`;
 const IconContainer = tw.div`flex justify-between text-gray-700 items-center border-t-2 border-gray-200 pt-6`;
 const Icon = tw.div`flex items-center gap-2 cursor-pointer`;
 const PopupMenu = tw.div`absolute bg-white w-[10rem] shadow-md rounded p-2 mt-2 text-sm right-0`;
-
-const image =
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80";
 
 const SinglePost = ({ post }) => {
   const [deletePost, { isLoading }] = useDeleteSetPostMutation();
@@ -67,7 +65,11 @@ const SinglePost = ({ post }) => {
       <PostDetailsFlex>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <Profile>
-            <Image imageSrc={image} />
+            {post?.author?.image ? (
+              <Image imageSrc={post?.author?.image} />
+            ) : (
+              <FaUser size={24} color="#fff" />
+            )}
           </Profile>
           <PostDetailUserFlex>
             <h2 className="font-semibold">

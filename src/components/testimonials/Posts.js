@@ -57,7 +57,7 @@ const Posts = () => {
   const [message, setMessage] = useState({ type: "", text: "" });
   const [selectedImage, setSelectedImage] = useState(null);
   const pinPosts = data?.posts?.filter((post) => post?.isPinned);
-  console.log(data);
+  // console.log(data);
   const fileInputRef = useRef(null);
 
   const handleInputChange = (e) => {
