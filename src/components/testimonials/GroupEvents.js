@@ -42,7 +42,7 @@ const GroupEvents = () => {
       {/* Main Event Section */}
       <LeftContainer>
         {data?.events.length < 1 ? (
-          <p>There is no event for now</p>
+          <p tw="p-5">There is no event for now</p>
         ) : (
           data?.events?.map((event) => {
             return (
@@ -58,7 +58,6 @@ const GroupEvents = () => {
       <RightContainer>
         <h2 className="font-bold text-lg pb-4">Upcoming Events</h2>
         {pinEvents?.map((event) => {
-          console.log(event);
           return (
             <Fragment key={event._id}>
               <SidebarEventItem>

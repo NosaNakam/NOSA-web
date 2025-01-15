@@ -69,21 +69,23 @@ export default function CardMembers({ members }) {
           transition={{ duration: 0.4 }}
           initial={activeTab === tabKey ? "current" : "hidden"}
           animate={activeTab === tabKey ? "current" : "hidden"}>
-          {tabs[tabKey].map((member, index) => (
-            <CardContainer key={index}>
-              <Card>
-                <img
-                  src={member.imageSrc || DefaultImage}
-                  alt={member.fullName}
-                  tw="w-full h-56 object-cover rounded-t"
-                />
-                <CardText>
-                  <CardTitle>{member.fullName}</CardTitle>
-                  <CardContent>{member.position}</CardContent>
-                </CardText>
-              </Card>
-            </CardContainer>
-          ))}
+          {tabs[tabKey].map((member, index) => {
+            return (
+              <CardContainer key={index}>
+                <Card>
+                  <img
+                    src={member?.image ? member?.image : DefaultImage}
+                    alt={member.fullName}
+                    tw="w-full h-56 object-cover rounded-t"
+                  />
+                  <CardText>
+                    <CardTitle>{member.fullName}</CardTitle>
+                    <CardContent>{member.position}</CardContent>
+                  </CardText>
+                </Card>
+              </CardContainer>
+            );
+          })}
         </TabContent>
       ))}
     </Container>

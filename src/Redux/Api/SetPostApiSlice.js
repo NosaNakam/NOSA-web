@@ -47,6 +47,22 @@ export const setPostApiSlice = createApi({
         body: image,
       }),
     }),
+    likePost: build.mutation({
+      query: (postId) => ({
+        url: `${SET_POST_URL}/like-post`,
+        method: "POST",
+        body: { postId },
+      }),
+      invalidatesTags: ["Post"],
+    }),
+    dislikePost: build.mutation({
+      query: (postId) => ({
+        url: `${SET_POST_URL}/dislike-post`,
+        method: "POST",
+        body: { postId },
+      }),
+      invalidatesTags: ["Post"],
+    }),
   }),
 });
 
@@ -56,4 +72,6 @@ export const {
   useCreateSetPostMutation,
   useDeleteSetPostMutation,
   useUploadImageMutation,
+  useLikePostMutation,
+  useDislikePostMutation,
 } = setPostApiSlice;

@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { RiChat1Fill } from "react-icons/ri";
 import { IoIosShareAlt } from "react-icons/io";
-import { FaImage } from "react-icons/fa";
+import { FaImage, FaUser } from "react-icons/fa";
 import { BsPinAngleFill, BsThreeDots } from "react-icons/bs";
 import {
   useCreateSetPostMutation,
@@ -23,7 +23,8 @@ const LeftContainer = tw.div`w-full lg:w-[60%]`;
 const InnerContainer = tw.div`w-full bg-[#f9f9f9] rounded-md shadow-md p-5 my-5`;
 const PinContainer = tw.div`hidden lg:block w-full lg:w-[40%] h-auto bg-[#f9f9f9] rounded-md shadow-md p-5 my-5`;
 const PostFlex = tw.div`flex items-start gap-3`;
-const Profile = tw.div`w-12 h-12`;
+const Profile = tw.div`w-12 h-12 bg-gray-300 rounded-full overflow-hidden flex items-center justify-center`;
+
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`rounded-full bg-cover bg-center h-full shadow-md`,
@@ -111,7 +112,8 @@ const Posts = () => {
         <InnerContainer>
           <PostFlex>
             <Profile>
-              <Image imageSrc={image} />
+              {/* <Image imageSrc={image} /> */}
+              <FaUser size={24} color="#fff" />
             </Profile>
             <InputContainer>
               <PostInput

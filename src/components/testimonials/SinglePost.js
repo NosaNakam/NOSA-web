@@ -4,7 +4,11 @@ import tw from "twin.macro";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { RiChat1Fill } from "react-icons/ri";
 import { IoIosShareAlt } from "react-icons/io";
-import { useDeleteSetPostMutation } from "../../Redux/Api/SetPostApiSlice";
+import {
+  useDeleteSetPostMutation,
+  useDislikePostMutation,
+  useLikePostMutation,
+} from "../../Redux/Api/SetPostApiSlice";
 import Loading from "./Loading";
 import { useSelector } from "react-redux";
 import { BsThreeDots } from "react-icons/bs";
@@ -13,6 +17,8 @@ import { useGetAllPostCommentsQuery } from "../../Redux/Api/PostCommentApiSlice"
 import PostCommentInput from "./PostCommentInput";
 import CommentModal from "./CommentModal";
 import { FaUser } from "react-icons/fa";
+import LikePost from "./LikePost";
+import DislikePost from "./DislikePost";
 
 const InnerContainer = tw.div`w-full bg-[#f9f9f9] rounded-md shadow-md p-5 my-5`;
 
@@ -36,10 +42,14 @@ const PostDetailUserFlex = tw.div`flex flex-col`;
 const MainPost = tw.div`pt-2 pb-4`;
 const IconContainer = tw.div`flex justify-between text-gray-700 items-center border-t-2 border-gray-200 pt-6`;
 const Icon = tw.div`flex items-center gap-2 cursor-pointer`;
+const LikedIcon = tw(Icon)`text-blue-500`;
+const DefaultIcon = tw(Icon)`text-gray-500`;
 const PopupMenu = tw.div`absolute bg-white w-[10rem] shadow-md rounded p-2 mt-2 text-sm right-0`;
 
 const SinglePost = ({ post }) => {
   const [deletePost, { isLoading }] = useDeleteSetPostMutation();
+  const [like] = useLikePostMutation();
+  const [dislike] = useDislikePostMutation();
   const { user } = useSelector((state) => state.AppSlice);
   const [activePopup, setActivePopup] = useState(null);
   const [showCommentModal, setShowCommentModal] = useState(false);
@@ -48,10 +58,14 @@ const SinglePost = ({ post }) => {
     setShowCommentModal((prev) => !prev);
   };
   const handleDeletePost = async (postId) => {
-    const res = await deletePost(postId).unwrap();
-    console.log(res);
+    await deletePost(postId).unwrap();
   };
-
+  const handleLike = async (postId) => {
+    await like(postId).unwrap();
+  };
+  const handleDislike = async (postId) => {
+    await dislike(postId).unwrap();
+  };
   const togglePopup = (postId) => {
     setActivePopup((prev) => (prev === postId ? null : postId));
   };
@@ -59,7 +73,7 @@ const SinglePost = ({ post }) => {
   if (isLoading) {
     return <Loading />;
   }
-
+  // console.log(post);
   return (
     <InnerContainer>
       <PostDetailsFlex>
@@ -96,14 +110,8 @@ const SinglePost = ({ post }) => {
       {post?.image && <ImagePost src={post?.image} alt="Post image" />}
 
       <IconContainer>
-        <Icon>
-          ({post?.interactions?.likes?.length})<AiFillLike fontSize={24} />
-          <span>Like</span>
-        </Icon>
-        <Icon>
-          ({post?.interactions?.dislikes?.length}) <AiFillDislike fontSize={24} />
-          <span>Dislike</span>
-        </Icon>
+        <LikePost post={post} userId={user?.id} handleLike={handleLike} />
+        <DislikePost post={post} userId={user?.id} handleDislike={handleDislike} />
         <Icon onClick={toggleCommentModal}>
           ({post?.interactions?.comments?.length})<RiChat1Fill fontSize={24} />
           <span>Comment</span>

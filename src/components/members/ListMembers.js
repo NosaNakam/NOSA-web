@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { BsThreeDots } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
 
 const Container = tw.div`w-full flex gap-5`;
 const LeftContainer = tw.div`w-full lg:w-[60%]`;
@@ -23,7 +24,8 @@ const OptionModel = styled.div`
 `;
 const PostDetailsFlex = tw.div`flex justify-between items-center`;
 const PostDetailUserFlex = tw.div``;
-const Profile = tw.div`w-12 h-12`;
+const Profile = tw.div`w-12 h-12 bg-gray-300 rounded-full overflow-hidden flex items-center justify-center`;
+
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`rounded-full bg-cover bg-center h-full shadow-md`,
@@ -38,7 +40,7 @@ export const ListMembers = ({ members }) => {
   const setLeaders = members.filter(
     (member) => member.position !== "member" && member.position !== "others"
   );
-  console.log(setLeaders);
+  // console.log(setLeaders);
   const toggleModel = (index) => {
     setVisibleModel(visibleModel === index ? null : index);
   };
@@ -53,7 +55,11 @@ export const ListMembers = ({ members }) => {
               <PostDetailsFlex>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                   <Profile>
-                    <Image imageSrc={image} />
+                    {member?.author?.image ? (
+                      <Image imageSrc={member?.author?.image} />
+                    ) : (
+                      <FaUser size={24} color="#fff" />
+                    )}
                   </Profile>
                   <PostDetailUserFlex>
                     <SubHeading>{member?.fullName}</SubHeading>
