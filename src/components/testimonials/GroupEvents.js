@@ -39,7 +39,6 @@ const GroupEvents = () => {
 
   return (
     <Container>
-      {/* Main Event Section */}
       <LeftContainer>
         {data?.events.length < 1 ? (
           <p tw="p-5">There is no event for now</p>
