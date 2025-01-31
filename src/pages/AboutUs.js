@@ -17,6 +17,11 @@ import ShieldIconImage from "../images/shield-icon.svg";
 import CustomerLoveIconImage from "../images/simple-icon.svg";
 import { NosaExcos } from "../Redux/Api/LocalData.js";
 import { SectionHeading } from "../components/misc/Headings";
+import {
+  CoreValuesIllustration,
+  missionIlustration,
+  visionIllustration,
+} from "../images/ImageIndex.js";
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 
 export default () => {
@@ -28,7 +33,7 @@ export default () => {
         heading="We are Nakam Old Students Association"
         buttonRounded={false}
         primaryButtonText=""
-        imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
+        imageSrc={CoreValuesIllustration}
       />
       <Features
         subheading={<Subheading>History of NOSA</Subheading>}
@@ -43,7 +48,7 @@ It consist of a large number of members spread across the globe, moulded accordi
         heading="We aim to disrupt the design space."
         buttonRounded={false}
         primaryButtonText=""
-        imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
+        imageSrc={visionIllustration}
         textOnLeft={false}
       />
 
@@ -52,7 +57,7 @@ It consist of a large number of members spread across the globe, moulded accordi
         heading="We aim to disrupt the design space."
         buttonRounded={false}
         primaryButtonText=""
-        imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
+        imageSrc={missionIlustration}
         textOnLeft={true}
       />
       <div style={{ margin: "5rem 0" }}>

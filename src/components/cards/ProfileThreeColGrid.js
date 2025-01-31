@@ -12,7 +12,8 @@ import { DefaultImage } from "../../images/ImageIndex.js";
 import ProfileDetailModel from "../features/ProfileDetailModel.js";
 import { useDispatch, useSelector } from "react-redux";
 import { addProfileDetailsModel, openProfileModel } from "../../Redux/Services/AppSlice.js";
-
+import { MdMail } from "react-icons/md";
+import { FaFacebookF } from "react-icons/fa";
 const HeadingContainer = tw.div``;
 const Heading = tw(SectionHeading)``;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
@@ -102,7 +103,7 @@ export default ({
                         href={facebook.url}
                         target="_blank"
                         rel="noopener noreferrer">
-                        <GithubIcon className="icon" />
+                        <FaFacebookF className="icon" />
                       </a>
                     )}
                     {linkedin && (
@@ -116,7 +117,7 @@ export default ({
                     )}
                     {email && (
                       <a className="link" href={`mailto:${email.url}`}>
-                        <GithubIcon className="icon" />
+                        <MdMail className="icon" />
                       </a>
                     )}
                   </CardLinks>

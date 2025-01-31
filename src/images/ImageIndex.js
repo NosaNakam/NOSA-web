@@ -14,6 +14,10 @@ import DefaultImage from "./DefultImage.PNG";
 import AssSecGen from "./AssistantSecGen.png";
 import Damwesh from "./Damwesh.png";
 import LegalAdvisor from "./LegalAdvisor.png";
+import CoreValuesIllustration from "./Water drop-rafiki.svg";
+import visionIllustration from "./vision.svg";
+import missionIlustration from "./mision.svg";
+import EmailIcon from "./email-illustration.svg";
 
 export {
   DefaultImage,
@@ -31,4 +35,8 @@ export {
   AssSecGen,
   Damwesh,
   LegalAdvisor,
+  CoreValuesIllustration,
+  visionIllustration,
+  missionIlustration,
+  EmailIcon,
 };
