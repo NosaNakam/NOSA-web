@@ -7,6 +7,7 @@ import { SectionHeading } from "../misc/Headings.js";
 import { PrimaryButton } from "../misc/Buttons.js";
 import { css } from "styled-components/macro";
 import { useGetAllSetsQuery } from "../../Redux/Api/SetApiSice.js";
+import Loading from "../testimonials/Loading.js";
 
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
@@ -19,13 +20,13 @@ const PostContainer = styled.div`
       ${tw`w-full!`}
     `}
 `;
-const Post = tw.div`cursor-pointer flex flex-col bg-gray-100 rounded-lg`;
+const Post = tw.div`cursor-pointer flex flex-col bg-gray-100 rounded-lg shadow-md`;
 const Image = styled.div`
   ${(props) =>
     css`
       background-image: url("${props.imageSrc}");
     `}
-  ${tw`h-64 w-full bg-cover bg-center rounded-t-lg`}
+  ${tw`h-64 w-full bg-cover bg-center rounded-t-lg shadow`}
 `;
 const Info = tw.div`p-8 border-2 border-t-0 rounded-lg rounded-t-none`;
 const CreationDate = tw.div`mt-4 uppercase text-gray-600 italic font-semibold text-xs`;
@@ -34,7 +35,8 @@ const Description = tw.div``;
 
 const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
-
+const defualtImage =
+  "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80";
 export default ({ headingText = "" }) => {
   const { data, isLoading } = useGetAllSetsQuery({});
   const [visible, setVisible] = useState(7);
@@ -43,11 +45,11 @@ export default ({ headingText = "" }) => {
     setVisible((v) => v + 6);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
 
   const sortedSets = [...(data?.sets || [])].sort((a, b) => parseInt(a.name) - parseInt(b.name));
 
-  console.log(sortedSets);
+  // console.log(sortedSets);
 
   return (
     <AnimationRevealPage>
@@ -60,7 +62,7 @@ export default ({ headingText = "" }) => {
             {sortedSets.slice(0, visible).map((post, index) => (
               <PostContainer key={index} featured={post.name === "1978"}>
                 <Post className="group" as="a" href={`/nosa-sets/${post._id}`}>
-                  <Image imageSrc="https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80" />
+                  <Image imageSrc={post?.coverImage ? post?.coverImage : defualtImage} />
                   <Info>
                     <CreationDate>{`Set ${post.name}`}</CreationDate>
                     <Title>{`NOSA Set ${post.name}`}</Title>

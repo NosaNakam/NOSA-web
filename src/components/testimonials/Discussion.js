@@ -4,11 +4,12 @@ import tw from "twin.macro";
 import { BsFillSendFill } from "react-icons/bs";
 import { FiMoreVertical } from "react-icons/fi";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { io } from "socket.io-client";
 import {
   useGetAllSetChatsQuery,
   useSendSetChatMutation,
 } from "../../Redux/Api/SetDiscussionApiSlice";
-import { useSelector } from "react-redux";
 
 const Container = tw.div`w-full mt-5 h-[80vh] flex flex-col bg-[#f9f9f9] rounded-md shadow-md`;
 const ChatHeader = tw.div`flex justify-between items-center bg-white p-4 border-b border-gray-200 rounded-t-md`;
@@ -37,23 +38,60 @@ const Discussion = () => {
   const { data, isLoading } = useGetAllSetChatsQuery(setId);
   const [sendMessage] = useSendSetChatMutation();
   const [text, setText] = useState("");
-
+  const [messages, setMessages] = useState([]);
+  const socketRef = useRef(null);
   const chatBodyRef = useRef(null);
 
-  // Scroll to the bottom whenever messages change
+  useEffect(() => {
+    // Initialize socket connection
+    socketRef.current = io("http://localhost:5000");
+
+    // Join the discussion room
+    socketRef.current.emit("joinDiscussion", { setId, userId: user?.id });
+
+    // Listen for new messages
+    socketRef.current.on("receiveMessage", (newMessage) => {
+      setMessages((prevMessages) => {
+        if (!prevMessages.some((msg) => msg._id === newMessage._id)) {
+          return [...prevMessages, newMessage];
+        }
+        return prevMessages;
+      });
+    });
+    // Handle reconnection
+    socketRef.current.on("reconnect", () => {
+      socketRef.current.emit("joinDiscussion", { setId, userId: user?.id });
+    });
+    return () => {
+      socketRef.current.disconnect();
+    };
+  }, [setId, user?.id]);
+
+  useEffect(() => {
+    // Load existing messages from API
+    if (data?.messages) {
+      setMessages(data.messages);
+    }
+  }, [data]);
+
   useEffect(() => {
     if (chatBodyRef.current) {
       chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
     }
-  }, [data?.messages]);
+  }, [messages]);
+
   const handleSend = async () => {
+    if (!text.trim()) return;
+
     try {
-      const res = await sendMessage({ text, setId }).uwrap();
-      console.log(res);
+      const res = await sendMessage({ text, setId }).unwrap();
+      socketRef.current.emit("sendMessage", { setId, text, sender: user?.id });
+      setText("");
     } catch (error) {
-      console.log(error?.data?.message);
+      console.error(error?.data?.message);
     }
   };
+
   return (
     <Container>
       {/* Chat Header */}
@@ -67,8 +105,8 @@ const Discussion = () => {
         {isLoading ? (
           <p>Loading messages...</p>
         ) : (
-          data?.messages?.map((message) => (
-            <Fragment key={message._id}>
+          messages.map((message) => (
+            <Fragment key={message._id || Math.random()}>
               <Message isOwn={user?.id === message?.sender?._id}>
                 <SenderName>{message?.sender?.fullName}</SenderName>
                 <MessageBubble isOwn={user?.id === message?.sender?._id}>

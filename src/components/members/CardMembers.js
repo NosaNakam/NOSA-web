@@ -36,7 +36,7 @@ export default function CardMembers({ members }) {
   const setExcos = allMembers.filter(
     (member) => member.position !== "Member" && member.position !== "Other"
   );
-
+  console.log(allMembers, setExcos);
   const tabs = {
     "All Members": allMembers,
     "Set Excos": setExcos,
