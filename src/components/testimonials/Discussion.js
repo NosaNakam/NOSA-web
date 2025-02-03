@@ -41,7 +41,7 @@ const Discussion = () => {
   const [messages, setMessages] = useState([]);
   const socketRef = useRef(null);
   const chatBodyRef = useRef(null);
-
+  console.log(messages);
   useEffect(() => {
     // Initialize socket connection
     socketRef.current = io("http://localhost:5000");
@@ -58,10 +58,12 @@ const Discussion = () => {
         return prevMessages;
       });
     });
+
     // Handle reconnection
     socketRef.current.on("reconnect", () => {
       socketRef.current.emit("joinDiscussion", { setId, userId: user?.id });
     });
+
     return () => {
       socketRef.current.disconnect();
     };
@@ -91,7 +93,7 @@ const Discussion = () => {
       console.error(error?.data?.message);
     }
   };
-
+  console.log(messages);
   return (
     <Container>
       {/* Chat Header */}
@@ -108,7 +110,13 @@ const Discussion = () => {
           messages.map((message) => (
             <Fragment key={message._id || Math.random()}>
               <Message isOwn={user?.id === message?.sender?._id}>
-                <SenderName>{message?.sender?.fullName}</SenderName>
+                {/* Conditionally render sender name */}
+                {user?.id !== message?.sender?._id && (
+                  <SenderName>
+                    {message?.sender?.fullName ||
+                      `${message?.sender?.firstName} ${message?.sender?.surname}`}
+                  </SenderName>
+                )}
                 <MessageBubble isOwn={user?.id === message?.sender?._id}>
                   {message?.text}
                 </MessageBubble>
