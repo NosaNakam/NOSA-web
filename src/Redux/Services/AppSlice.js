@@ -8,6 +8,7 @@ const initialState = {
 const appSlice = createSlice({
   name: "app",
   initialState,
+  user: null,
   reducers: {
     openProfileModel(state) {
       state.isModelOpen = !state.isModelOpen;

@@ -86,14 +86,14 @@ const Discussion = () => {
     if (!text.trim()) return;
 
     try {
-      const res = await sendMessage({ text, setId }).unwrap();
+      await sendMessage({ text, setId }).unwrap();
       socketRef.current.emit("sendMessage", { setId, text, sender: user?.id });
       setText("");
     } catch (error) {
       console.error(error?.data?.message);
     }
   };
-  console.log(messages);
+  // console.log(messages);
   return (
     <Container>
       {/* Chat Header */}

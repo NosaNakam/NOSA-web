@@ -72,6 +72,10 @@ const Posts = () => {
   const handleImageSelect = async (event) => {
     const file = event.target.files[0];
     if (file) {
+      // Create preview URL
+      const previewUrl = URL.createObjectURL(file);
+      setSelectedImage(previewUrl);
+
       const formData = new FormData();
       formData.append("image", file);
 
@@ -86,6 +90,7 @@ const Posts = () => {
       }
     }
   };
+
   const handlePostSubmit = async () => {
     try {
       const res = await addPost({
@@ -140,6 +145,15 @@ const Posts = () => {
                   <SubmitButton onClick={handlePostSubmit}>Post</SubmitButton>
                 )}
               </div>
+              {selectedImage && (
+                <div className="mt-2">
+                  <img
+                    src={selectedImage}
+                    alt="Preview"
+                    className="w-32 h-32 rounded-lg object-cover"
+                  />
+                </div>
+              )}
             </InputContainer>
           </PostFlex>
         </InnerContainer>
@@ -157,14 +171,20 @@ const Posts = () => {
 
       {/* Pinned Posts Section */}
       <PinContainer>
-        <h2 className="font-bold text-lg pb-4">Pinned Post</h2>
-        {pinPosts?.map((post) => {
-          return (
-            <Fragment key={post._id}>
-              <PinPost post={post} />
-            </Fragment>
-          );
-        })}
+        <h2 style={{ fontWeight: "bolder", fontSize: "1.2rem", paddingBottom: "1rem" }}>
+          Pinned Post
+        </h2>
+        {pinPosts.length < 1 ? (
+          <div>No pined post yet</div>
+        ) : (
+          pinPosts?.map((post) => {
+            return (
+              <Fragment key={post._id}>
+                <PinPost post={post} />
+              </Fragment>
+            );
+          })
+        )}
       </PinContainer>
     </Container>
   );

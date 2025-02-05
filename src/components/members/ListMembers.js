@@ -35,8 +35,12 @@ const image =
   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80";
 
 export const ListMembers = ({ members }) => {
+  const [searchedName, setSearchedName] = useState("");
+  const filterMembers = members?.filter((member) =>
+    member?.fullName.toLowerCase().includes(searchedName.toLowerCase())
+  );
   const [visibleModel, setVisibleModel] = useState(null);
-  console.log(members);
+  // console.log(members);
   const setLeaders = members.filter(
     (member) => member.position !== "member" && member.position !== "others"
   );
@@ -49,8 +53,11 @@ export const ListMembers = ({ members }) => {
       <LeftContainer>
         <InnerContainer>
           <Heading>Members</Heading>
-          <SearchInput placeholder="Search a member..." />
-          {members.map((member, index) => (
+          <SearchInput
+            placeholder="Search a member..."
+            onChange={(e) => setSearchedName(e.target.value)}
+          />
+          {filterMembers?.map((member, index) => (
             <PostDetailsWrapper key={index}>
               <PostDetailsFlex>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>

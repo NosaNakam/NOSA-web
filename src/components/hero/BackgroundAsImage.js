@@ -14,7 +14,10 @@ import Header, {
   StyledDropdownLinks,
 } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLogoutMutation } from "../../Redux/Api/AuthApiSplice.js";
+import { logoutUser } from "../../Redux/Services/AppSlice.js";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -66,6 +69,21 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
 `;
 
 export default () => {
+  const { isLogin } = useSelector((state) => state.AppSlice);
+  const [logout] = useLogoutMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      dispatch(logoutUser());
+      await logout().unwrap();
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+
   const navLinks = [
     <NavLinks key={1}>
       <NavLink href="/">Home</NavLink>
@@ -99,7 +117,11 @@ export default () => {
       <NavLink href="/contact">Contact Us</NavLink>
     </NavLinks>,
     <NavLinks key={2}>
-      <PrimaryLink href="/sign-up">Be a Member</PrimaryLink>
+      {isLogin ? (
+        <PrimaryLink onClick={handleLogout}>Log out</PrimaryLink>
+      ) : (
+        <PrimaryLink href="/sign-up">Be a Member</PrimaryLink>
+      )}
     </NavLinks>,
   ];
 

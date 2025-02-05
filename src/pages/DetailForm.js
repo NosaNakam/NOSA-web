@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useUpdateCurrentUserMutation } from "../Redux/Api/UserApiSlice.js";
 import { useNavigate } from "react-router-dom";
 import { setRoles, titles } from "../helpers/extras.js";
+import MessageModal from "../components/features/MessageModal.js";
 
 const Container = tw(
   ContainerBase
@@ -55,6 +56,7 @@ export default ({
   const [maritalStatus, setMaritalStatus] = useState("");
   const navigate = useNavigate();
   const [updateUserProfile, { isLoading }] = useUpdateCurrentUserMutation();
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -188,6 +190,14 @@ export default ({
               </FormContainer>
             </MainContent>
           </MainContainer>
+          <MessageModal
+            isOpen={showModal}
+            onClose={() => setShowModal(false)}
+            head={"Details updated successfully!"}
+            text={
+              "Kindly wait for your set admin to verify you to be able to access all features. Thanks"
+            }
+          />
         </Content>
       </Container>
     </AnimationRevealPage>

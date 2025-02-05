@@ -13,7 +13,7 @@ export const postCommentApiSlice = createApi({
         url: `${POST_COMMENT}?postId=${postId}`,
         method: "GET",
       }),
-      providesTags: ["Comment"],
+      providesTags: ["Comment", "Post"],
     }),
     //create new post comment
     createPostComment: build.mutation({

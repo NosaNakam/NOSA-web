@@ -46,6 +46,7 @@ export const setPostApiSlice = createApi({
         method: "POST",
         body: image,
       }),
+      invalidatesTags: ["Post"],
     }),
     likePost: build.mutation({
       query: (postId) => ({

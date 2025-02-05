@@ -18,7 +18,7 @@ import CoreValuesIllustration from "./Water drop-rafiki.svg";
 import visionIllustration from "./vision.svg";
 import missionIlustration from "./mision.svg";
 import EmailIcon from "./email-illustration.svg";
-
+import SchooMmemories from "./High School-rafiki.svg";
 export {
   DefaultImage,
   President,
@@ -39,4 +39,5 @@ export {
   visionIllustration,
   missionIlustration,
   EmailIcon,
+  SchooMmemories,
 };

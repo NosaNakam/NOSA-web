@@ -11,6 +11,7 @@ import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus
 import { useRegisterMutation } from "../Redux/Api/AuthApiSplice.js";
 import { useNavigate } from "react-router-dom"; // Correct import
 import { useGetAllSetsQuery } from "../Redux/Api/SetApiSice.js";
+import MessageModal from "../components/features/MessageModal.js";
 
 const Container = tw(
   ContainerBase
@@ -56,6 +57,8 @@ export default ({
   const [password, setPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
   const navigate = useNavigate();
   const [register, { isLoading }] = useRegisterMutation();
 
@@ -73,7 +76,8 @@ export default ({
         password,
       }).unwrap();
       setSuccessMessage(res.message);
-      setTimeout(() => navigate("/login"), 4000);
+      setShowModal(true);
+      setTimeout(() => navigate("/login"), 8000);
     } catch (error) {
       setErrorMessage(error.data?.message || "An error occurred during registration");
     }
@@ -147,6 +151,12 @@ export default ({
               </FormContainer>
             </MainContent>
           </MainContainer>
+          <MessageModal
+            isOpen={showModal}
+            onClose={() => setShowModal(false)}
+            head={"Signup Successful!"}
+            text={"Check your email to verify your account."}
+          />
           <IllustrationContainer>
             <IllustrationImage imageSrc={illustrationImageSrc} />
           </IllustrationContainer>

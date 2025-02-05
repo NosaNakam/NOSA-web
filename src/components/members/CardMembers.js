@@ -76,7 +76,7 @@ export default function CardMembers({ members }) {
                   <img
                     src={member?.image ? member?.image : DefaultImage}
                     alt={member.fullName}
-                    tw="w-full h-56 object-cover rounded-t"
+                    style={{ objectFit: "cover", height: "12rem", width: "100%" }}
                   />
                   <CardText>
                     <CardTitle>{member.fullName}</CardTitle>
