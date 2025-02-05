@@ -36,15 +36,19 @@ const image =
 
 export const ListMembers = ({ members }) => {
   const [searchedName, setSearchedName] = useState("");
+  const [searchedLeaderName, setSearchedLeaderName] = useState("");
   const filterMembers = members?.filter((member) =>
     member?.fullName.toLowerCase().includes(searchedName.toLowerCase())
   );
   const [visibleModel, setVisibleModel] = useState(null);
   // console.log(members);
   const setLeaders = members.filter(
-    (member) => member.position !== "member" && member.position !== "others"
+    (member) => member.position !== "Member" && member.position !== "others"
   );
-  // console.log(setLeaders);
+  const filterLeaders = setLeaders?.filter((leader) =>
+    leader?.fullName.toLowerCase().includes(searchedLeaderName.toLowerCase())
+  );
+  console.log(filterLeaders);
   const toggleModel = (index) => {
     setVisibleModel(visibleModel === index ? null : index);
   };
@@ -86,15 +90,22 @@ export const ListMembers = ({ members }) => {
       </LeftContainer>
       <RightContainer>
         <Heading>Set Officials</Heading>
-        <SearchInput placeholder="Search an official..." />
-        {setLeaders?.map((leader) => {
+        <SearchInput
+          placeholder="Search an official..."
+          onChange={(e) => setSearchedLeaderName(e.target.value)}
+        />
+        {filterLeaders?.map((leader) => {
           return (
             <Fragment key={leader._id}>
               <PostDetailsWrapper>
                 <PostDetailsFlex>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                     <Profile>
-                      <Image imageSrc={image} />
+                      {leader?.author?.image ? (
+                        <Image imageSrc={leader?.author?.image} />
+                      ) : (
+                        <FaUser size={24} color="#fff" />
+                      )}
                     </Profile>
                     <PostDetailUserFlex>
                       <SubHeading>{leader.fullName}</SubHeading>
