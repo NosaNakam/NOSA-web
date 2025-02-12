@@ -41,7 +41,9 @@ const GroupEvents = () => {
     <Container>
       <LeftContainer>
         {data?.events.length < 1 ? (
-          <p style={{ padding: "1.5rem" }}>There is no event for now</p>
+          <p style={{ padding: "1.5rem", fontSize: "1.2rem", fontWeight: "bolder" }}>
+            There is no event for now
+          </p>
         ) : (
           data?.events?.map((event) => {
             return (
