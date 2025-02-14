@@ -19,6 +19,7 @@ import visionIllustration from "./vision.svg";
 import missionIlustration from "./mision.svg";
 import EmailIcon from "./email-illustration.svg";
 import SchooMmemories from "./High School-rafiki.svg";
+import EduHero from "./education.svg";
 export {
   DefaultImage,
   President,
@@ -40,4 +41,5 @@ export {
   missionIlustration,
   EmailIcon,
   SchooMmemories,
+  EduHero,
 };

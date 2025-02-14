@@ -15,13 +15,7 @@ export const blogApiSlice = createApi({
         method: "GET",
       }),
     }),
-    //get all news, blogs and events
-    getAllBlogsAndNewsEvents: build.query({
-      query: () => ({
-        url: `${NEWS_BLOG_URL}`,
-        method: "GET",
-      }),
-    }),
+
     //get all news
     getAllNews: build.query({
       query: () => ({
@@ -36,6 +30,11 @@ export const blogApiSlice = createApi({
         method: "GET",
       }),
     }),
+    getDetailPost: build.query({
+      query: ({ id }) => ({
+        url: `${NEWS_BLOG_URL}/${id}`,
+      }),
+    }),
   }),
 });
 
@@ -43,5 +42,5 @@ export const {
   useGetAllEventsQuery,
   useGetAllNewsQuery,
   useGetAllBlogsQuery,
-  useGetAllBlogsAndNewsEventsQuery,
+  useGetDetailPostQuery,
 } = blogApiSlice;

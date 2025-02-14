@@ -10,6 +10,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
 import { useGetAllBlogsQuery } from "../../Redux/Api/BlogApiSlice";
 import Loading from "../testimonials/Loading";
+import { Link } from "react-router-dom";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -36,8 +37,8 @@ const Meta = styled.div`
 
 const Title = tw.h5`mt-4 leading-snug font-bold text-lg`;
 const Description = tw.p`mt-2 text-sm text-secondary-100`;
-const Link = styled(PrimaryButtonBase).attrs({ as: "a" })`
-  ${tw`inline-block mt-4 text-sm font-semibold`}
+const Btn = styled(PrimaryButtonBase)`
+  ${tw`inline-block mt-4 text-sm font-semibold cursor-pointer`}
 `;
 
 const DecoratorBlob1 = tw(
@@ -88,7 +89,9 @@ export default ({
                   </MetaContainer>
                   <Title>{post.title}</Title>
                   <Description>{post.description}</Description>
-                  <Link href={post.url}>Read Post</Link>
+                  <Btn>
+                    <Link to={`/post/${post?._id}`}>Read Post</Link>
+                  </Btn>
                 </Details>
               </Card>
             </Column>
