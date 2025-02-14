@@ -158,7 +158,7 @@ export default function App() {
             {/* <Route path="/school-achievement" element={< />} /> */}
             <Route path="/events" element={<EventLandingPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
-            <Route path="/news" element={<BlogIndexPage />} />
+            <Route path="/news-and-blogs" element={<BlogIndexPage />} />
             <Route path="/post/:postId" element={<BlogDetailPage />} />
             <Route path="/nosa-sets" element={<NosaSets />} />
             <Route path="/user/:userId" element={<UserProfile />} />

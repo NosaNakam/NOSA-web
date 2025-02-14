@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading } from "../misc/Headings.js";
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.js";
+import { useGetAllNewsQuery } from "../../Redux/Api/BlogApiSlice.js";
+import Loading from "../testimonials/Loading.js";
 
 const Row = tw.div`flex flex-col lg:flex-row -mb-10`;
 const Heading = tw(SectionHeading)`text-left lg:text-4xl xl:text-5xl`;
@@ -47,6 +49,7 @@ const RecentPostsContainer = styled.div`
 const PostTextContainer = tw.div``;
 
 export default () => {
+  const { data, isLoading } = useGetAllNewsQuery();
   // This setting is for animating the post background image on hover
   const postBackgroundSizeAnimation = {
     rest: {
@@ -56,7 +59,6 @@ export default () => {
       backgroundSize: "110%",
     },
   };
-
   //Recommended: Only 2 Items
   const popularPosts = [
     {
@@ -123,6 +125,7 @@ export default () => {
     },
   ];
 
+  if (isLoading) <Loading />;
   return (
     <Container>
       <ContentWithPaddingXl>

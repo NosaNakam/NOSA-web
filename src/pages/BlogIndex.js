@@ -8,29 +8,14 @@ import Header from "../components/headers/light.js";
 import Footer from "../components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "../components/misc/Headings";
 import { PrimaryButton } from "../components/misc/Buttons";
-import News from "../components/blogs/PopularAndRecentBlogPosts.js";
+import Blogs from "../components/blogs/ThreeColSimpleWithImageAndDashedBorder.js";
+import { useGetAllNewsQuery } from "../Redux/Api/BlogApiSlice.js";
+import Loading from "../components/testimonials/Loading.js";
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
 const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;
 const PostContainer = styled.div`
   ${tw`mt-10 w-full sm:w-1/2 lg:w-1/3 sm:pr-8`}
-  ${(props) =>
-    props.featured &&
-    css`
-      ${tw`w-full!`}
-      ${Post} {
-        ${tw`sm:flex-row! h-full sm:pr-4`}
-      }
-      ${Image} {
-        ${tw`sm:h-96 sm:min-h-full sm:w-1/2 lg:w-2/3 sm:rounded-t-none sm:rounded-l-lg`}
-      }
-      ${Info} {
-        ${tw`sm:-mr-4 sm:pl-8 sm:flex-1 sm:rounded-none sm:rounded-r-lg sm:border-t-2 sm:border-l-0`}
-      }
-      ${Description} {
-        ${tw`text-sm mt-3 leading-loose text-gray-600 font-medium`}
-      }
-    `}
 `;
 const Post = tw.div`cursor-pointer flex flex-col bg-gray-100 rounded-lg`;
 const Image = styled.div`
@@ -52,41 +37,19 @@ const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 export default ({
   headingText = "News Update",
   posts = [
-    {
-      imageSrc:
-        "https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=",
-      category: "Travel Tips",
-      date: "April 21, 2020",
-      title: "Safely Travel in Foreign Countries",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com",
-      featured: true,
-    },
     getPlaceholderPost(),
     getPlaceholderPost(),
     getPlaceholderPost(),
     getPlaceholderPost(),
     getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    // getPlaceholderPost(),
-    // getPlaceholderPost(),
-    // getPlaceholderPost(),
-    // getPlaceholderPost(),
-    // getPlaceholderPost(),
-    // getPlaceholderPost(),
   ],
 }) => {
+  const { data, isLoading } = useGetAllNewsQuery();
   const [visible, setVisible] = useState(7);
   const onLoadMoreClick = () => {
     setVisible((v) => v + 6);
   };
+  if (isLoading) <Loading />;
   return (
     <AnimationRevealPage>
       <Header />
@@ -97,7 +60,7 @@ export default ({
           </HeadingRow>
           <Posts>
             {posts.slice(0, visible).map((post, index) => (
-              <PostContainer key={index} featured={post.featured}>
+              <PostContainer key={index}>
                 <Post className="group" as="a" href={post.url}>
                   <Image imageSrc={post.imageSrc} />
                   <Info>
@@ -119,8 +82,12 @@ export default ({
           )}
         </ContentWithPaddingXl>
       </Container>
-      {/* <News /> */}
-      {/* <Footer /> */}
+
+      <Blogs
+        heading="Read Our Blog Posts"
+        subheading="Blog Posts"
+        description="Some amazing blogs written by some of our members"
+      />
     </AnimationRevealPage>
   );
 };
