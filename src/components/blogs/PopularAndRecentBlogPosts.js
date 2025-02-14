@@ -116,13 +116,6 @@ export default () => {
       authorName: "Himali Turn",
       url: "https://timerse.com",
     },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1546971587-02375cbbdade?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=641&q=80",
-      title: "An extremely funny trip to the Swiss Alps",
-      authorName: "Naomi Watts",
-      url: "https://timerse.com",
-    },
   ];
 
   if (isLoading) <Loading />;
@@ -148,13 +141,13 @@ export default () => {
                   />
                   <Title>{post.title}</Title>
                   <Description>{post.description}</Description>
-                  <AuthorInfo>
+                  {/* <AuthorInfo>
                     <AuthorImage src={post.authorImageSrc} />
                     <AuthorNameAndProfession>
                       <AuthorName>{post.authorName}</AuthorName>
                       <AuthorProfile>{post.authorProfile}</AuthorProfile>
                     </AuthorNameAndProfession>
-                  </AuthorInfo>
+                  </AuthorInfo> */}
                 </Post>
               ))}
             </PostsContainer>
@@ -166,7 +159,7 @@ export default () => {
                 <Post key={index} href={post.url} className="group">
                   <PostTextContainer>
                     <Title>{post.title}</Title>
-                    <AuthorName>{post.authorName}</AuthorName>
+                    {/* <AuthorName>{post.authorName}</AuthorName> */}
                   </PostTextContainer>
                   <Image $imageSrc={post.postImageSrc} />
                 </Post>

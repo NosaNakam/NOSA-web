@@ -91,7 +91,7 @@ export const defaultLinks = [
     <NavLink href="#">
       Blog
       <StyledDropdownLinks>
-        <DropdownLink href="/news-and-blogs">News and Blog Posts</DropdownLink>
+        <DropdownLink href="/news-and-blogs">News and Blog</DropdownLink>
         <DropdownLink href="/events">Events </DropdownLink>
         <DropdownLink href="/gallery">Gallery</DropdownLink>
         {/* <DropdownLink href="/showcase">Showcase</DropdownLink> */}
