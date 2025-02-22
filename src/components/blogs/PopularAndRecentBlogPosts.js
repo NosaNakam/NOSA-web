@@ -50,6 +50,7 @@ const PostTextContainer = tw.div``;
 
 export default () => {
   const { data, isLoading } = useGetAllNewsQuery();
+  console.log(data);
   // This setting is for animating the post background image on hover
   const postBackgroundSizeAnimation = {
     rest: {
@@ -59,66 +60,19 @@ export default () => {
       backgroundSize: "110%",
     },
   };
-  //Recommended: Only 2 Items
-  const popularPosts = [
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80",
-      authorImageSrc:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
-      title: "NOSA Officials visit the school to discuss new project",
-      description:
-        "Lorem ipsum dolor sit amet, consecteturious adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua now ele.",
-      authorName: "Charlotte Delos",
-      authorProfile: "Travel Advocate",
-      url: "https://timerse.com",
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1563784462041-5f97ac9523dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80",
-      authorImageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
-      title: "Th Association kick starting a new project ",
-      description:
-        "Lorem ipsum dolor sit amet, consecteturious adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua now ele.",
-      authorName: "Adam Cuppy",
-      authorProfile: "Vlogger",
-      url: "https://reddit.com",
-    },
-  ];
 
-  const recentPosts = [
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-      title: "NOSA Preparing for NOSA@50",
-      authorName: "Aaron Patterson",
-      url: "https://reddit.com",
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-      title: "Choosing the perfect Safaris in Africa",
-      authorName: "Sam Phipphen",
-      url: "https://reddit.com",
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-      title: "Hiking during the monsoon in Asia",
-      authorName: "Tony Hawk",
-      url: "https://timerse.com",
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-      title: "Must carry items while travelling to Thailand",
-      authorName: "Himali Turn",
-      url: "https://timerse.com",
-    },
-  ];
+  if (isLoading) return <Loading />;
 
-  if (isLoading) <Loading />;
+  // Filter popular posts
+  const popularPosts = data?.data?.filter((post) => post.isPopular) || [];
+
+  // Sort and get the most recent posts
+  const recentPosts =
+    data?.data
+      ?.slice()
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, 5) || [];
+
   return (
     <Container>
       <ContentWithPaddingXl>
@@ -129,7 +83,7 @@ export default () => {
               {popularPosts.map((post, index) => (
                 <Post
                   key={index}
-                  href={post.url}
+                  href={`/news/${post._id}`}
                   className="group"
                   initial="rest"
                   whileHover="hover"
@@ -137,7 +91,7 @@ export default () => {
                   <Image
                     transition={{ duration: 0.3 }}
                     variants={postBackgroundSizeAnimation}
-                    $imageSrc={post.postImageSrc}
+                    $imageSrc={post.image}
                   />
                   <Title>{post.title}</Title>
                   <Description>{post.description}</Description>
@@ -153,15 +107,15 @@ export default () => {
             </PostsContainer>
           </PopularPostsContainer>
           <RecentPostsContainer>
-            <Heading>Recent News </Heading>
+            <Heading>Recent News</Heading>
             <PostsContainer>
               {recentPosts.map((post, index) => (
-                <Post key={index} href={post.url} className="group">
+                <Post key={index} href={`/news/${post._id}`} className="group">
                   <PostTextContainer>
                     <Title>{post.title}</Title>
                     {/* <AuthorName>{post.authorName}</AuthorName> */}
                   </PostTextContainer>
-                  <Image $imageSrc={post.postImageSrc} />
+                  <Image $imageSrc={post.image} />
                 </Post>
               ))}
             </PostsContainer>

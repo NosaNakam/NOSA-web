@@ -29,6 +29,7 @@ import SchoolAchievement from "./components/cards/TwoTrendingPreviewCardsWithIma
 import FeatureStats from "./components/features/ThreeColCenteredStatsPrimaryBackground.js";
 import Newsletter from "./components/forms/TwoColContactUsWithIllustration.js";
 import Footer from "./components/footers/MiniCenteredFooter.js";
+import { useGetAllBlogsQuery } from "./Redux/Api/BlogApiSlice.js";
 /* Hero */
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
@@ -118,6 +119,8 @@ export default ({
    * Using gtag like this because we only want to use Google Analytics when Main Landing Page is rendered
    * Remove this part and the the gtag script inside public/index.html if you dont need google analytics
    */
+  const { data, isLoading } = useGetAllBlogsQuery({});
+  const blogs = data?.data?.slice(0, 3);
   useEffect(() => {
     window.gtag("js", new Date());
     window.gtag("config", "UA-45799926-9");
@@ -155,7 +158,7 @@ export default ({
         <Content2Xl>
           <Hero />
           <Welcome />
-          <Blog />
+          <Blog blogs={blogs} isLoading={isLoading} />
           <FeatureStats />
           <EventAndNews />
           <SchoolAchievement />

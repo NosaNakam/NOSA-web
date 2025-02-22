@@ -54,6 +54,13 @@ export default ({
   const [employer, setEmployer] = useState("");
   const [position, setPosition] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
+  const [yearOfGraduation, setYearOfGraduation] = useState("");
+  const [image, setImage] = useState("");
+  const [socialMedia, setSocialMedia] = useState([
+    { platform: "twitter", url: "" },
+    { platform: "linkedin", url: "" },
+    { platform: "facebook", url: "" },
+  ]);
   const navigate = useNavigate();
   const [updateUserProfile, { isLoading }] = useUpdateCurrentUserMutation();
   const [showModal, setShowModal] = useState(false);
@@ -68,10 +75,14 @@ export default ({
         employer,
         position,
         maritalStatus,
+        yearOfGraduation,
+        image,
+        socialMedia,
         firstVisit: false,
       }).unwrap();
       setNotification({ message: res.message, type: "success" });
-      setTimeout(() => navigate("/"), 2000);
+      setShowModal(true);
+      setTimeout(() => navigate("/"), 5000);
     } catch (error) {
       setNotification({ message: error.data?.message || "An error occurred", type: "error" });
     }
@@ -88,8 +99,29 @@ export default ({
       setFirstName(user.firstName);
       setSurname(user.surname);
       setEmail(user.email);
+      setPhone(user.phone || "");
+      setTitle(user.title || "");
+      setCurrentJob(user.currentJob || "");
+      setEmployer(user.employer || "");
+      setPosition(user.position || "");
+      setMaritalStatus(user.maritalStatus || "");
+      setYearOfGraduation(user.yearOfGraduation || "");
+      setImage(user.image || "");
+      setSocialMedia(
+        user.socialMedia || [
+          { platform: "twitter", url: "" },
+          { platform: "linkedin", url: "" },
+          { platform: "facebook", url: "" },
+        ]
+      );
     }
   }, [user]);
+
+  const handleSocialMediaChange = (index, field, value) => {
+    const updatedSocialMedia = [...socialMedia];
+    updatedSocialMedia[index][field] = value;
+    setSocialMedia(updatedSocialMedia);
+  };
 
   return (
     <AnimationRevealPage>
@@ -136,7 +168,6 @@ export default ({
                     type="tel"
                     placeholder="Phone"
                   />
-
                   <Select value={title} onChange={(e) => setTitle(e.target.value)} defaultValue="">
                     <option value="" disabled>
                       Title
@@ -159,7 +190,6 @@ export default ({
                     type="text"
                     placeholder="Employer"
                   />
-
                   <Select
                     value={position}
                     onChange={(e) => setPosition(e.target.value)}
@@ -182,6 +212,27 @@ export default ({
                     <option value="divorced">Divorced</option>
                     <option value="complicated">Complicated</option>
                   </Select>
+                  <Input
+                    onChange={(e) => setYearOfGraduation(e.target.value)}
+                    value={yearOfGraduation}
+                    type="text"
+                    placeholder="Year of Graduation"
+                  />
+                  <Input
+                    onChange={(e) => setImage(e.target.value)}
+                    value={image}
+                    type="text"
+                    placeholder="Profile Image URL"
+                  />
+                  {socialMedia.map((media, index) => (
+                    <Input
+                      key={index}
+                      onChange={(e) => handleSocialMediaChange(index, "url", e.target.value)}
+                      value={media.url}
+                      type="text"
+                      placeholder={`${media.platform} URL`}
+                    />
+                  ))}
                   <SubmitButton type="submit">
                     <SubmitButtonIcon className="icon" />
                     <span className="text">{isLoading ? "Saving..." : submitButtonText}</span>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import AnimationRevealPage from "../helpers/AnimationRevealPage";
 import Nav from "../components/headers/light";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Navigate, NavLink, Outlet, useParams } from "react-router-dom";
 import { IoMdSearch } from "react-icons/io";
 import TabCardGrid from "../components/cards/TabCardGrid";
 import SubLeaderProfile from "../components/cards/SubLeaderProfile";
@@ -42,9 +42,13 @@ const GroupNav = tw.div`w-1/2 flex gap-5`;
 const Contain = tw.div`w-[90%] mx-auto`;
 
 const NosaSet = () => {
+  const { isLogin } = useSelector((state) => state.AppSlice);
+
   const { setId } = useParams();
   const { data, isLoading } = useGetSingleSetQuery(setId);
-  console.log(data);
+  if (!isLogin) {
+    return <Navigate to="/login" />;
+  }
   if (isLoading) {
     return <Loading />;
   }

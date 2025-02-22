@@ -18,7 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogoutMutation } from "../../Redux/Api/AuthApiSplice.js";
 import { logoutUser } from "../../Redux/Services/AppSlice.js";
-import { EduHero } from "../../images/ImageIndex.js";
+import { HeroImage, Graduate } from "../../images/ImageIndex.js";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -31,7 +31,7 @@ const StyledHeader = styled(Header)`
 `;
 const Container = styled.div`
   ${tw`relative -mx-8 -mt-8 bg-center bg-cover`}
-  background-image: url(${EduHero});
+  background-image: url(${HeroImage});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

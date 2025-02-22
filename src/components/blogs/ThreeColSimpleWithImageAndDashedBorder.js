@@ -8,7 +8,7 @@ import { ReactComponent as UserIcon } from "feather-icons/dist/icons/user.svg";
 import { ReactComponent as TagIcon } from "feather-icons/dist/icons/tag.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
-import { useGetAllBlogsQuery } from "../../Redux/Api/BlogApiSlice";
+// import { useGetAllBlogsQuery } from "../../Redux/Api/BlogApiSlice";
 import Loading from "../testimonials/Loading";
 import { Link } from "react-router-dom";
 
@@ -57,12 +57,12 @@ export default ({
     </>
   ),
   description = "Some amazing blog posts that are written by even more amazing people.",
+  blogs,
+  isLoading,
 }) => {
-  const { data, isLoading } = useGetAllBlogsQuery({});
   if (isLoading) {
     return <Loading />;
   }
-
   return (
     <Container>
       <Content>
@@ -72,10 +72,10 @@ export default ({
           <HeadingDescription>{description}</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>
-          {data?.data?.map((post, index) => (
+          {blogs.map((post, index) => (
             <Column key={post._id}>
               <Card>
-                <Image imageSrc={imageSrc} />
+                <Image imageSrc={post.image || imageSrc} />
                 <Details>
                   <MetaContainer>
                     <Meta>

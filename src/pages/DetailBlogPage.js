@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -40,8 +40,8 @@ const DecoratorBlob2 = tw(
 
 const BlogDetailPage = () => {
   const { postId } = useParams();
+  const ref = useRef();
   const { data, isLoading } = useGetDetailPostQuery({ id: postId });
-  console.log(postId, data);
   if (isLoading) {
     return <Loading />;
   }

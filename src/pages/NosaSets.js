@@ -13,7 +13,7 @@ import Footer from "../components/footers/MiniCenteredFooter.js";
 // import NosaSetComponent from "../components/blogs/NosaSetsComponent.js";
 import NosaSetsComponent from "../components/blogs/NosaSetsComponent.js";
 
-export default () => (
+export default () => {
   <AnimationRevealPage>
     <Hero />
     <NosaSetsComponent />
@@ -26,5 +26,5 @@ export default () => (
     <FAQ />
     <SubscribeNewsLetterForm />
     <Footer /> */}
-  </AnimationRevealPage>
-);
+  </AnimationRevealPage>;
+};
