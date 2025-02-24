@@ -2,6 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
+import { useDispatch, useSelector } from "react-redux";
 
 import Header, {
   LogoLink,
@@ -11,6 +12,9 @@ import Header, {
   DropdownLink,
 } from "../headers/light.js";
 import { SchooMmemories } from "../../images/ImageIndex.js";
+import { useNavigate } from "react-router-dom";
+import { useLogoutMutation } from "../../Redux/Api/AuthApiSplice.js";
+import { logoutUser } from "../../Redux/Services/AppSlice.js";
 
 const StyledHeader = styled(Header)`
   ${tw`justify-between`}
@@ -33,7 +37,7 @@ const RightColumn = styled.div`
 const Content = tw.div`mt-24 lg:mt-24 lg:mb-24 flex flex-col sm:items-center lg:items-stretch`;
 const Heading = tw.h1`text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-black leading-none`;
 const Paragraph = tw.p`max-w-md my-8 lg:my-5 lg:my-8 sm:text-lg lg:text-base xl:text-lg leading-loose`;
-
+const LogoutBtn = tw.button`text-center inline-block w-full sm:w-48 py-4 font-semibold tracking-wide rounded hocus:outline-none focus:shadow-outline transition duration-300 bg-primary-500 text-gray-100 hover:bg-primary-700`;
 const Actions = styled.div`
   ${tw`mb-8 lg:mb-0`}
   .action {
@@ -99,6 +103,21 @@ export default ({
   secondaryActionUrl = "#",
   secondaryActionText = "Pay Dues",
 }) => {
+  const { isLogin } = useSelector((state) => state.AppSlice);
+  const [logout] = useLogoutMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      dispatch(logoutUser());
+      await logout().unwrap();
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+
   return (
     <Container>
       <TwoColumn>
@@ -108,9 +127,13 @@ export default ({
             <Heading>{heading}</Heading>
             <Paragraph>{description}</Paragraph>
             <Actions>
-              <a href={primaryActionUrl} className="action primaryAction">
-                {primaryActionText}
-              </a>
+              {isLogin ? (
+                <LogoutBtn onClick={handleLogout}>Log out</LogoutBtn>
+              ) : (
+                <a href={primaryActionUrl} className="action primaryAction">
+                  {primaryActionText}
+                </a>
+              )}
               <a href={secondaryActionUrl} className="action secondaryAction">
                 {secondaryActionText}
               </a>

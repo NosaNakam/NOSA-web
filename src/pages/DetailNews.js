@@ -8,13 +8,13 @@ import { ReactComponent as TagIcon } from "feather-icons/dist/icons/tag.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../images/svg-decorator-blob-3.svg";
 import Loading from "../components/testimonials/Loading";
-import { useGetDetailPostQuery } from "../Redux/Api/BlogApiSlice";
 import AnimationRevealPage from "../helpers/AnimationRevealPage";
 import Header from "../components/headers/light";
+import { useGetDetailPostQuery } from "../Redux/Api/BlogApiSlice";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto`;
-const BlogContainer = tw.div`max-w-3xl mx-auto`;
+const NewsContainer = tw.div`max-w-3xl mx-auto`;
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
   tw`bg-cover bg-center h-96 rounded-lg`,
@@ -38,16 +38,16 @@ const DecoratorBlob2 = tw(
   SvgDecoratorBlob2
 )`-z-10 absolute top-0 left-0 w-48 h-48 transform -translate-x-32 translate-y-full opacity-25`;
 
-const BlogDetailPage = () => {
-  const { postId } = useParams();
+const NewsDetailPage = () => {
+  const { newsId } = useParams();
   const ref = useRef();
-  const { data, isLoading } = useGetDetailPostQuery({ id: postId });
+  const { data, isLoading } = useGetDetailPostQuery({ id: newsId });
   if (isLoading) {
     return <Loading />;
   }
 
   if (!data) {
-    return <p className="text-center text-red-500">Blog post not found.</p>;
+    return <p className="text-center text-red-500">News post not found.</p>;
   }
 
   return (
@@ -55,7 +55,7 @@ const BlogDetailPage = () => {
       <Container>
         <Content>
           <Header />
-          <BlogContainer>
+          <NewsContainer>
             <Image imageSrc={data.image || "https://via.placeholder.com/800x400"} />
             <MetaContainer>
               <Meta>
@@ -68,9 +68,9 @@ const BlogDetailPage = () => {
               </Meta>
             </MetaContainer>
             <Title>{data.title}</Title>
-            {/* <Description>{data.content}</Description> */}
+            <Description>{data.description}</Description>
             <div dangerouslySetInnerHTML={{ __html: data.content }} />
-          </BlogContainer>
+          </NewsContainer>
         </Content>
         <DecoratorBlob1 />
         <DecoratorBlob2 />
@@ -79,4 +79,4 @@ const BlogDetailPage = () => {
   );
 };
 
-export default BlogDetailPage;
+export default NewsDetailPage;

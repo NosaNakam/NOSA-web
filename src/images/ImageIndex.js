@@ -22,6 +22,7 @@ import SchooMmemories from "./High School-rafiki.svg";
 import EduHero from "./education.svg";
 import HeroImage from "./Hero-image.jpg";
 import Graduate from "./Graduate.jpg";
+import Welfare from "./Lydia.png";
 export {
   DefaultImage,
   President,
@@ -46,4 +47,5 @@ export {
   EduHero,
   Graduate,
   HeroImage,
+  Welfare,
 };

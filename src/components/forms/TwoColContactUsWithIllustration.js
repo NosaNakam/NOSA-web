@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "../misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "../misc/Buttons.js";
 import EmailIllustrationSrc from "../../images/email-illustration.svg";
+import { useSubscribeToNewsletterMutation } from "../../Redux/Api/NewsLetterApiSlice.js";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -32,6 +33,9 @@ const Input = tw.input`border-2 px-5 py-3 rounded focus:outline-none font-medium
 
 const SubmitButton = tw(PrimaryButtonBase)`inline-block lg:ml-6 mt-6 lg:mt-0`;
 
+const SuccessMessage = tw.p`mt-4 text-green-500 text-center md:text-left`;
+const ErrorMessage = tw.p`mt-4 text-red-500 text-center md:text-left`;
+
 export default ({
   subheading = "Contact Us",
   heading = (
@@ -46,7 +50,32 @@ export default ({
   formMethod = "get",
   textOnLeft = true,
 }) => {
-  // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
+  const [email, setEmail] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [subscribe] = useSubscribeToNewsletterMutation();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    if (!email || !email.trim()) {
+      setErrorMessage("Email is required");
+      return;
+    }
+
+    try {
+      await subscribe({ email }).unwrap();
+
+      setSuccessMessage("Subscribed to newsletter successfully!");
+      setEmail("");
+    } catch (error) {
+      setErrorMessage(error.data?.message || "Failed to subscribe. Please try again.");
+    }
+  };
 
   return (
     <Container>
@@ -59,10 +88,18 @@ export default ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
-            <Form action={formAction} method={formMethod}>
-              <Input type="email" name="email" placeholder="Your Email Address" />
+            <Form onSubmit={handleSubmit}>
+              <Input
+                type="email"
+                name="email"
+                placeholder="Your Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <SubmitButton type="submit">{submitButtonText}</SubmitButton>
             </Form>
+            {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
+            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           </TextContent>
         </TextColumn>
       </TwoColumn>

@@ -14,6 +14,7 @@ import {
   President,
   Tresurer,
   VicePresident,
+  Welfare,
 } from "../../images/ImageIndex";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare, FaInstagramSquare, FaLinkedin } from "react-icons/fa";
@@ -279,7 +280,7 @@ export const NosaExcos = [
     employer: "",
     setOf: "",
     position: "Welf. & Social Secretary ",
-    image: "",
+    image: Welfare,
     EducationalBackground: {
       primaryEducation: [],
       secondaryEducation: ["Nakam Memorial Secondary School"],

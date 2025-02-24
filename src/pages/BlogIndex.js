@@ -9,7 +9,7 @@ import Footer from "../components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "../components/misc/Headings";
 import { PrimaryButton } from "../components/misc/Buttons";
 import Blogs from "../components/blogs/ThreeColSimpleWithImageAndDashedBorder.js";
-import { useGetAllNewsQuery } from "../Redux/Api/BlogApiSlice.js";
+import { useGetAllBlogsQuery, useGetAllNewsQuery } from "../Redux/Api/BlogApiSlice.js";
 import Loading from "../components/testimonials/Loading.js";
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
@@ -34,17 +34,10 @@ const Description = tw.div``;
 const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 
-export default ({
-  headingText = "News Update",
-  posts = [
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-    getPlaceholderPost(),
-  ],
-}) => {
+export default ({ headingText = "News Update" }) => {
   const { data, isLoading } = useGetAllNewsQuery();
+  const { data: blog, isLoading: gettingBlogs } = useGetAllBlogsQuery({});
+  const blogs = blog?.data;
   const [visible, setVisible] = useState(7);
   const onLoadMoreClick = () => {
     setVisible((v) => v + 6);
@@ -59,14 +52,14 @@ export default ({
             <Heading>{headingText}</Heading>
           </HeadingRow>
           <Posts>
-            {posts.slice(0, visible).map((post, index) => (
+            {data?.data?.slice(0, visible).map((post, index) => (
               <PostContainer key={index}>
-                <Post className="group" as="a" href={post.url}>
-                  <Image imageSrc={post.imageSrc} />
+                <Post className="group" as="a" href={`/news/${post?._id}`}>
+                  <Image imageSrc={post?.image} />
                   <Info>
-                    <Category>{post.category}</Category>
-                    <CreationDate>{post.date}</CreationDate>
-                    <Title>{post.title}</Title>
+                    <Category>{post?.category}</Category>
+                    <CreationDate>{post?.date}</CreationDate>
+                    <Title>{post?.title}</Title>
                     {post.featured && post.description && (
                       <Description>{post.description}</Description>
                     )}
@@ -75,7 +68,7 @@ export default ({
               </PostContainer>
             ))}
           </Posts>
-          {visible < posts.length && (
+          {visible < data?.data?.length && (
             <ButtonContainer>
               <LoadMoreButton onClick={onLoadMoreClick}>Load More</LoadMoreButton>
             </ButtonContainer>
@@ -87,18 +80,9 @@ export default ({
         heading="Read Our Blog Posts"
         subheading="Blog Posts"
         description="Some amazing blogs written by some of our members"
+        blogs={blogs}
+        isLoading={gettingBlogs}
       />
     </AnimationRevealPage>
   );
 };
-
-const getPlaceholderPost = () => ({
-  imageSrc:
-    "https://media.istockphoto.com/id/1409309637/vector/breaking-news-label-banner-isolated-vector-design.jpg?s=612x612&w=0&k=20&c=JoQHezk8t4hw8xXR1_DtTeWELoUzroAevPHo0Lth2Ow=",
-  category: "Travel Guide",
-  date: "April 19, 2020",
-  title: "Visit the beautiful Alps in Switzerland",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  url: "https://reddit.com",
-});

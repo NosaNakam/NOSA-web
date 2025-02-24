@@ -129,6 +129,8 @@ import { useSelector } from "react-redux";
 import DetailForm from "./pages/DetailForm.js";
 import PrivateRoute from "./PrivateRoute.js";
 import BlogDetailPage from "./pages/DetailBlogPage.js";
+import NewsDetailPage from "./pages/DetailNews.js";
+
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
@@ -159,6 +161,7 @@ export default function App() {
             <Route path="/events" element={<EventLandingPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/news-and-blogs" element={<BlogIndexPage />} />
+            <Route path="/news/:newsId" element={<NewsDetailPage />} />
             <Route path="/post/:postId" element={<BlogDetailPage />} />
             <Route path="/nosa-sets" element={<NosaSets />} />
             <Route path="/user/:userId" element={<UserProfile />} />

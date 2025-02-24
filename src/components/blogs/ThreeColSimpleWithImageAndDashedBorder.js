@@ -72,7 +72,7 @@ export default ({
           <HeadingDescription>{description}</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>
-          {blogs.map((post, index) => (
+          {blogs.map((post) => (
             <Column key={post._id}>
               <Card>
                 <Image imageSrc={post.image || imageSrc} />

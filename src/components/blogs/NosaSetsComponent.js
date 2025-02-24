@@ -43,7 +43,7 @@ export default ({ headingText = "" }) => {
   if (isLoading) return <Loading />;
 
   const sets = data?.sets;
-  console.log(sets, data);
+  // console.log(sets, data);
 
   return (
     <AnimationRevealPage>
@@ -63,7 +63,6 @@ export default ({ headingText = "" }) => {
                     <Info>
                       <CreationDate>{`Set ${post.name}`}</CreationDate>
                       <Title>{`NOSA Set ${post.name}`}</Title>
-                      {/* Safely handle undefined `members` */}
                       {post.members?.length > 0 && (
                         <Description>{`Members: ${post.members.length}`}</Description>
                       )}

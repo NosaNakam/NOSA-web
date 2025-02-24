@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const { setId } = useParams();
 
   const isMember = user?.nosaSet === setId || user.role === "superAdmin";
-
+  // console.log(user);
   return (
     <>
       {isMember ? (
