@@ -5,15 +5,8 @@ const USER_URL = "users";
 export const userApiSlice = createApi({
   reducerPath: "userApi",
   baseQuery: baseQueryUrl,
-  tagTypes: [],
+  tagTypes: ["User"],
   endpoints: (build) => ({
-    //get user profile
-    getUserProfile: build.query({
-      query: () => ({
-        url: `${USER_URL}/profile`,
-        method: "GET",
-      }),
-    }),
     //update user profile
     updateCurrentUser: build.mutation({
       query: (data) => ({
@@ -21,7 +14,37 @@ export const userApiSlice = createApi({
         method: "PUT",
         body: data,
       }),
+      invalidatesTags: ["User"],
+    }),
+    //update user profile
+    uploadUserImage: build.mutation({
+      query: (data) => ({
+        url: `${USER_URL}/uploadUserImage`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    uploadUserBanner: build.mutation({
+      query: (data) => ({
+        url: `${USER_URL}/uploadUserBanner`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    getSingleUserDetails: build.query({
+      query: (id) => ({
+        url: `${USER_URL}/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["User"],
     }),
   }),
 });
-export const { useGetUserProfileQuery, useUpdateCurrentUserMutation } = userApiSlice;
+export const {
+  useUpdateCurrentUserMutation,
+  useGetSingleUserDetailsQuery,
+  useUploadUserImageMutation,
+  useUploadUserBannerMutation,
+} = userApiSlice;

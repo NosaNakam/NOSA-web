@@ -6,11 +6,12 @@ import styled from "styled-components";
 import illustration from "../images/signup-illustration.svg";
 import logo from "../images/logo.png";
 import { ReactComponent as SaveIcon } from "feather-icons/dist/icons/save.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useUpdateCurrentUserMutation } from "../Redux/Api/UserApiSlice.js";
 import { useNavigate } from "react-router-dom";
 import { setRoles, titles } from "../helpers/extras.js";
 import MessageModal from "../components/features/MessageModal.js";
+import { saveUser } from "../Redux/Services/AppSlice.js";
 
 const Container = tw(
   ContainerBase
@@ -44,6 +45,7 @@ export default ({
   SubmitButtonIcon = SaveIcon,
 }) => {
   const { user } = useSelector((state) => state.AppSlice);
+  const dispatch = useDispatch();
   const [notification, setNotification] = useState({ message: "", type: "" });
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
@@ -54,14 +56,8 @@ export default ({
   const [employer, setEmployer] = useState("");
   const [position, setPosition] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
-  const [yearOfGraduation, setYearOfGraduation] = useState("");
-  const [image, setImage] = useState("");
-  const [socialMedia, setSocialMedia] = useState([
-    { platform: "twitter", url: "" },
-    { platform: "linkedin", url: "" },
-    { platform: "facebook", url: "" },
-  ]);
   const navigate = useNavigate();
+
   const [updateUserProfile, { isLoading }] = useUpdateCurrentUserMutation();
   const [showModal, setShowModal] = useState(false);
 
@@ -75,11 +71,12 @@ export default ({
         employer,
         position,
         maritalStatus,
-        yearOfGraduation,
-        image,
-        socialMedia,
-        firstVisit: false,
+        firstVisit: false, // Update firstVisit to false
       }).unwrap();
+
+      const updatedUser = { ...user, firstVisit: false };
+      dispatch(saveUser(updatedUser));
+
       setNotification({ message: res.message, type: "success" });
       setShowModal(true);
       setTimeout(() => navigate("/"), 5000);
@@ -105,23 +102,8 @@ export default ({
       setEmployer(user.employer || "");
       setPosition(user.position || "");
       setMaritalStatus(user.maritalStatus || "");
-      setYearOfGraduation(user.yearOfGraduation || "");
-      setImage(user.image || "");
-      setSocialMedia(
-        user.socialMedia || [
-          { platform: "twitter", url: "" },
-          { platform: "linkedin", url: "" },
-          { platform: "facebook", url: "" },
-        ]
-      );
     }
   }, [user]);
-
-  const handleSocialMediaChange = (index, field, value) => {
-    const updatedSocialMedia = [...socialMedia];
-    updatedSocialMedia[index][field] = value;
-    setSocialMedia(updatedSocialMedia);
-  };
 
   return (
     <AnimationRevealPage>
@@ -212,27 +194,6 @@ export default ({
                     <option value="divorced">Divorced</option>
                     <option value="complicated">Complicated</option>
                   </Select>
-                  <Input
-                    onChange={(e) => setYearOfGraduation(e.target.value)}
-                    value={yearOfGraduation}
-                    type="text"
-                    placeholder="Year of Graduation"
-                  />
-                  <Input
-                    onChange={(e) => setImage(e.target.value)}
-                    value={image}
-                    type="text"
-                    placeholder="Profile Image URL"
-                  />
-                  {socialMedia.map((media, index) => (
-                    <Input
-                      key={index}
-                      onChange={(e) => handleSocialMediaChange(index, "url", e.target.value)}
-                      value={media.url}
-                      type="text"
-                      placeholder={`${media.platform} URL`}
-                    />
-                  ))}
                   <SubmitButton type="submit">
                     <SubmitButtonIcon className="icon" />
                     <span className="text">{isLoading ? "Saving..." : submitButtonText}</span>

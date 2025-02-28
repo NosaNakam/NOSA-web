@@ -3,6 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { BsThreeDots } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Container = tw.div`w-full flex gap-5`;
 const LeftContainer = tw.div`w-full lg:w-[60%]`;
@@ -41,17 +42,18 @@ export const ListMembers = ({ members }) => {
     member?.fullName.toLowerCase().includes(searchedName.toLowerCase())
   );
   const [visibleModel, setVisibleModel] = useState(null);
-  // console.log(members);
+
   const setLeaders = members.filter(
     (member) => member.position !== "Member" && member.position !== "others"
   );
   const filterLeaders = setLeaders?.filter((leader) =>
     leader?.fullName.toLowerCase().includes(searchedLeaderName.toLowerCase())
   );
-  console.log(filterLeaders);
+
   const toggleModel = (index) => {
     setVisibleModel(visibleModel === index ? null : index);
   };
+
   return (
     <Container>
       <LeftContainer>
@@ -65,17 +67,27 @@ export const ListMembers = ({ members }) => {
             <PostDetailsWrapper key={index}>
               <PostDetailsFlex>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <Profile>
-                    {member?.author?.image ? (
-                      <Image imageSrc={member?.author?.image} />
-                    ) : (
-                      <FaUser size={24} color="#fff" />
-                    )}
-                  </Profile>
-                  <PostDetailUserFlex>
-                    <SubHeading>{member?.fullName}</SubHeading>
-                    <p>Joined 2 years ago</p>
-                  </PostDetailUserFlex>
+                  {/* Wrap the profile section in a Link */}
+                  <Link
+                    to={`/user/${member._id}`}
+                    style={{
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}>
+                    <Profile>
+                      {member?.author?.image ? (
+                        <Image imageSrc={member?.author?.image} />
+                      ) : (
+                        <FaUser size={24} color="#fff" />
+                      )}
+                    </Profile>
+                    <PostDetailUserFlex>
+                      <SubHeading>{member?.fullName}</SubHeading>
+                      <p>Joined 2 years ago</p>
+                    </PostDetailUserFlex>
+                  </Link>
                 </div>
                 <BsThreeDots style={{ cursor: "pointer" }} onClick={() => toggleModel(index)} />
               </PostDetailsFlex>
@@ -99,7 +111,15 @@ export const ListMembers = ({ members }) => {
             <Fragment key={leader._id}>
               <PostDetailsWrapper>
                 <PostDetailsFlex>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  {/* Wrap the profile section in a Link */}
+                  <Link
+                    to={`/user/${leader._id}`}
+                    style={{
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}>
                     <Profile>
                       {leader?.author?.image ? (
                         <Image imageSrc={leader?.author?.image} />
@@ -111,7 +131,7 @@ export const ListMembers = ({ members }) => {
                       <SubHeading>{leader.fullName}</SubHeading>
                       <p>{leader.position}</p>
                     </PostDetailUserFlex>
-                  </div>
+                  </Link>
                 </PostDetailsFlex>
               </PostDetailsWrapper>
             </Fragment>

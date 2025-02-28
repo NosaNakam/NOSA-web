@@ -39,6 +39,7 @@ const Discussion = () => {
   const [sendMessage] = useSendSetChatMutation();
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
+  const [error, setError] = useState(null);
   const socketRef = useRef(null);
   const chatBodyRef = useRef(null);
   console.log(messages);
@@ -89,8 +90,10 @@ const Discussion = () => {
       await sendMessage({ text, setId }).unwrap();
       socketRef.current.emit("sendMessage", { setId, text, sender: user?.id });
       setText("");
+      setError(null); // Clear any previous errors
     } catch (error) {
       console.error(error?.data?.message);
+      setError(error?.data?.message || "Failed to send message");
     }
   };
   // console.log(messages);

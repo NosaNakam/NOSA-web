@@ -75,12 +75,12 @@ export default () => {
               <LinkListItem>
                 <Link href="/nakam-history">History of Nakam</Link>
               </LinkListItem>
-              <LinkListItem>
+              {/* <LinkListItem>
                 <Link href="/founding-fathers">Founding Fathers</Link>
-              </LinkListItem>
-              <LinkListItem>
+              </LinkListItem> */}
+              {/* <LinkListItem>
                 <Link href="/school-management">School Management</Link>
-              </LinkListItem>
+              </LinkListItem> */}
               <LinkListItem>
                 <Link href="/school-associations">School Associations</Link>
               </LinkListItem>
@@ -95,9 +95,9 @@ export default () => {
               <LinkListItem>
                 <Link href="/nosa-sets">Set Membership</Link>
               </LinkListItem>
-              <LinkListItem>
+              {/* <LinkListItem>
                 <Link href="/whom-we-are-proud-of">Whom We Are Proud Of</Link>
-              </LinkListItem>
+              </LinkListItem> */}
               {/* <LinkListItem>
                 <Link href="#">Stories</Link>
               </LinkListItem>
@@ -113,14 +113,14 @@ export default () => {
                 <Link href="/events">Events</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="/news">News Update</Link>
+                <Link href="/news-and-blogs">News Update</Link>
               </LinkListItem>
               <LinkListItem>
                 <Link href="/gallery">Gallery</Link>
               </LinkListItem>
-              <LinkListItem>
+              {/* <LinkListItem>
                 <Link href="/showcase">Showcase</Link>
-              </LinkListItem>
+              </LinkListItem> */}
             </LinkList>
           </Column>
           <Column>

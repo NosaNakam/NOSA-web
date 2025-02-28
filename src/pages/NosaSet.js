@@ -21,7 +21,7 @@ const links = [
 const image =
   "https://images.unsplash.com/photo-1736325263332-f0bf3d863e3e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 const Container = tw.div`w-[90%] mx-auto`;
-const TopContainer = tw.div`bg-[#f9f9f9] pt-[1rem] shadow-md`;
+const TopContainer = tw.div`bg-[#f9f9f9] pt-[2rem] px-[2rem] shadow-md`;
 const GroupHero = tw.div`w-full rounded-lg h-[30vh] lg:h-[50vh] pt-5`;
 const Image = styled.div((props) => [
   `background-image: url("${props.imageSrc}");`,
@@ -46,13 +46,13 @@ const NosaSet = () => {
 
   const { setId } = useParams();
   const { data, isLoading } = useGetSingleSetQuery(setId);
+  const members = data?.set?.members?.filter((member) => member?.isSetAdminVerify);
   if (!isLogin) {
     return <Navigate to="/login" />;
   }
   if (isLoading) {
     return <Loading />;
   }
-
   return (
     <div style={{ background: "white" }}>
       {/* Set Header */}
@@ -64,7 +64,7 @@ const NosaSet = () => {
           </GroupHero>
           <GroupName>NOSA SET {data?.set?.name}</GroupName>
           <FlexContainer>
-            <SmallText>{data?.set?.members?.length} Members</SmallText>
+            <SmallText>{members?.length} Members</SmallText>
             <div style={{ display: "flex", gap: "0.5rem" }}>
               <ControlButton>Pay Set Dues</ControlButton>
               <ControlButton>Share</ControlButton>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Container } from "../misc/Layouts.js";
 import { SectionHeading } from "../misc/Headings.js";
 import { DefaultImage } from "../../images/ImageIndex.js";
@@ -25,6 +26,8 @@ const CardText = tw.div`p-4 text-gray-900`;
 const CardTitle = tw.h5`text-lg font-semibold group-hover:text-primary-500`;
 const CardContent = tw.p`mt-1 text-sm font-medium text-gray-600`;
 
+const NoMembersMessage = tw.div`text-center text-gray-600 my-10 text-lg font-bold`;
+
 const defaultImage =
   "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80";
 
@@ -36,7 +39,7 @@ export default function CardMembers({ members }) {
   const setExcos = allMembers.filter(
     (member) => member.position !== "Member" && member.position !== "Other"
   );
-  console.log(allMembers, setExcos);
+
   const tabs = {
     "All Members": allMembers,
     "Set Excos": setExcos,
@@ -44,19 +47,31 @@ export default function CardMembers({ members }) {
 
   const tabsKeys = Object.keys(tabs);
 
+  // If there are no members, display a message
+  if (allMembers.length === 0) {
+    return (
+      <Container>
+        <NoMembersMessage>No members in the set currently.</NoMembersMessage>
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <HeaderRow>
-        <TabsControl>
-          {tabsKeys.map((tabName, index) => (
-            <TabControl
-              key={index}
-              active={activeTab === tabName}
-              onClick={() => setActiveTab(tabName)}>
-              {tabName}
-            </TabControl>
-          ))}
-        </TabsControl>
+        {/* Conditionally render the TabsControl only if there are members */}
+        {allMembers.length > 0 && (
+          <TabsControl>
+            {tabsKeys.map((tabName, index) => (
+              <TabControl
+                key={index}
+                active={activeTab === tabName}
+                onClick={() => setActiveTab(tabName)}>
+                {tabName}
+              </TabControl>
+            ))}
+          </TabsControl>
+        )}
       </HeaderRow>
 
       {tabsKeys.map((tabKey, index) => (
@@ -69,23 +84,28 @@ export default function CardMembers({ members }) {
           transition={{ duration: 0.4 }}
           initial={activeTab === tabKey ? "current" : "hidden"}
           animate={activeTab === tabKey ? "current" : "hidden"}>
-          {tabs[tabKey].map((member, index) => {
-            return (
+          {tabs[tabKey].length > 0 ? (
+            tabs[tabKey].map((member, index) => (
               <CardContainer key={index}>
-                <Card>
-                  <img
-                    src={member?.image ? member?.image : DefaultImage}
-                    alt={member.fullName}
-                    style={{ objectFit: "cover", height: "12rem", width: "100%" }}
-                  />
-                  <CardText>
-                    <CardTitle>{member.fullName}</CardTitle>
-                    <CardContent>{member.position}</CardContent>
-                  </CardText>
-                </Card>
+                {/* Wrap the Card in a Link to navigate to the user's detail page */}
+                <Link to={`/user/${member._id}`} style={{ textDecoration: "none" }}>
+                  <Card>
+                    <img
+                      src={member?.image ? member?.image : DefaultImage}
+                      alt={member.fullName}
+                      style={{ objectFit: "cover", height: "12rem", width: "100%" }}
+                    />
+                    <CardText>
+                      <CardTitle>{member.fullName}</CardTitle>
+                      <CardContent>{member.position}</CardContent>
+                    </CardText>
+                  </Card>
+                </Link>
               </CardContainer>
-            );
-          })}
+            ))
+          ) : (
+            <NoMembersMessage>No members in this category.</NoMembersMessage>
+          )}
         </TabContent>
       ))}
     </Container>

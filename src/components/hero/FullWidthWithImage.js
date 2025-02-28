@@ -81,7 +81,7 @@ export default ({
       <NavLink href="#">
         Blog
         <StyledDropdownLinks>
-          <DropdownLink href="/news-and-blogs">News and Blog Posts</DropdownLink>
+          <DropdownLink href="/news-and-blogs">News and Blog</DropdownLink>
           <DropdownLink href="/events">Events </DropdownLink>
           <DropdownLink href="/gallery">Gallery</DropdownLink>
           {/* <DropdownLink href="/showcase">Showcase</DropdownLink> */}
@@ -98,7 +98,7 @@ export default ({
     </>
   ),
   description = "Reconnect with old friends, reminisce about shared experiences, and build new connections within your alma mater community.",
-  primaryActionUrl = "/sign-up",
+  primaryActionUrl = "/login",
   primaryActionText = "Be a Member",
   secondaryActionUrl = "#",
   secondaryActionText = "Pay Dues",

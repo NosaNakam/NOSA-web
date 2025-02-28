@@ -77,7 +77,7 @@ export default ({
       }).unwrap();
       setSuccessMessage(res.message);
       setShowModal(true);
-      setTimeout(() => navigate("/login"), 8000);
+      setTimeout(() => navigate("/login"), 5000);
     } catch (error) {
       setErrorMessage(error.data?.message || "An error occurred during registration");
     }

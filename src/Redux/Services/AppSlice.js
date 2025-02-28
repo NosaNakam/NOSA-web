@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   isModelOpen: false,
   profileDetails: {},
   isLogin: Boolean(localStorage.getItem("user")),
   user: JSON.parse(localStorage.getItem("user")) || null,
 };
+
 const appSlice = createSlice({
   name: "app",
   initialState,
-  user: null,
   reducers: {
     openProfileModel(state) {
       state.isModelOpen = !state.isModelOpen;
@@ -28,5 +29,6 @@ const appSlice = createSlice({
     },
   },
 });
+
 export const { openProfileModel, addProfileDetailsModel, saveUser, logoutUser } = appSlice.actions;
 export default appSlice.reducer;

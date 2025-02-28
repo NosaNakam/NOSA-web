@@ -43,16 +43,17 @@ const SvgDotPattern4 = tw(
 )`absolute bottom-0 right-0 transform translate-x-20 rotate-90 -translate-y-24 -z-10 opacity-25 text-primary-500 fill-current w-24`;
 
 export default () => {
-  const { data, isLoading } = useGetAllEventsQuery({});
+  const { data, isLoading } = useGetAllEventsQuery();
 
   const imageSrc =
     "https://images.unsplash.com/photo-1509824227185-9c5a01ceba0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80";
   if (isLoading) {
     return <Loading />;
   }
+  console.log(data);
   return (
     <Container>
-      <SingleColumn>
+      {/* <SingleColumn>
         <HeadingInfoContainer>
           <HeadingTitle>Popular Events</HeadingTitle>
           <HeadingDescription>
@@ -81,7 +82,7 @@ export default () => {
       <SvgDotPattern1 />
       <SvgDotPattern2 />
       <SvgDotPattern3 />
-      <SvgDotPattern4 />
+      <SvgDotPattern4 /> */}
     </Container>
   );
 };

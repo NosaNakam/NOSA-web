@@ -4,8 +4,6 @@ import Hero from "../components/hero/BackgroundAsImageWithCenteredContent.js";
 import Features from "../components/features/VerticalWithAlternateImageAndText.js";
 // import Blog from "../components/blogs/ThreeColSimpleWithImage.js";
 
-import Blog from "../components/blogs/ThreeColSimpleWithImageAndDashedBorder.js";
-
 export default () => (
   <AnimationRevealPage>
     <Hero
@@ -15,7 +13,5 @@ export default () => (
       centerButton={true}
     />
     <Features />
-    {/* upcoming events implace of blog */}
-    <Blog />
   </AnimationRevealPage>
 );
