@@ -12,7 +12,12 @@ import { Link } from "react-router-dom";
 import Nav from "../components/headers/light";
 
 // Styled Components
+const HeroContainer = tw.div`relative py-20 bg-primary-500 mt-5`; // Use a solid color or gradient
+const HeroContent = tw.div`max-w-4xl mx-auto text-center text-white`;
+const HeroTitle = tw.h1`text-4xl md:text-6xl font-bold`;
+const HeroDescription = tw.p`mt-4 text-lg md:text-xl max-w-2xl mx-auto`;
 const Container = tw.div`relative w-full`;
+const NavContainer = tw.div`pt-[2rem] px-[2rem]`;
 const SingleColumn = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
@@ -57,7 +62,18 @@ const EventPage = () => {
   return (
     <div>
       <Container>
-        <Nav />
+        <NavContainer>
+          <Nav />
+        </NavContainer>
+        <HeroContainer>
+          <HeroContent>
+            <HeroTitle>Upcoming & Popular Events</HeroTitle>
+            <HeroDescription>
+              Discover the latest and most popular events happening around you. Don’t miss out on
+              the excitement!
+            </HeroDescription>
+          </HeroContent>
+        </HeroContainer>
         <SingleColumn>
           {/* Popular Events Section */}
           <HeadingInfoContainer>

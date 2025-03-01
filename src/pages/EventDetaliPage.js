@@ -28,7 +28,7 @@ const EventContent = tw.div`mt-8 text-gray-700`;
 
 const EventDetailPage = () => {
   const { eventId } = useParams();
-  const { data, isLoading } = useGetDetailEventQuery(eventId);
+  const { data, isLoading } = useGetDetailEventQuery({ id: eventId });
   console.log(data);
   if (isLoading) {
     return <Loading />;
