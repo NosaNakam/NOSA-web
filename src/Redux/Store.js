@@ -9,6 +9,7 @@ import { setEventApiSlice } from "./Api/setEventApiSlice";
 import { blogApiSlice } from "./Api/BlogApiSlice";
 import { postCommentApiSlice } from "./Api/PostCommentApiSlice";
 import { newsLetterSplice } from "./Api/NewsLetterApiSlice";
+import { galleryApiSlice } from "./Api/GalleryApiSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     [blogApiSlice.reducerPath]: blogApiSlice.reducer,
     [postCommentApiSlice.reducerPath]: postCommentApiSlice.reducer,
     [newsLetterSplice.reducerPath]: newsLetterSplice.reducer,
+    [galleryApiSlice.reducerPath]: galleryApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -33,5 +35,6 @@ export const store = configureStore({
       .concat(setEventApiSlice.middleware)
       .concat(blogApiSlice.middleware)
       .concat(postCommentApiSlice.middleware)
-      .concat(newsLetterSplice.middleware),
+      .concat(newsLetterSplice.middleware)
+      .concat(galleryApiSlice.middleware),
 });

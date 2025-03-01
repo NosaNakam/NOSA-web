@@ -178,7 +178,7 @@ export default function App() {
               <Route path="media" element={<PrivateRoute component={Media} />} />
             </Route>
 
-            <Route path="/our-developers" element={<WhomWeAreProudOf />} />
+            {/* <Route path="/our-developers" element={<WhomWeAreProudOf />} /> */}
             <Route path="/gallery" element={<Gallary />} />
 
             <Route path="/thank-you" element={<ThankYouPage />} />

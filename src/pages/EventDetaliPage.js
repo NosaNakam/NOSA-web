@@ -7,10 +7,12 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { formatDate } from "../helpers/extras.js";
 import { useGetDetailEventQuery, useGetEventByIdQuery } from "../Redux/Api/BlogApiSlice.js";
 import Loading from "../components/testimonials/Loading.js";
+import Nav from "../components/headers/light";
+const NavContainer = tw.div`pt-[2rem] px-[2rem]`;
 
 // Styled Components
 const Container = tw.div`relative`;
-const SingleColumn = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+const SingleColumn = tw.div`w-full lg:w-[70%] mx-auto px-10 lg:px-0 py-20 lg:py-[5rem]`;
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingTitle = tw.h1`text-4xl font-bold text-gray-900`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
@@ -38,7 +40,10 @@ const EventDetailPage = () => {
 
   return (
     <Container>
-      {/* <SingleColumn>
+      <NavContainer>
+        <Nav />
+      </NavContainer>
+      <SingleColumn>
         <HeadingInfoContainer>
           <HeadingTitle>{event?.title}</HeadingTitle>
           <HeadingDescription>{event?.description}</HeadingDescription>
@@ -60,7 +65,7 @@ const EventDetailPage = () => {
             <EventContent dangerouslySetInnerHTML={{ __html: event?.content }} />
           </EventDetails>
         </Content>
-      </SingleColumn> */}
+      </SingleColumn>
     </Container>
   );
 };
