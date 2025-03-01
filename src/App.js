@@ -131,6 +131,7 @@ import PrivateRoute from "./PrivateRoute.js";
 import BlogDetailPage from "./pages/DetailBlogPage.js";
 import NewsDetailPage from "./pages/DetailNews.js";
 import Edit from "./pages/EditProfile.js";
+import EventDetailPage from "./pages/EventDetaliPage.js";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -162,6 +163,7 @@ export default function App() {
             <Route path="/events" element={<EventLandingPage />} />
             <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/news-and-blogs" element={<BlogIndexPage />} />
+            <Route path="/events/:eventId" element={<EventDetailPage />} />
             <Route path="/news/:newsId" element={<NewsDetailPage />} />
             <Route path="/post/:postId" element={<BlogDetailPage />} />
             <Route path="/nosa-sets" element={<NosaSets />} />

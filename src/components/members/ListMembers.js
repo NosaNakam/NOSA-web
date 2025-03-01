@@ -68,8 +68,7 @@ export const ListMembers = ({ members }) => {
               <PostDetailsFlex>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                   {/* Wrap the profile section in a Link */}
-                  <Link
-                    to={`/user/${member._id}`}
+                  <div
                     style={{
                       textDecoration: "none",
                       display: "flex",
@@ -78,21 +77,21 @@ export const ListMembers = ({ members }) => {
                     }}>
                     <Profile>
                       {member?.author?.image ? (
-                        <Image imageSrc={member?.author?.image} />
+                        <Image imageSrc={member?.image} />
                       ) : (
                         <FaUser size={24} color="#fff" />
                       )}
                     </Profile>
                     <PostDetailUserFlex>
                       <SubHeading>{member?.fullName}</SubHeading>
-                      <p>Joined 2 years ago</p>
+                      <p>{member?.position}</p>
                     </PostDetailUserFlex>
-                  </Link>
+                  </div>
                 </div>
                 <BsThreeDots style={{ cursor: "pointer" }} onClick={() => toggleModel(index)} />
               </PostDetailsFlex>
               <OptionModel visible={visibleModel === index}>
-                <div>View Profile</div>
+                <Link to={`/user/${member._id}`}>View Profile</Link>
                 <div>Send Message</div>
                 <div>Remove Member</div>
               </OptionModel>
@@ -122,7 +121,7 @@ export const ListMembers = ({ members }) => {
                     }}>
                     <Profile>
                       {leader?.author?.image ? (
-                        <Image imageSrc={leader?.author?.image} />
+                        <Image imageSrc={leader?.image} />
                       ) : (
                         <FaUser size={24} color="#fff" />
                       )}

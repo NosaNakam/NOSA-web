@@ -65,39 +65,41 @@ export default ({
   }
   return (
     <Container>
-      <Content>
-        <HeadingInfoContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          <HeadingTitle>{heading}</HeadingTitle>
-          <HeadingDescription>{description}</HeadingDescription>
-        </HeadingInfoContainer>
-        <ThreeColumn>
-          {blogs.map((post) => (
-            <Column key={post._id}>
-              <Card>
-                <Image imageSrc={post.image || imageSrc} />
-                <Details>
-                  <MetaContainer>
-                    <Meta>
-                      <UserIcon />
-                      <div>{post?.user?.fullName}</div>
-                    </Meta>
-                    <Meta>
-                      <TagIcon />
-                      <div style={{ textTransform: "capitalize" }}>{post.category}</div>
-                    </Meta>
-                  </MetaContainer>
-                  <Title>{post.title}</Title>
-                  <Description>{post.description}</Description>
-                  <Btn>
-                    <Link to={`/post/${post?._id}`}>Read Post</Link>
-                  </Btn>
-                </Details>
-              </Card>
-            </Column>
-          ))}
-        </ThreeColumn>
-      </Content>
+      {blogs.length >= 1 && (
+        <Content>
+          <HeadingInfoContainer>
+            {subheading && <Subheading>{subheading}</Subheading>}
+            <HeadingTitle>{heading}</HeadingTitle>
+            <HeadingDescription>{description}</HeadingDescription>
+          </HeadingInfoContainer>
+          <ThreeColumn>
+            {blogs.map((post) => (
+              <Column key={post._id}>
+                <Card>
+                  <Image imageSrc={post.image || imageSrc} />
+                  <Details>
+                    <MetaContainer>
+                      <Meta>
+                        <UserIcon />
+                        <div>{post?.user?.fullName}</div>
+                      </Meta>
+                      <Meta>
+                        <TagIcon />
+                        <div style={{ textTransform: "capitalize" }}>{post.category}</div>
+                      </Meta>
+                    </MetaContainer>
+                    <Title>{post.title}</Title>
+                    <Description>{post.description}</Description>
+                    <Btn>
+                      <Link to={`/post/${post?._id}`}>Read Post</Link>
+                    </Btn>
+                  </Details>
+                </Card>
+              </Column>
+            ))}
+          </ThreeColumn>
+        </Content>
+      )}
       <DecoratorBlob1 />
       <DecoratorBlob2 />
     </Container>

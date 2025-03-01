@@ -52,21 +52,25 @@ export default ({ headingText = "News Update" }) => {
             <Heading>{headingText}</Heading>
           </HeadingRow>
           <Posts>
-            {data?.data?.slice(0, visible).map((post, index) => (
-              <PostContainer key={index}>
-                <Post className="group" as="a" href={`/news/${post?._id}`}>
-                  <Image imageSrc={post?.image} />
-                  <Info>
-                    <Category>{post?.category}</Category>
-                    <CreationDate>{post?.date}</CreationDate>
-                    <Title>{post?.title}</Title>
-                    {post.featured && post.description && (
-                      <Description>{post.description}</Description>
-                    )}
-                  </Info>
-                </Post>
-              </PostContainer>
-            ))}
+            {data?.data?.length < 1 ? (
+              <div tw="font-semibold py-10">No any news for now</div>
+            ) : (
+              data?.data?.slice(0, visible).map((post, index) => (
+                <PostContainer key={index}>
+                  <Post className="group" as="a" href={`/news/${post?._id}`}>
+                    <Image imageSrc={post?.image} />
+                    <Info>
+                      <Category>{post?.category}</Category>
+                      <CreationDate>{post?.date}</CreationDate>
+                      <Title>{post?.title}</Title>
+                      {post.featured && post.description && (
+                        <Description>{post.description}</Description>
+                      )}
+                    </Info>
+                  </Post>
+                </PostContainer>
+              ))
+            )}
           </Posts>
           {visible < data?.data?.length && (
             <ButtonContainer>

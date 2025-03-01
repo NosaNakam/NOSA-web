@@ -53,25 +53,25 @@ export default () => {
   console.log(data);
   return (
     <Container>
-      {/* <SingleColumn>
+      <SingleColumn>
         <HeadingInfoContainer>
           <HeadingTitle>Popular Events</HeadingTitle>
           <HeadingDescription>
-            Here are some of the most popular events in New York City curated by professionals.
+            Here are some of the most popular events of the school and the association.
           </HeadingDescription>
         </HeadingInfoContainer>
 
         <Content>
-          {data?.length < 1 ? (
+          {data?.data?.length < 1 ? (
             <h1>No Event at the moment</h1>
           ) : (
-            data?.map((event, i) => (
+            data?.data?.map((event, i) => (
               <Card key={event._id} reversed={i % 2 === 1}>
                 <Image imageSrc={imageSrc} />
                 <Details>
                   <Subtitle>{event?.subtitle}</Subtitle>
                   <Title>{event?.title}</Title>
-                  <Description>{event?.content}</Description>
+                  <Description>{event?.description}</Description>
                   <Link href={event?.url}>See Event Details</Link>
                 </Details>
               </Card>
@@ -82,7 +82,7 @@ export default () => {
       <SvgDotPattern1 />
       <SvgDotPattern2 />
       <SvgDotPattern3 />
-      <SvgDotPattern4 /> */}
+      <SvgDotPattern4 />
     </Container>
   );
 };

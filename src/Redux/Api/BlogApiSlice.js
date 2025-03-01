@@ -15,6 +15,12 @@ export const blogApiSlice = createApi({
         method: "GET",
       }),
     }),
+    getDetailEvent: build.query({
+      query: (id) => ({
+        url: `${EVENTS_URL}/${id}`,
+        method: "GET",
+      }),
+    }),
 
     //get all news
     getAllNews: build.query({
@@ -43,4 +49,5 @@ export const {
   useGetAllNewsQuery,
   useGetAllBlogsQuery,
   useGetDetailPostQuery,
+  useGetDetailEventQuery,
 } = blogApiSlice;
