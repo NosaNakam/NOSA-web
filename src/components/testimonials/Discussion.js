@@ -45,7 +45,7 @@ const Discussion = () => {
   console.log(messages);
   useEffect(() => {
     // Initialize socket connection
-    socketRef.current = io("http://localhost:5000");
+    socketRef.current = io("https://nosa-backend.onrender.com");
 
     // Join the discussion room
     socketRef.current.emit("joinDiscussion", { setId, userId: user?.id });
